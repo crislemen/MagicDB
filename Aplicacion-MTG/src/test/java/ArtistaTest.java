@@ -45,6 +45,7 @@ public class ArtistaTest {
         assertTrue(artista.getNombre().contains("Pedro"), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
         assertTrue(artista.getApellido1().contains("Gonzales"), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
         assertTrue(artista.getApellido2().contains("Martin"),LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
+        assertEquals(artista.getNumeroArtes(),15 ,LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD );
     }
     
     /**
@@ -75,6 +76,7 @@ public class ArtistaTest {
             artista.setApellido1(apellido1Default);
             artista.setApellido2(apellido2Default);
             artista.setNumeroArtes(numeroArtesDefault);
+
         
         }
         
