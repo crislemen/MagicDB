@@ -37,3 +37,9 @@ Por favor lea la LICENCIA para mas información respecto a MagicDB
 - Window 7
 - Window 8
 - Window 10
+
+# Requisitos
+
+- Java
+- SO de preferencia(Windows, Linux, Mac)
+- Sistema gestor de base de datos
