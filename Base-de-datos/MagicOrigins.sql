@@ -8,7 +8,7 @@ CREATE TABLE baraja(
     nombre VARCHAR(50),
     precio FLOAT,
     numero_cartas INT,
-    balance_mana FLOAT
+    balance_mana INT 
 );
 CREATE TABLE baraja_formato(
     codigo_baraja INT,
@@ -25,7 +25,7 @@ CREATE TABLE baraja_colores(
 CREATE TABLE mana(
     nombre VARCHAR(50) PRIMARY KEY,
     tipo VARCHAR(30),
-    descripcion(150)  
+    descripcion VARCHAR(150)  
 );
 CREATE TABLE baraja_mana(
     codigo_baraja INT,
@@ -50,7 +50,7 @@ CREATE TABLE artista(
 CREATE TABLE formato(
     nombre VARCHAR(50) PRIMARY KEY,
     descripcion VARCHAR(150), 
-    baneo 
+    baneo BOOLEAN
 );
 CREATE TABLE expansion(
     simbolo CHAR PRIMARY KEY,
