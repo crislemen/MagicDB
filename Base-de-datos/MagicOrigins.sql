@@ -260,6 +260,13 @@ VALUES
   );
 INSERT INTO
   formato
+VALUES(
+    'Pauper',
+    'Es un formato construido de Magic, en el que sólo se permite el uso de cartas comunes.',
+    true
+  );
+INSERT INTO
+  formato
 VALUES
   (
     'Mazo Cerrado',
@@ -700,7 +707,7 @@ VALUES
     'U',
     NULL,
     'Pauper'
-  );
+  ),
   (
     398674,
     'Aspiring Aeronaut',
