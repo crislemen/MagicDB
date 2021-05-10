@@ -68,16 +68,17 @@ CREATE TABLE mana_produce(
 
 CREATE TABLE carta(
   id INT PRIMARY KEY, 
-  nombre VARCHAR(80),
+  nombre_carta VARCHAR(80),
   tipo TEXT,
   simbolo_expansion VARCHAR(3),
   rareza TEXT,  
   coste_mana TEXT,
-  coste_mana_convertido VARCHAR (30), 
+  coste_mana_convertido INT, 
   fuerza INT,
   resistencia INT,
   loyalty TEXT, 
-  descripcion TEXT ,
+  descripcion TEXT,
+  artista VARCHAR(20), 
   codigo_artista INT,
   color TEXT, 
   generated_mana text,
@@ -141,7 +142,7 @@ INSERT INTO artista(nombre,apellido,numero_artes) VALUES ("Paolo","Parente",1);
 INSERT INTO artista(nombre,apellido,numero_artes) VALUES ("Ted","Galaday",1);
 INSERT INTO artista(nombre,apellido,numero_artes) VALUES ("Torstein","Nordstrand",1);
 INSERT INTO artista(nombre,apellido,numero_artes) VALUES ("Julie","Dillon",1);
-INSERT INTO artista(nombre,apellido,numero_artes) VALUES ("Mark","Zug",1);
+INSERT INTO artista(nombre,apellido,numero_artes) VALUES ("Mark","Zug",2);
 INSERT INTO artista(nombre,apellido,numero_artes) VALUES ("Sam","Burley",5);
 INSERT INTO artista(nombre,apellido,numero_artes) VALUES ("Kekai","Kotaki",1);
 INSERT INTO artista(nombre,apellido,numero_artes) VALUES (" Victor Adame","Minguez",1);
@@ -394,7 +395,7 @@ INSERT INTO mana_produce VALUES('Isla','Azul');
 -- INSERTS DE CARTA --
 
 INSERT INTO
-  carta(id,nombre,tipo,simbolo_expansion,rareza,coste_mana,coste_mana_convertido,fuerza,resistencia,loyalty,descripcion,codigo_artista,color,generated_mana,nombre_formato) 
+  carta(id,nombre_carta,tipo,simbolo_expansion,rareza,coste_mana,coste_mana_convertido,fuerza,resistencia,loyalty,descripcion,codigo_artista,color,generated_mana,nombre_formato)
 VALUES
   (
     398411,
@@ -407,12 +408,13 @@ VALUES
     2,
     1,
     NULL,
-    'pepe',
+    'Prowess #_(Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)_#£When Abbot of Keral Keep enters the battlefield, exile the top card of your library. Until end of turn, you may play that card.',
+    
     108,
     'R',
     NULL,
     'Commander'
-  )
+  ),
   (
     398574,
     'Acolyte of the Inferno',
@@ -424,12 +426,12 @@ VALUES
     3,
     1,
     null,
-    'Renown 1 (When this creature deals combat damage to a player, if it isnt renowned, put a +1/+1 counter on it and it becomes renowned.)_ £Whenever Acolyte of the Inferno becomes blocked by a creature, it deals 2 damage to that creature.',
+    'Renown 1 #_(When this creature deals combat damage to a player, if it isn t renowned, put a +1/+1 counter on it and it becomes renowned.)_#£Whenever Acolyte of the Inferno becomes blocked by a creature, it deals 2 damage to that creature.',  
     109,
     'R',
     NULL,
     'Commander'
-  );
+  ),
   (
     398578,
     'Act of Treason',
@@ -442,6 +444,7 @@ VALUES
     null,
     null,
     'Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn. #_(It can attack and {T} this turn.)_#',
+    
     110,
     'R',
     NULL,
@@ -459,6 +462,7 @@ VALUES
     5,
     NULL,
     'Flying #_(This creature can''t be blocked except by creatures with flying or reach.)_#£When Aegis Angel enters the battlefield, another target permanent gains indestructible for as long as you control Aegis Angel. #_(Effects that say "destroy" don''t destroy it. A creature with indestructible can''t be destroyed by damage.)_#',
+    
     111,
     'W',
     NULL,
@@ -512,7 +516,7 @@ VALUES
     2,
     NULL,
     'First strike #_(This creature deals combat damage before creatures without first strike.)_#£Renown 1 #_(When this creature deals combat damage to a player, if it isn''t renowned, put a +1/+1 counter on it and it becomes renowned.)_#',
-   
+    
     114,
     'R',
     NULL,
@@ -530,7 +534,7 @@ VALUES
     NULL,
     NULL,
     'When Alchemist''s Vial enters the battlefield, draw a card.£{1}, {T}, Sacrifice Alchemist''s Vial: Target creature can''t attack or block this turn.',
-    'Lindsey Look',
+    
     115,
     'A',
     NULL,
@@ -548,7 +552,7 @@ VALUES
     5,
     NULL,
     'Flying£As Alhammarret, High Arbiter enters the battlefield, each opponent reveals their hand. You choose the name of a nonland card revealed this way.£Your opponents can''t cast spells with the chosen name #_(as long as this creature is on the battlefield)_#.',
-    'Richard Wright',
+   
     116,
     'U',
     NULL,
@@ -566,7 +570,7 @@ VALUES
     NULL,
     NULL,
     'If you would gain life, you gain twice that much life instead.£If you would draw a card except the first one you draw in each of your draw steps, draw two cards instead.',
-    'Richard Wright',
+   
     116,
     'A',
     NULL,
@@ -584,7 +588,7 @@ VALUES
     3,
     NULL,
     'When Ampryn Tactician enters the battlefield, creatures you control get +1/+1 until end of turn.',
-    'Cynthia Sheppard',
+    
     117,
     'W',
     NULL,
@@ -602,7 +606,7 @@ VALUES
     NULL,
     NULL,
     'Put target creature on top of its owner''s library. Scry 1. #_(Look at the top card of your library. You may put that card on the bottom of your library.)_#',
-    'Zoltan Boros',
+    
     118,
     'U',
     NULL,
@@ -620,7 +624,7 @@ VALUES
     NULL,
     NULL,
     'Whenever a creature enters the battlefield under your control, you may have Angel''s Tomb become a 3/3 white Angel artifact creature with flying until end of turn.',
-    'Dan Scott',
+    
     119,
     'A',
     NULL,
@@ -638,7 +642,7 @@ VALUES
     null,
     NULL,
     'Reveal the top X cards of your library. Put all land cards from among them onto the battlefield tapped and the rest on the bottom of your library in a random order.£#_Spell mastery_# — If there are two or more instant and/or sorcery cards in your graveyard, untap those lands.',
-    'Chris Rahn',
+    
     120,
     'G',
     NULL,
@@ -656,7 +660,7 @@ VALUES
     1,
     NULL,
     '{T}: Target attacking creature gets +1/+1 until end of turn.',
-    'Anna Steinbauer',
+    
     121,
     'W',
     NULL,
@@ -674,7 +678,7 @@ VALUES
     5,
     NULL,
     'Flying£As long as Archangel of Tithes is untapped, creatures can''t attack you or planeswalkers you control unless their controller pays {1} for each of those creatures.£As long as Archangel of Tithes is attacking, creatures can''t block unless their controller pays {1} for each of those creatures.',
-    'Cynthia Sheppard',
+    
     117,
     'W',
     NULL,
@@ -692,7 +696,7 @@ VALUES
     NULL,
     NULL ,
     'Draw two cards. If you control no artifacts, discard a card.',
-    'Kieran Yanner',
+    
     122,
     'U',
     NULL,
@@ -710,7 +714,7 @@ VALUES
     2,
     NULL,
     'Flying #_(This creature can''t be blocked except by creatures with flying or reach.)_#£When Aspiring Aeronaut enters the battlefield, create a 1/1 colorless Thopter artifact creature token with flying.',
-    'Willian Murai',
+    
     123,
     'U',
     NULL,
@@ -728,7 +732,7 @@ VALUES
     2,
     NULL,
     'When Auramancer enters the battlefield, you may return target enchantment card from your graveyard to your hand.',
-    'Rebecca Guay',
+    
     124,
     'W',
     NULL,
@@ -746,13 +750,13 @@ VALUES
     4,
     NULL,
     'Flying£At the beginning of your draw step, draw an additional card.£At the beginning of your end step, discard your hand.',
-    'Chris Rahn',
+    
     120,
     'R',
     NULL,
-    "Commander"
+    'Commander'
     
-  ),
+  );
   (
     398627,
     'Aven Battle Priest',
@@ -765,7 +769,7 @@ VALUES
     3,
     NULL,
     'Flying #_(This creature can''t be blocked except by creatures with flying or reach.)_#£When Aven Battle Priest enters the battlefield, you gain 3 life.',
-    'John Severin Brassell',
+    
     '6',
     'W',
     NULL,
@@ -784,7 +788,7 @@ VALUES
     null,
     null,
     '{T}: Add {C}.£{T}: Add {R} or {W}. Battlefield Forge deals 1 damage to you.',
-    'Darrell Riche',
+    
     '244',
     'L',
     '{R}{W}{C}',
@@ -802,7 +806,7 @@ VALUES
     1,
     NULL,
     '{1}{R}: Bellows Lizard gets +1/+0 until end of turn.',
-    'Jack Wang',
+    
     126,
     'R',
     null,
@@ -820,7 +824,7 @@ VALUES
     3,
     NULL,
     '{1}, Sacrifice another creature: Blazing Hellhound deals 1 damage to any target.',
-    'Eric Velhagen',
+    
     127,
     'RB',
     NULL,
@@ -838,7 +842,7 @@ VALUES
     2,
     NULL,
     'Flying£Whenever you cast an enchantment spell, put a +1/+1 counter on Blessed Spirits.',
-    'Anna Steinbauer',
+    
     121,
     'W',
     NULL,
@@ -856,7 +860,7 @@ VALUES
     3,
     NULL,
     'Whenever you cast an enchantment spell, you may have target creature get -2/-2 until end of turn.',
-    'Winona Nelson',
+    
     128,
     'B',
     NULL,
@@ -875,7 +879,7 @@ VALUES
     2,
     NULL,
     'As long as you control an enchantment, Blood-Cursed Knight gets +1/+1 and has lifelink. #_(Damage dealt by this creature also causes you to gain that much life.)_#',
-    'Winona Nelson',
+    
     128,
     'WB',
     NULL,
@@ -893,7 +897,7 @@ VALUES
     2,
     NULL,
     'Menace #_(This creature can''t be blocked except by two or more creatures.)_#',
-    'Igor Kieryluk',
+    
     129,
     'R',
     NULL,
@@ -912,7 +916,7 @@ VALUES
     1,
     NULL,
     'Bonded Construct can''t attack alone.',
-    'Craig J Spearing',
+    
     130,
     'A',
     NULL,
@@ -931,7 +935,7 @@ VALUES
     NULL,
     NULL,
     'Counter target creature spell.£Draw a card.',
-    'Clint Cearley',
+    
     131,
     'U',
     NULL,
@@ -949,7 +953,7 @@ VALUES
     3,
     NULL,
     'Flash #_(You may cast this spell any time you could cast an instant.)_#£When Bounding Krasis enters the battlefield, you may tap or untap target creature.',
-    'Jack Wang',
+    
     126,
     'GU',
     NULL,
@@ -967,7 +971,7 @@ VALUES
     NULL,
     NULL,
     'Equipped creature gets +2/+2 and has trample. #_(It can deal excess combat damage to the player or planeswalker it''s attacking.)_#£Equip {4} #_({4}: Attach to target creature you control. Equip only as a sorcery.)_#',
-    'Jung Park',
+
     132,
     'A',
     NULL,
@@ -985,7 +989,7 @@ VALUES
     NULL,
     NULL,
     'Counter target spell unless its controller pays {3}.£#_Spell mastery_# — If there are two or more instant and/or sorcery cards in your graveyard, scry 2. #_(To scry 2, look at the top two cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)_#',
-    'Karl Kopinski',
+    
     133,
     'U',
     NULL,
@@ -1003,7 +1007,7 @@ VALUES
     NULL,
     NULL, 
     'Enchant creature£Enchanted creature gets +3/+2 and has trample. #_(It can deal excess combat damage to the player or planeswalker it''s attacking.)_#£At the beginning of each upkeep, if a player cast two or more spells last turn, sacrifice Call of the Full Moon.',
-     
+    
     1,
     'R',
     NULL,
@@ -1021,7 +1025,7 @@ VALUES
     6,
     NULL,
     NULL,
-     
+    
     1,
     'B',
     NULL,
@@ -1039,7 +1043,7 @@ VALUES
     1,
     NULL,
     '{1}{G}, Sacrifice Caustic Caterpillar: Destroy target artifact or enchantment.',
-    'Jack Wang',
+    
     126,
     'G',
     NULL,
@@ -1057,7 +1061,7 @@ VALUES
     NULL,
     NULL,
     '{T}: Add {C}.£{T}: Add {W} or {B}. Caves of Koilos deals 1 damage to you.',
-     
+    
     2,
     'L',
     '{W}{B}{C}',
@@ -1075,7 +1079,7 @@ VALUES
     NULL,
     NULL,
     'Target player sacrifices an attacking or blocking creature.',
-    'Clint Cearley',
+    
     131,
     'W',
     NULL,
@@ -1093,7 +1097,7 @@ VALUES
     2,
     NULL,
     'Whenever you cast a red spell, untap Chandra, Fire of Kaladesh.£{T}: Chandra, Fire of Kaladesh deals 1 damage to target player or planeswalker. If Chandra has dealt 3 or more damage this turn, exile her, then return her to the battlefield transformed under her owner''s control.',
-    'Eric Deschamps',
+    
     110,
     'R',
     NULL,
@@ -1111,7 +1115,7 @@ VALUES
     4,
     4,
     '+1: Chandra, Roaring Flame deals 2 damage to target player or planeswalker.£−2: Chandra, Roaring Flame deals 2 damage to target creature.£−7: Chandra, Roaring Flame deals 6 damage to each opponent. Each player dealt damage this way gets an emblem with "At the beginning of your upkeep, this emblem deals 3 damage to you."',
-    'Eric Deschamps',
+    
     110,
     'R',
     NULL,
@@ -1129,7 +1133,7 @@ VALUES
     NULL,
     NULL,
     'Chandra''s Fury deals 4 damage to target player or planeswalker and 1 damage to each creature that player or that planeswalker''s controller controls.',
-     
+    
     3,
     'R',
     NULL,
@@ -1147,7 +1151,7 @@ VALUES
     NULL,
     NULL,
     'Target creature you control deals damage equal to its power to each other creature and each opponent.',
-    'Eric Deschamps',
+    
     110,
     'R',
     NULL,
@@ -1165,7 +1169,7 @@ VALUES
     2,
     NULL,
     'Flying #_(This creature can''t be blocked except by creatures with flying or reach.)_#£Whenever Charging Griffin attacks, it gets +1/+1 until end of turn.',
-     
+   
     4,
     'W',
     NULL,
@@ -1183,7 +1187,7 @@ VALUES
     3,
     NULL,
     'Other artifact creatures you control get +1/+1.',
-     
+   
     5,
     'A',
     NULL,
@@ -1219,7 +1223,7 @@ VALUES
     NULL,
     NULL,
     'Counter target spell unless its controller pays {X}.',
-     
+   
     6,
     'U',
     NULL,
@@ -1237,7 +1241,7 @@ VALUES
     NULL,
     NULL,
     'Enchant creature£When Claustrophobia enters the battlefield, tap enchanted creature.£Enchanted creature doesn''t untap during its controller''s untap step.',
-    'Ryan Pancoast',
+    
     7,
     'U',
     NULL,
@@ -1255,7 +1259,7 @@ VALUES
     2,
     NULL,
     'When Cleric of the Forward Order enters the battlefield, you gain 2 life for each creature you control named Cleric of the Forward Order.',
-     
+   
     8,
     'W',
     NULL,
@@ -1273,7 +1277,7 @@ VALUES
     2,
     NULL,
     NULL,
-     
+    
     9,
     'R',
     NULL,
@@ -1291,7 +1295,7 @@ VALUES
     4,
     NULL,
     'When Conclave Naturalists enters the battlefield, you may destroy target artifact or enchantment.',
-     
+    
     10,
     'G',
     NULL,
@@ -1309,7 +1313,7 @@ VALUES
     NULL,
     NULL,
     'Enchant creature£Enchanted creature gets +2/+2 and has flying and "Sacrifice two other creatures: Regenerate this creature." #_(The next time the creature would be destroyed this turn, it isn''t. Instead tap it, remove all damage from it, and remove it from combat.)_#',
-    'John Stanko',
+    
     11,
     'B',
     NULL,
@@ -1327,7 +1331,7 @@ VALUES
     1,
     NULL,
     'First strike£Renown 1 #_(When this creature deals combat damage to a player, if it isn''t renowned, put a +1/+1 counter on it and it becomes renowned.)_#£Whenever Consul''s Lieutenant attacks, if it''s renowned, other attacking creatures you control get +1/+1 until end of turn.',
-    'Daarken',
+    
     12,
     'W',
     NULL,
@@ -1345,7 +1349,7 @@ VALUES
     NULL,
     NULL,
     'Destroy target non-Zombie creature. It can''t be regenerated. Return up to one target Zombie card from your graveyard to your hand.',
-    'Miles Johnston',
+    
     13,
     'B',
     NULL,
@@ -1363,7 +1367,7 @@ VALUES
     NULL,
     NULL,
     'Regenerate target creature. Draw a card. #_(The next time the creature would be destroyed this turn, it isn''t. Instead tap it, remove all damage from it, and remove it from combat.)_#£#_Spell mastery_# — If there are two or more instant and/or sorcery cards in your graveyard, also regenerate each other creature you control.',
-    'Bastien L. Deharme',
+    
     14,
     'B',
     NULL,
@@ -1381,7 +1385,7 @@ VALUES
     NULL,
     NULL, 
     'Search your library for a card, put that card INTO your hand, then shuffle.£#_Spell mastery_# — If there are two or more instant and/or sorcery cards in your graveyard, add {B}{B}{B}.',
-    'Igor Kieryluk',
+    
     129,
     'B',
     '{B}',
@@ -1399,7 +1403,7 @@ VALUES
     NULL,
     NULL,
     'Each player shuffles their hand and graveyard INTO their library, then draws seven cards. If it''s your turn, end the turn. #_(Exile all spells and abilities from the stack, including this card. Discard down to your maximum hand size. Damage wears off, and "this turn" and "until end of turn" effects end.)_#',
-    'Jonas De Ro',
+    
     15,
     'U',
     NULL,
@@ -1417,7 +1421,7 @@ VALUES
     1,
     NULL,
     'When Deadbridge Shaman dies, target opponent discards a card.',
-     
+    
     1,
     'B',
     NULL,
@@ -1435,7 +1439,7 @@ VALUES
     6,
     NULL,
     'Deep-Sea Terror can''t attack unless there are seven or more cards in your graveyard.',
-    'Marco Nelor',
+   
     16,
     'U',
     NULL,
@@ -1453,7 +1457,7 @@ VALUES
     NULL,
     NULL,
     'Destroy target artifact or land.',
-    'John Avon',
+    
     17,
     'R',
     NULL,
@@ -1471,7 +1475,7 @@ VALUES
     NULL,
     NULL,
     'At the beginning of your upkeep, choose one that hasn''t been chosen —£• Demonic Pact deals 4 damage to any target and you gain 4 life.£• Target opponent discards two cards.£• Draw two cards.£• You lose the game.',
-    'Aleksi Briclot',
+    
     111,
     'B',
     NULL,
@@ -1489,7 +1493,7 @@ VALUES
     1,
     NULL,
     'Despoiler of Souls can''t block.£{B}{B}, Exile two other creature cards from your graveyard: Return Despoiler of Souls from your graveyard to the battlefield.',
-    'Greg Staples',
+    
     18,
     'B',
     NULL,
@@ -1507,7 +1511,7 @@ VALUES
     4,
     NULL,
     '{1}, Exile an instant or sorcery card from your graveyard: Choose one —£• Counter target noncreature spell unless its controller pays {2}.£• Disciple of the Ring gets +1/+1 until end of turn.£• Tap target creature.£• Untap target creature.',
-    'Clint Cearley',
+    
     131,
     'U',
     NULL,
@@ -1525,7 +1529,7 @@ VALUES
     NULL,
     NULL,
     'Return target nonland permanent to its owner''s hand.',
-    'Ryan Yee',
+    
     75,
     'U',
     NULL,
@@ -1543,7 +1547,7 @@ VALUES
     NULL,
     NULL,
     'Return all nonland permanents with mana value X or less to their owners'' hands.',
-    'Seb McKinnon',
+    
     20,
     'U',
     NULL,
@@ -1561,7 +1565,7 @@ VALUES
     NULL,
     NULL,
     'Destroy target attacking or blocking creature.',
-    'Kev Walker',
+    
     21,
     'W',
     NULL,
@@ -1579,7 +1583,7 @@ VALUES
     NULL,
     NULL,
     'Create two 1/1 red Goblin creature tokens.',
-    'Jaime Jones',
+    
     22,
     'R',
     NULL,
@@ -1597,7 +1601,7 @@ VALUES
     NULL,
     NULL,
     'Target player mills X cards, where X is the number of lands you control.',
-    'Cliff Childs',
+    
     23,
     'U',
     NULL,
@@ -1615,7 +1619,7 @@ VALUES
     4,
     NULL,
     'Reach£Other Elf creatures you control get +1/+1.£Whenever Dwynen, Gilt-Leaf Daen attacks, you gain 1 life for each attacking Elf you control.',
-    'Johannes Voss',
+   
     24,
     'G',
     NULL,
@@ -1633,7 +1637,7 @@ VALUES
     2,
     NULL,
     'When Dwynen''s Elite enters the battlefield, if you control another Elf, create a 1/1 green Elf Warrior creature token.',
-    'Lius Lasahido',
+    
     25,
     'G',
     NULL,
@@ -1651,7 +1655,7 @@ VALUES
     1,
     NULL,
     'Flying, vigilance',
-    'Scott Murphy',
+   
     26,
     'W',
     NULL,
@@ -1669,7 +1673,7 @@ VALUES
     NULL,
     NULL,
     'Whenever a creature with power 3 or greater enters the battlefield under your control, draw a card.',
-    'David Gaillet',
+    
     27,
     'G',
     NULL,
@@ -1687,7 +1691,7 @@ VALUES
     1,
     NULL,
     'When Elvish Visionary enters the battlefield, draw a card.',
-    'D. Alexander Gregory',
+    
     28,
     'G',
     NULL,
@@ -1705,7 +1709,7 @@ VALUES
     5,
     NULL,
     'Trample #_(This creature can deal excess combat damage to the player or planeswalker it''s attacking.)_#£If another red source you control would deal damage to a permanent or player, it deals that much damage plus 1 to that permanent or player instead.',
-    'James Paick',
+   
     29,
     'R',
     NULL,
@@ -1723,7 +1727,7 @@ VALUES
     1,
     NULL,
     'When Enlightened Ascetic enters the battlefield, you may destroy target enchantment.',
-    'James Zapata',
+   
     30,
     'W',
     NULL,
@@ -1741,7 +1745,7 @@ VALUES
     NULL,
     NULL,
     'Target creature gets +1/+1 until end of turn. Prevent all damage that would be dealt to it this turn. If it''s renowned, untap it.',
-     
+    
     10,
     'W',
     NULL,
@@ -1759,7 +1763,7 @@ VALUES
     2,
     NULL,
     'When Enthralling Victor enters the battlefield, gain control of target creature an opponent controls with power 2 or less until end of turn. Untap that creature. It gains haste until end of turn. #_(It can attack and {T} this turn.)_#',
-    'Winona Nelson',
+    
     128,
     'R',
     NULL,
@@ -1777,12 +1781,12 @@ VALUES
     5,
     NULL,
     'As long as your opponents control no creatures, Erebos''s Titan has indestructible. #_(Damage and effects that say "destroy" don''t destroy it.)_#£Whenever a creature card leaves an opponent''s graveyard, you may discard a card. If you do, return Erebos''s Titan from your graveyard to your hand.',
-    'Peter Mohrbacher',
+    
     31,
     'B',
     NULL,
     'Commander'
-  ),
+  );
   (
     398573,
     'Evolutionary Leap',
@@ -1795,7 +1799,7 @@ VALUES
     NULL,
     NULL,
     '{G}, Sacrifice a creature: Reveal cards from the top of your library until you reveal a creature card. Put that card INTO your hand and the rest on the bottom of your library in a random order.',
-    'Chris Rahn',
+    
     120,
     'G',
     NULL,
@@ -1831,7 +1835,6 @@ VALUES
     NULL,
     NULL,
     'Exquisite Firecraft deals 4 damage to any target.£#_Spell mastery_# — If there are two or more instant and/or sorcery cards in your graveyard, this spell can''t be countered.',
-    'Chase Stone',
     33,
     'R',
     NULL,
@@ -1849,7 +1852,7 @@ VALUES
     2,
     NULL,
     'When Eyeblight Assassin enters the battlefield, target creature an opponent controls gets -1/-1 until end of turn.',
-    'Dan Scott',
+    
     119,
     'B',
     NULL,
@@ -1867,7 +1870,7 @@ VALUES
     NULL,
     NULL,
     'Non-Elf creatures get -2/-2 until end of turn.',
-    'Igor Kieryluk',
+    
     129,
     'B',
     NULL,
@@ -1903,7 +1906,7 @@ VALUES
     2,
     NULL,
     'Flying£{B}: Fetid Imp gains deathtouch until end of turn. #_(Any amount of damage it deals to a creature is enough to destroy it.)_#',
-     
+    
     1,
     'B',
     NULL,
@@ -1922,7 +1925,7 @@ VALUES
     NULL,
     NULL, 
     'As an additional cost to cast this spell, sacrifice a creature.£Fiery Conclusion deals 5 damage to target creature.',
-    'Paolo Parente',
+   
     34,
     'R',
     NULL,
@@ -1940,7 +1943,7 @@ VALUES
     2,
     NULL,
     '{R}: Fiery Hellhound gets +1/+0 until end of turn.',
-    'Ted Galaday',
+    
     35,
     'R',
     NULL,
@@ -1958,7 +1961,7 @@ VALUES
     NULL,
     NULL,
     'Fiery Impulse deals 2 damage to target creature.£#_Spell mastery_# — If there are two or more instant and/or sorcery cards in your graveyard, Fiery Impulse deals 3 damage instead.',
-    'Daarken',
+    
     12,
     'R',
     NULL,
@@ -1976,7 +1979,7 @@ VALUES
     2,
     NULL,
     'Haste #_(This creature can attack and {T} as soon as it comes under your control.)_#£Renown 1 #_(When this creature deals combat damage to a player, if it isn''t renowned, put a +1/+1 counter on it and it becomes renowned.)_#',
-    'Torstein Nordstrand',
+    
     36,
     'R',
     NULL,
@@ -1994,7 +1997,7 @@ VALUES
     NULL,
     NULL,
     'Whenever a nontoken creature enters the battlefield under your control, you may pay {R}. If you do, create a token that''s a copy of that creature. That token gains haste. Exile it at the beginning of the next end step.',
-    'Seb McKinnon',
+    
     20,
     'R',
     NULL,
@@ -2012,7 +2015,7 @@ VALUES
     NULL,
     NULL,
     'Destroy target creature. It can''t be regenerated.',
-    'Julie Dillon',
+   
     37,
     'B',
     NULL,
@@ -2030,7 +2033,7 @@ VALUES
     1,
     NULL,
     'When Fleshbag Marauder enters the battlefield, each player sacrifices a creature.',
-    'Mark Zug',
+    
     38,
     'B',
     NULL,
@@ -2048,7 +2051,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'Jonas De Ro',
+    
     15,
     'L',
     '{G}',
@@ -2067,7 +2070,7 @@ VALUES
     NULL,
     NULL,
     '{T}: Add {C}.£{5}, {T}, Sacrifice Foundry of the Consuls: Create two 1/1 colorless Thopter artifact creature tokens with flying.',
-    'Sam Burley',
+   
     39,
     'L',
     '{C}',
@@ -2103,7 +2106,7 @@ VALUES
     NULL,
     NULL,
     'Reveal the top five cards of your library. You may put a creature card from among them INTO your hand. Put the rest INTO your graveyard.£#_Spell mastery_# — If there are two or more instant and/or sorcery cards in your graveyard, put up to two creature cards from among the revealed cards INTO your hand instead of one.',
-    'Igor Kieryluk',
+    
     129,
     'G',
     NULL,
@@ -2121,7 +2124,7 @@ VALUES
     NULL,
     NULL,
     'Tap two untapped artifacts you control: Ghirapur Aether Grid deals 1 damage to any target.',
-    'Cynthia Sheppard',
+    
     117,
     'R',
     NULL,
@@ -2139,7 +2142,7 @@ VALUES
     1,
     NULL,
     'When Ghirapur Gearcrafter enters the battlefield, create a 1/1 colorless Thopter artifact creature token with flying. #_(A creature with flying can''t be blocked except by creatures with flying or reach.)_#',
-    'Victor Adame Minguez',
+    
     41,
     'R',
     NULL,
@@ -2157,7 +2160,7 @@ VALUES
     '3',
     '3',
     '+2: Up to one target creature an opponent controls attacks Gideon, Battle-Forged during its controller''s next turn if able.£+1: Until your next turn, target creature gains indestructible. Untap that creature.£0: Until end of turn, Gideon, Battle-Forged becomes a 4/4 Human Soldier creature with indestructible that''s still a planeswalker. Prevent all damage that would be dealt to him this turn.',
-    'Willian Murai',
+    
     123,
     'W',
     NULL,
@@ -2175,7 +2178,7 @@ VALUES
     NULL,
     NULL,
     'Create four 2/2 white Knight creature tokens with vigilance.£#_Spell mastery_# — If there are two or more instant and/or sorcery cards in your graveyard, creatures you control gain indestructible until end of turn.',
-    'James Ryman',
+   
     42,
     'W',
     NULL,
@@ -2193,7 +2196,7 @@ VALUES
     3,
     NULL,
     'Menace #_(This creature can''t be blocked except by two or more creatures.)_#£When Gilt-Leaf Winnower enters the battlefield, you may destroy target non-Elf creature whose power and toughness aren''t equal.',
-    'Viktor Titov',
+   
     43,
     'B',
     NULL,
@@ -2211,7 +2214,7 @@ VALUES
     1,
     NULL,
     '{T}, Pay 1 life: Add {G}. Spend this mana only to cast an Elf creature spell.£{T}: Target attacking Elf you control gains deathtouch until end of turn. #_(Any amount of damage it deals to a creature is enough to destroy it.)_#',
-    'Christopher Moeller',
+    
     44,
     'B',
     '{G}',
@@ -2229,7 +2232,7 @@ VALUES
     1,
     NULL,
     'Renown 1 #_(When this creature deals combat damage to a player, if it isn''t renowned, put a +1/+1 counter on it and it becomes renowned.)_#£As long as Goblin Glory Chaser is renowned, it has menace. #_(It can''t be blocked except by two or more creatures.)_#',
-    'Greg Staples',
+    
     18,
     'R',
     NULL,
@@ -2247,7 +2250,7 @@ VALUES
     2,
     NULL,
     'Protection from blue #_(This creature can''t be blocked, targeted, dealt damage, or enchanted by anything blue.)_#£Whenever Goblin Piledriver attacks, it gets +2/+0 until end of turn for each other attacking Goblin.',
-    'Matt Cavotta',
+    
     45,
     'R',
     NULL,
@@ -2265,7 +2268,7 @@ VALUES
     4,
     NULL,
     'Flying',
-    'James Zapata',
+    
     30,
     'A',
     NULL,
@@ -2283,7 +2286,7 @@ VALUES
     NULL,
     NULL,
     'Enchant creature£Enchanted creature gets +1/+1 and has "Whenever this creature attacks, tap target creature defending player controls."',
-    'Igor Kieryluk',
+    
     129,
     'W',
     NULL,
@@ -2301,7 +2304,7 @@ VALUES
     4,
     NULL,
     'Deathtouch #_(Any amount of damage this deals to a creature is enough to destroy it.)_#£Whenever Graveblade Marauder deals combat damage to a player, that player loses life equal to the number of creature cards in your graveyard.',
-    'Jason Rainville',
+    
     46,
     'B',
     NULL,
@@ -2319,7 +2322,7 @@ VALUES
     3,
     NULL,
     'When Guardian Automaton dies, you gain 3 life.',
-    'Vincent Proce',
+    
     47,
     'A',
     NULL,
@@ -2337,7 +2340,7 @@ VALUES
     6,
     NULL,
     'Defender #_(This creature can''t attack.)_#',
-    'Magali Villeneuve',
+    
     48,
     'A',
     NULL,
@@ -2355,7 +2358,7 @@ VALUES
     NULL,
     NULL,
     'Until end of turn, if a creature would enter the battlefield and it wasn''t cast, exile it instead.£Draw a card.',
-    'Mike Bierek',
+    
     55,
     'W',
     NULL,
@@ -2373,7 +2376,7 @@ VALUES
     0,
     NULL,
     'Hangarback Walker enters the battlefield with X +1/+1 counters on it.£When Hangarback Walker dies, create a 1/1 colorless Thopter artifact creature token with flying for each +1/+1 counter on Hangarback Walker.£{1}, {T}: Put a +1/+1 counter on Hangarback Walker.',
-    'Daarken',
+    
     12,
     'A',
     NULL,
@@ -2391,7 +2394,7 @@ VALUES
     2,
     NULL,
     'You may cast Harbinger of the Tides as though it had flash if you pay {2} more to cast it. #_(You may cast it any time you could cast an instant.)_#£When Harbinger of the Tides enters the battlefield, you may return target tapped creature an opponent controls to its owner''s hand.',
-    'Svetlin Velinov',
+    
     49,
     'U',
     NULL,
@@ -2409,7 +2412,7 @@ VALUES
     NULL,
     NULL,
     'Target player gains 4 life.£Draw a card.',
-    'Josu Hernaiz',
+    
     50,
     'W',
     NULL,
@@ -2427,7 +2430,7 @@ VALUES
     4,
     NULL,
     'When Heavy Infantry enters the battlefield, tap target creature an opponent controls.',
-    'David Gaillet',
+    
     27,
     'W',
     NULL,
@@ -2445,7 +2448,7 @@ VALUES
     NULL,
     NULL,
     'Equipped creature gets +1/+1 for each enchantment you control.£Equip {1} #_({1}: Attach to target creature you control. Equip only as a sorcery.)_#',
-    'Anthony Palumbo',
+    
     51,
     'A',
     NULL,
@@ -2463,7 +2466,7 @@ VALUES
     2,
     NULL,
     'Enchantment spells you cast cost {1} less to cast.£Whenever you cast an enchantment spell, you gain 1 life.',
-    'Jason A. Engle',
+    
     52,
     'G',
     NULL,
@@ -2481,7 +2484,7 @@ VALUES
     4,
     NULL,
     'Reach',
-    'Jeff Simpson',
+    
     53,
     'G',
     NULL,
@@ -2499,7 +2502,7 @@ VALUES
     4,
     NULL,
     'Flash #_(You may cast this spell any time you could cast an instant.)_#£Whenever a creature deals combat damage to you, if Hixus, Prison Warden entered the battlefield this turn, exile that creature until Hixus leaves the battlefield. #_(That creature returns under its owner''s control.)_#',
-     
+   
     8,
     'W',
     NULL,
@@ -2517,7 +2520,7 @@ VALUES
     1,
     NULL,
     'Renown 1 #_(When this creature deals combat damage to a player, if it isn''t renowned, put a +1/+1 counter on it and it becomes renowned.)_#£As long as Honored Hierarch is renowned, it has vigilance and "{T}: Add one mana of any color."',
-    'Matt Stewart',
+    
     54,
     'G',
     '{W}{U}{B}{R}{G}',
@@ -2535,7 +2538,7 @@ VALUES
     NULL,
     NULL,
     'Attacking creatures get -2/-0 until end of turn.£Draw a card.',
-    'Clint Cearley',
+    
     131,
     'U',
     NULL,
@@ -2553,7 +2556,7 @@ VALUES
     NULL,
     NULL,
     'Enchant creature£Enchanted creature gets +2/+1, has haste, and attacks each combat if able.£When enchanted creature dies, you may search your library for a card named Infectious Bloodlust, reveal it, put it INTO your hand, then shuffle.',
-    'Zoltan Boros',
+    
     118,
     'R',
     NULL,
@@ -2571,7 +2574,7 @@ VALUES
     NULL,
     NULL,
     'Enchant creature£Enchanted creature gets +2/+0 and has "When this creature dies, draw a card."',
-    'Mike Bierek',
+    
     55,
     'B',
     NULL,
@@ -2589,7 +2592,7 @@ VALUES
     NULL,
     NULL,
     'Choose a creature card name. Search target opponent''s graveyard, hand, and library for any number of cards with that name and exile them. Then that player shuffles.',
-    'Yeong-Hao Han',
+    
     56,
     'B',
     NULL,
@@ -2607,7 +2610,7 @@ VALUES
     NULL,
     NULL,
     'Return up to two target creatures to their owners'' hands.',
-    'Daarken',
+    
     12,
     'U',
     NULL,
@@ -2625,7 +2628,7 @@ VALUES
     2,
     NULL,
     'Double strike #_(This creature deals both first-strike and regular combat damage.)_#',
-    'Marco Nelor',
+   
     16,
     'WR',
     NULL,
@@ -2643,7 +2646,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'Richard Wright',
+   
     116,
     'L',
     '{U}',
@@ -2661,7 +2664,7 @@ VALUES
     '5',
     '5',
     '+1: Up to one target creature gets -2/-0 until your next turn.£−3: You may cast target instant or sorcery card from your graveyard this turn. If that spell would be put INTO your graveyard this turn, exile it instead.£−9: You get an emblem with "Whenever you cast a spell, target opponent mills five cards."',
-    'Jaime Jones',
+    
     22,
     'U',
     NULL,
@@ -2679,7 +2682,7 @@ VALUES
     2,
     NULL,
     '{T}: Draw a card, then discard a card. If there are five or more cards in your graveyard, exile Jace, Vryn''s Prodigy, then return him to the battlefield transformed under his owner''s control.',
-    'Jaime Jones',
+    
     22,
     'U',
     NULL,
@@ -2697,7 +2700,7 @@ VALUES
     NULL,
     NULL,
     'Instant and sorcery spells you cast cost {1} less to cast.£Whenever you cast an instant or sorcery spell, scry 1. #_(Look at the top card of your library. You may put that card on the bottom of your library.)_#',
-    'Adam Paquette',
+    
     57,
     'U',
     NULL,
@@ -2715,7 +2718,7 @@ VALUES
     NULL,
     NULL,
     '{4}, {T}: Draw a card.',
-    'Donato Giancola',
+    
     58,
     'A',
     NULL,
@@ -2733,7 +2736,7 @@ VALUES
     3,
     NULL,
     'Prowess #_(Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)_#£Whenever Jhessian Thief deals combat damage to a player, draw a card.',
-    'Miles Johnston',
+    
     13,
     'U',
     NULL,
@@ -2751,7 +2754,7 @@ VALUES
     NULL,
     NULL,
     'Each creature you control gets +3/+3 until end of turn and must be blocked this turn if able.',
-    'Kieran Yanner',
+    
     122,
     'G',
     NULL,
@@ -2769,7 +2772,7 @@ VALUES
     2,
     NULL,
     'Renown 1 #_(When this creature deals combat damage to a player, if it isn''t renowned, put a +1/+1 counter on it and it becomes renowned.)_#',
-    'David Gaillet',
+    
     27,
     'W',
     NULL,
@@ -2787,7 +2790,7 @@ VALUES
     2,
     NULL,
     'First strike£When Knight of the White Orchid enters the battlefield, if an opponent controls more lands than you, you may search your library for a Plains card, put it onto the battlefield, then shuffle.',
-    'Mark Zug',
+    
     38,
     'W',
     NULL,
@@ -2805,7 +2808,7 @@ VALUES
     NULL,
     NULL,
     'Enchant creature£When Knightly Valor enters the battlefield, create a 2/2 white Knight creature token with vigilance. #_(Attacking doesn''t cause it to tap.)_#£Enchanted creature gets +2/+2 and has vigilance.',
-    'Matt Stewart',
+    
     54,
     'W',
     NULL,
@@ -2823,7 +2826,7 @@ VALUES
     6,
     NULL,
     'Flying£Whenever a permanent owned by another player is put INTO a graveyard from the battlefield, you draw a card and you lose 1 life.',
-    'Jakub Kasper',
+    
     59,
     'B',
     NULL,
@@ -2841,7 +2844,7 @@ VALUES
     1,
     NULL,
     'At end of combat, if Kytheon, Hero of Akros and at least two other creatures attacked this combat, exile Kytheon, then return him to the battlefield transformed under his owner''s control.£{2}{W}: Kytheon gains indestructible until end of turn.',
-    'Willian Murai',
+    
     123,
     'W',
     NULL,
@@ -2859,7 +2862,7 @@ VALUES
     3,
     NULL,
     'Renown 1 #_(When this creature deals combat damage to a player, if it isn''t renowned, put a +1/+1 counter on it and it becomes renowned.)_#£{W}{W}: Tap target creature.',
-    'Mark Winters',
+    
     60,
     'W',
     NULL,
@@ -2877,7 +2880,7 @@ VALUES
     NULL,
     NULL,
     'Creatures you control get +2/+1 until end of turn.£#_Spell mastery_# — If there are two or more instant and/or sorcery cards in your graveyard, those creatures also gain vigilance until end of turn. #_(Attacking doesn''t cause them to tap.)_#',
-    'Raymond Swanland',
+    
     61,
     'W',
     NULL,
@@ -2895,7 +2898,7 @@ VALUES
     NULL,
     NULL,
     'All creatures get -4/-4 until end of turn.',
-    'Jeff Simpson',
+    
     53,
     'B',
     NULL,
@@ -2913,7 +2916,7 @@ VALUES
     1,
     NULL,
     '{T}: Add {G}.',
-    'QuINTOn Hoover',
+    
     62,
     'G',
     '{G}',
@@ -2931,7 +2934,7 @@ VALUES
     NULL,
     NULL,
     'Lightning Javelin deals 3 damage to any target. Scry 1. #_(Look at the top card of your library. You may put that card on the bottom of your library.)_#',
-    'Seb McKinnon',
+    
     20,
     'R',
     NULL,
@@ -2949,7 +2952,7 @@ VALUES
     '3',
     '3',
     '+2: Each player discards a card.£−X: Return target nonlegendary creature card with mana value X from your graveyard to the battlefield.£−8: You get an emblem with "Whenever a creature dies, return it to the battlefield under your control at the beginning of the next end step."',
-    'Karla Ortiz',
+    
     63,
     'B',
     NULL,
@@ -2967,7 +2970,7 @@ VALUES
     3,
     NULL,
     'Lifelink£Whenever another nontoken creature you control dies, exile Liliana, Heretical Healer, then return her to the battlefield transformed under her owner''s control. If you do, create a 2/2 black Zombie creature token.',
-    'Karla Ortiz',
+    
     63,
     'B',
     NULL,
@@ -2985,7 +2988,7 @@ VALUES
     2,
     NULL,
     'When Llanowar Empath enters the battlefield, scry 2, then reveal the top card of your library. If it''s a creature card, put it INTO your hand. #_(To scry 2, look at the top two cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)_#',
-    'Warren Mahy',
+    
     64,
     'G',
     NULL,
@@ -3003,7 +3006,7 @@ VALUES
     NULL,
     NULL,
     '{T}: Add {C}.£{T}: Add {B} or {G}. Llanowar Wastes deals 1 damage to you.',
-    'Rob Alexander',
+    
     65,
     'L',
     '{B}{G}{C}',
@@ -3021,7 +3024,7 @@ VALUES
     NULL,
     NULL,
     'Return up to two target creature cards from your graveyard to your hand, then discard a card.',
-    'Jim Murray',
+    
     66,
     'B',
     NULL,
@@ -3039,7 +3042,7 @@ VALUES
     2,
     NULL,
     'Prowess #_(Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)_#£Mage-Ring Bully attacks each combat if able.',
-    'Karl Kopinski',
+    
     133,
     'R',
     NULL,
@@ -3057,7 +3060,7 @@ VALUES
     NULL,
     NULL,
     '{T}: Add {C}.£{1}, {T}: Put a storage counter on Mage-Ring Network.£{T}, Remove any number of storage counters from Mage-Ring Network: Add {C} for each storage counter removed this way.',
-    'Jung Park',
+
     132,
     'L',
     '{C}',
@@ -3075,7 +3078,7 @@ VALUES
     7,
     NULL,
     'Mage-Ring Responder doesn''t untap during your untap step.£{7}: Untap Mage-Ring Responder.£Whenever Mage-Ring Responder attacks, it deals 7 damage to target creature defending player controls.',
-    'Adam Paquette',
+    
     57,
     'A',
     NULL,
@@ -3093,7 +3096,7 @@ VALUES
     NULL,
     NULL,
     'As an additional cost to cast this spell, discard a land card.£Draw two cards.',
-    'Ryan Barger',
+    
     '155',
     'R',
     NULL,
@@ -3111,7 +3114,7 @@ VALUES
     6,
     NULL,
     'Flying #_(This creature can''t be blocked except by creatures with flying or reach.)_#',
-    'Greg Staples',
+    
     18,
     'U',
     NULL,
@@ -3129,7 +3132,7 @@ VALUES
     1,
     NULL,
     'Whenever a creature an opponent controls dies, put a +1/+1 counter on Malakir Cullblade.',
-    'Igor Kieryluk',
+    
     129,
     'B',
     NULL,
@@ -3147,7 +3150,7 @@ VALUES
     1,
     NULL,
     'Trample£Whenever a player casts a spell, put a +1/+1 counter on Managorger Hydra.',
-    'Lucas Graciano',
+    
     67,
     'G',
     NULL,
@@ -3165,7 +3168,7 @@ VALUES
     NULL,
     NULL,
     'Enchant creature£Enchanted creature gets +1/+3 and has reach. #_(It can block creatures with flying.)_#',
-    'Mathias Kollros',
+    
     68,
     'G',
     NULL,
@@ -3183,7 +3186,7 @@ VALUES
     3,
     NULL,
     NULL,
-    'Allen Williams',
+    
     69,
     'U',
     NULL,
@@ -3201,7 +3204,7 @@ VALUES
     NULL,
     NULL,
     'When Meteorite enters the battlefield, it deals 2 damage to any target.£{T}: Add one mana of any color.',
-    'Scott Murphy',
+   
     26,
     'A',
     '{W}{U}{B}{R}{G}',
@@ -3219,7 +3222,7 @@ VALUES
     NULL,
     NULL,
     'Target creature gets +1/+1 until end of turn for each creature you control.',
-    'Johann Bodin',
+    
     70,
     'G',
     NULL,
@@ -3237,7 +3240,7 @@ VALUES
     NULL,
     NULL,
     'Target creature gets +2/+2 and gains flying until end of turn.',
-    'rk post',
+    
     71,
     'W',
     NULL,
@@ -3255,7 +3258,7 @@ VALUES
     NULL,
     NULL,
     'Target player discards two cards.',
-    'Steve Luke',
+    
     72,
     'B',
     NULL,
@@ -3273,7 +3276,7 @@ VALUES
     4,
     NULL,
     'Flash #_(You may cast this spell any time you could cast an instant.)_#£When Mizzium Meddler enters the battlefield, you may change a target of target spell or ability to Mizzium Meddler.',
-    'Johann Bodin',
+    
     70,
     'U',
     NULL,
@@ -3291,7 +3294,7 @@ VALUES
     NULL,
     NULL,
     '{R}, Discard a land card: Molten Vortex deals 2 damage to any target.',
-    'Philip Straub',
+    
     73,
     'R',
     NULL,
@@ -3309,7 +3312,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'Sam Burley',
+   
     39,
     'L',
     '{R}',
@@ -3327,7 +3330,7 @@ VALUES
     NULL,
     NULL,
     'Enchant creature you control£When enchanted creature dies, create X 1/1 white Soldier creature tokens, where X is its power.',
-    'Igor Kieryluk',
+    
     129,
     'W',
     NULL,
@@ -3345,7 +3348,7 @@ VALUES
     2,
     NULL,
     'Sacrifice a creature: Nantuko Husk gets +2/+2 until end of turn.',
-    'Carl Critchlow',
+    
     74,
     'B',
     NULL,
@@ -3363,7 +3366,7 @@ VALUES
     NULL,
     NULL,
     'Put target creature card from a graveyard onto the battlefield under your control.£#_Spell mastery_# — If there are two or more instant and/or sorcery cards in your graveyard, that creature enters the battlefield with two additional +1/+1 counters on it.',
-    'Ryan Yee',
+    
     75,
     'B',
     NULL,
@@ -3381,7 +3384,7 @@ VALUES
     NULL,
     NULL,
     'Counter target noncreature spell.',
-    'Jeremy Jarvis',
+    
     76,
     'U',
     NULL,
@@ -3399,7 +3402,7 @@ VALUES
     '*',
     NULL,
     'Flying #_(This creature can''t be blocked except by creatures with flying or reach.)_#£Nightmare''s power and toughness are each equal to the number of Swamps you control.',
-    'Vance Kovacs',
+    
     77,
     'B',
     NULL,
@@ -3417,7 +3420,7 @@ VALUES
     NULL,
     NULL,
     'Target opponent reveals their hand. You may choose a nonland card from it. If you do, that player discards that card. If you don''t, that player discards two cards.',
-    'Min Yum',
+    
     78,
     'B',
     NULL,
@@ -3435,7 +3438,7 @@ VALUES
     '3',
     '3',
     '+1: Reveal the top card of your library. If it''s a land card, put it onto the battlefield. Otherwise, put it INTO your hand.£−2: Create Ashaya, the Awoken World, a legendary 4/4 green Elemental creature token.£−7: Untap up to six target lands. They become 6/6 Elemental creatures. They''re still lands.',
-    'Wesley Burt',
+    
     79,
     'G',
     NULL,
@@ -3453,7 +3456,7 @@ VALUES
     2,
     NULL,
     'When Nissa, Vastwood Seer enters the battlefield, you may search your library for a basic Forest card, reveal it, put it INTO your hand, then shuffle.£Whenever a land enters the battlefield under your control, if you control seven or more lands, exile Nissa, then return her to the battlefield transformed under her owner''s control.',
-    'Wesley Burt',
+    
     79,
     'G',
     NULL,
@@ -3471,7 +3474,7 @@ VALUES
     NULL,
     NULL,
     'Search your library for up to two basic Forest cards, reveal those cards, and put one onto the battlefield tapped and the rest INTO your hand. Then shuffle.£#_Spell mastery_# — If there are two or more instant and/or sorcery cards in your graveyard, search your library for up to three basic Forest cards instead of two.',
-    'Matt Stewart',
+    
     54,
     'G',
     NULL,
@@ -3489,7 +3492,7 @@ VALUES
     NULL,
     NULL,
     'Scry 5, then reveal the top card of your library. If it''s a creature card, you draw cards equal to its power and you gain life equal to its toughness.',
-    'Izzy',
+    
     80,
     'G',
     NULL,
@@ -3507,7 +3510,7 @@ VALUES
     4,
     NULL,
     'Flash #_(You may cast this spell any time you could cast an instant.)_#£Defender #_(This creature can''t attack.)_#£When Nivix Barrier enters the battlefield, target attacking creature gets -4/-0 until end of turn.',
-    'Mathias Kollros',
+    
     68,
     'U',
     NULL,
@@ -3525,7 +3528,7 @@ VALUES
     NULL,
     NULL,
     'You have hexproof. #_(You can''t be the target of spells or abilities your opponents control.)_#£If a creature would deal damage to you, prevent 1 of that damage.',
-    'Johann Bodin',
+    
     70,
     'A',
     NULL,
@@ -3543,7 +3546,7 @@ VALUES
     2,
     NULL,
     'Orchard Spirit can''t be blocked except by creatures with flying or reach.',
-     
+    
     10,
     'G',
     NULL,
@@ -3561,7 +3564,7 @@ VALUES
     6,
     NULL,
     'Renown 6 #_(When this creature deals combat damage to a player, if it isn''t renowned, put six +1/+1 counters on it and it becomes renowned.)_#£Outland Colossus can''t be blocked by more than one creature.',
-    'Ryan Pancoast',
+    
     7,
     'G',
     NULL,
@@ -3579,7 +3582,7 @@ VALUES
     4,
     NULL,
     'Flying£When Patron of the Valiant enters the battlefield, put a +1/+1 counter on each creature you control with a +1/+1 counter on it.',
-    'Steve Argyle',
+    
     81,
     'W',
     NULL,
@@ -3597,7 +3600,7 @@ VALUES
     3,
     NULL,
     'Deathtouch #_(Any amount of damage this deals to a creature is enough to destroy it.)_#£Renown 1 #_(When this creature deals combat damage to a player, if it isn''t renowned, put a +1/+1 counter on it and it becomes renowned.)_#',
-    'Karl Kopinski',
+    
     133,
     'G',
     NULL,
@@ -3615,7 +3618,7 @@ VALUES
     2,
     NULL,
     'When Pia and Kiran Nalaar enters the battlefield, create two 1/1 colorless Thopter artifact creature tokens with flying.£{2}{R}, Sacrifice an artifact: Pia and Kiran Nalaar deals 2 damage to any target.',
-    'Eric Deschamps',
+    
     110,
     'R',
     NULL,
@@ -3633,7 +3636,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'Raoul Vitale',
+    
     82,
     'L',
     '{W}',
@@ -3651,7 +3654,7 @@ VALUES
     NULL,
     NULL,
     'Destroy target creature with flying.',
-    'Pete Venters',
+    
     83,
     'G',
     NULL,
@@ -3669,7 +3672,7 @@ VALUES
     2,
     NULL,
     'When Possessed Skaab enters the battlefield, return target instant, sorcery, or creature card from your graveyard to your hand.£If Possessed Skaab would die, exile it instead.',
-    'John Stanko',
+    
     11,
     'UB',
     NULL,
@@ -3687,7 +3690,7 @@ VALUES
     3,
     NULL,
     'As long as it''s your turn, Prickleboar gets +2/+0 and has first strike. #_(It deals combat damage before creatures without first strike.)_#',
-    'Jesper Ejsing',
+    
     84,
     'R',
     NULL,
@@ -3705,7 +3708,7 @@ VALUES
     2,
     NULL,
     'When Priest of the Blood Rite enters the battlefield, create a 5/5 black Demon creature token with flying.£At the beginning of your upkeep, you lose 2 life.',
-    'David Palumbo',
+    
     85,
     'B',
     NULL,
@@ -3723,7 +3726,7 @@ VALUES
     NULL,
     NULL,
     'As Prism Ring enters the battlefield, choose a color.£Whenever you cast a spell of the chosen color, you gain 1 life.',
-     
+   
     5,
     'A',
     NULL,
@@ -3741,7 +3744,7 @@ VALUES
     2,
     NULL,
     'All creatures able to block Prized Unicorn do so.',
-    'Sam Wood',
+    
     86,
     'G',
     NULL,
@@ -3759,7 +3762,7 @@ VALUES
     NULL,
     NULL,
     'Counter target instant or sorcery spell that targets you.£#_Spell mastery_# — If there are two or more instant and/or sorcery cards in your graveyard, you may copy the spell countered this way. You may choose new targets for the copy.',
-    'Todd Lockwood',
+    
     87,
     'U',
     NULL,
@@ -3777,7 +3780,7 @@ VALUES
     NULL,
     NULL,
     '{T}: Add {R}. When that mana is spent to cast a red instant or sorcery spell, copy that spell and you may choose new targets for the copy.',
-    'James Paick',
+   
     29,
     'A',
     '{R}',
@@ -3795,7 +3798,7 @@ VALUES
     2,
     NULL,
     'Flying #_(This creature can''t be blocked except by creatures with flying or reach.)_#£When Rabid Bloodsucker enters the battlefield, each player loses 2 life.',
-    'Seb McKinnon',
+    
     20,
     'B',
     NULL,
@@ -3813,7 +3816,7 @@ VALUES
     3,
     NULL,
     'Ramroller attacks each combat if able.£Ramroller gets +2/+0 as long as you control another artifact.',
-    'Craig J Spearing',
+    
     130,
     'A',
     NULL,
@@ -3831,7 +3834,7 @@ VALUES
     NULL,
     NULL,
     'Ravaging Blaze deals X damage to target creature. £#_Spell mastery_# — If there are two or more instant and/or sorcery cards in your graveyard, Ravaging Blaze also deals X damage to that creature''s controller.',
-    'Aleksi Briclot',
+    
     111,
     'R',
     NULL,
@@ -3849,7 +3852,7 @@ VALUES
     NULL,
     NULL,
     'Scry 2, then draw two cards. You lose 2 life.',
-    'Lars Grant-West',
+    
     88,
     'B',
     NULL,
@@ -3867,7 +3870,7 @@ VALUES
     NULL,
     NULL,
     'Destroy target creature with power 3 or less.',
-    'David Palumbo',
+    
     85,
     'B',
     NULL,
@@ -3885,7 +3888,7 @@ VALUES
     NULL,
     NULL,
     'Put target card from your graveyard on top of your library.',
-    'Andrew Robinson',
+    
     89,
     'G',
     NULL,
@@ -3903,7 +3906,7 @@ VALUES
     3,
     NULL,
     'Haste #_(This creature can attack and {T} as soon as it comes under your control.)_#£When Reclusive Artificer enters the battlefield, you may have it deal damage to target creature equal to the number of artifacts you control.',
-    'Cynthia Sheppard',
+    
     117,
     'UR',
     NULL,
@@ -3921,7 +3924,7 @@ VALUES
     2,
     NULL,
     'Renown 1 #_(When this creature deals combat damage to a player, if it isn''t renowned, put a +1/+1 counter on it and it becomes renowned.)_#£When Relic Seeker becomes renowned, you may search your library for an Equipment card, reveal it, put it INTO your hand, then shuffle.',
-     
+    
     3,
     'W',
     NULL,
@@ -3939,7 +3942,7 @@ VALUES
     4,
     NULL,
     'When Returned Centaur enters the battlefield, target player mills four cards.',
-    'Lucas Graciano',
+    
     67,
     'B',
     NULL,
@@ -3957,7 +3960,7 @@ VALUES
     '*',
     NULL,
     'Flying£Revenant''s power and toughness are each equal to the number of creature cards in your graveyard.',
-    'Terese Nielsen',
+    
     90,
     'B',
     NULL,
@@ -3975,7 +3978,7 @@ VALUES
     4,
     NULL,
     'Trample #_(This creature can deal excess combat damage to the player or planeswalker it''s attacking.)_#£Renown 2 #_(When this creature deals combat damage to a player, if it isn''t renowned, put two +1/+1 counters on it and it becomes renowned.)_#',
-    'Zoltan Boros',
+    
     118,
     'G',
     NULL,
@@ -3993,7 +3996,7 @@ VALUES
     3,
     NULL,
     'Flying #_(This creature can''t be blocked except by creatures with flying or reach.)_#£Prowess #_(Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)_#',
-    'Titus Lunter',
+    
     91,
     'U',
     NULL,
@@ -4011,7 +4014,7 @@ VALUES
     NULL,
     NULL,
     '{T}: Add {C}.£{4}, {T}: Target creature can''t be blocked this turn.',
-    'Christine Choi',
+    
     92,
     'L',
     '{C}',
@@ -4029,7 +4032,7 @@ VALUES
     2,
     NULL,
     'When Runed Servitor dies, each player draws a card.',
-    'Mike Bierek',
+    
     55,
     'A',
     NULL,
@@ -4047,7 +4050,7 @@ VALUES
     2,
     NULL,
     'Haste£Renown 1 #_(When this creature deals combat damage to a player, if it isn''t renowned, put a +1/+1 counter on it and it becomes renowned.)_#£Whenever an opponent casts a noncreature spell, if Scab-Clan Berserker is renowned, Scab-Clan Berserker deals 2 damage to that player.',
-    'Dave Kendall',
+    
     93,
     'R',
     NULL,
@@ -4065,7 +4068,7 @@ VALUES
     3,
     NULL,
     'Flying #_(This creature can''t be blocked except by creatures with flying or reach.)_#£Scrapskin Drake can block only creatures with flying.',
-    'Kev Walker',
+    
     21,
     'U',
     NULL,
@@ -4083,7 +4086,7 @@ VALUES
     1,
     NULL,
     'When Screeching Skaab enters the battlefield, mill two cards.',
-    'Clint Cearley',
+    
     131,
     'U',
     NULL,
@@ -4101,7 +4104,7 @@ VALUES
     4,
     NULL,
     'When Seismic Elemental enters the battlefield, creatures without flying can''t block this turn.',
-    'Jasper Sandner',
+    
     94,
     'R',
     NULL,
@@ -4119,7 +4122,7 @@ VALUES
     NULL,
     NULL,
     'Tap up to two target creatures.£#_Spell mastery_# — If there are two or more instant and/or sorcery cards in your graveyard, those creatures don''t untap during their controllers'' next untap steps.',
-    'Cynthia Sheppard',
+    
     117,
     'U',
     NULL,
@@ -4137,7 +4140,7 @@ VALUES
     4,
     NULL,
     'Flying #_(This creature can''t be blocked except by creatures with flying or reach.)_#£Whenever a creature dealt damage by Sengir Vampire this turn dies, put a +1/+1 counter on Sengir Vampire.',
-    'Kev Walker',
+    
     21,
     'B',
     NULL,
@@ -4155,7 +4158,7 @@ VALUES
     6,
     NULL,
     'Vigilance #_(Attacking doesn''t cause this creature to tap.)_#£At the beginning of combat on each opponent''s turn, tap target creature that player controls.',
-    'Bastien L. Deharme',
+    
     14,
     'W',
     NULL,
@@ -4173,7 +4176,7 @@ VALUES
     2,
     NULL,
     'When Separatist Voidmage enters the battlefield, you may return target creature to its owner''s hand.',
-    'Jason Rainville',
+    
     46,
     'U',
     NULL,
@@ -4191,7 +4194,7 @@ VALUES
     4,
     NULL,
     'Flying, vigilance',
-    'Greg Staples',
+    
     18,
     'W',
     NULL,
@@ -4209,7 +4212,7 @@ VALUES
     NULL,
     NULL,
     'Whenever a creature dies, scry 1. #_(Look at the top card of your library. You may put that card on the bottom of your library.)_#£{4}{B}: Each opponent loses 2 life and you gain 2 life. Activate only if there are four or more creature cards in your graveyard.',
-    'Ryan Yee',
+    
     75,
     'B',
     NULL,
@@ -4227,7 +4230,7 @@ VALUES
     2,
     NULL,
     'When Shaman of the Pack enters the battlefield, target opponent loses life equal to the number of Elves you control.',
-    'Dan Scott',
+    
     119,
     'GB',
     NULL,
@@ -4245,7 +4248,7 @@ VALUES
     3,
     NULL,
     'Shambling Ghoul enters the battlefield tapped.',
-    'Joseph Meehan',
+    
     109,
     'B',
     NULL,
@@ -4263,7 +4266,7 @@ VALUES
     5,
     NULL,
     'Flying #_(This creature can''t be blocked except by creatures with flying or reach.)_#£{R}: Shivan Dragon gets +1/+0 until end of turn.',
-    'Donato Giancola',
+    
     58,
     'R',
     NULL,
@@ -4281,7 +4284,7 @@ VALUES
     NULL,
     NULL,
     '{T}: Add {C}.£{T}: Add {U} or {R}. Shivan Reef deals 1 damage to you.',
-    'Rob Alexander',
+    
     65,
     'L',
     '{U}{R}{C}',
@@ -4299,7 +4302,7 @@ VALUES
     NULL,
     NULL,
     'Whenever you cast an enchantment spell, create a 4/4 white Angel creature token with flying.',
-    'Cyril Van Der Haegen',
+    
     95,
     'W',
     NULL,
@@ -4317,7 +4320,7 @@ VALUES
     NULL,
     NULL,
     'Whenever equipped creature attacks alone, it gets +1/+1 until end of turn for each other creature you control.£Equip {1} #_({1}: Attach to target creature you control. Equip only as a sorcery.)_#',
-    'Dan Scott',
+    
     119,
     'A',
     NULL,
@@ -4335,7 +4338,7 @@ VALUES
     3,
     NULL,
     '{T}: Scry 1. #_(Look at the top card of your library. You may put that card on the bottom of your library.)_#',
-     
+    
     1,
     'U',
     NULL,
@@ -4353,7 +4356,7 @@ VALUES
     9,
     NULL,
     'As an additional cost to cast this spell, exile two creature cards from your graveyard.£Trample',
-     
+    
     3,
     'U',
     NULL,
@@ -4407,7 +4410,7 @@ VALUES
     NULL,
     NULL,
     'Destroy target artifact. Smash to Smithereens deals 3 damage to that artifact''s controller.',
-    'Pete Venters',
+    
     83,
     'R',
     NULL,
@@ -4443,7 +4446,7 @@ VALUES
     3,
     NULL,
     'Flying£Whenever you cast a noncreature spell, creatures you control get +1/+1 until end of turn.',
-    'Viktor Titov',
+   
     43,
     'U',
     NULL,
@@ -4461,7 +4464,7 @@ VALUES
     NULL,
     NULL,
     'Whenever you draw a card, target opponent mills two cards. If two nonland cards that share a color were milled this way, repeat this process.£{5}{U}: Draw a card, then discard a card.',
-    'Slawomir Maniak',
+    
     97,
     'U',
     NULL,
@@ -4479,7 +4482,7 @@ VALUES
     3,
     NULL,
     'Flying #_(This creature can''t be blocked except by creatures with flying or reach.)_#£Renown 1 #_(When this creature deals combat damage to a player, if it isn''t renowned, put a +1/+1 counter on it and it becomes renowned.)_#',
-    'Scott Murphy',
+   
     26,
     'W',
     NULL,
@@ -4497,7 +4500,7 @@ VALUES
     NULL,
     NULL,
     'At the beginning of your upkeep, you may return target enchantment card from your graveyard to the battlefield.£As long as you control five or more enchantments, each other non-Aura enchantment you control is a creature in addition to its other types and has base power and base toughness each equal to its mana value.',
-    'Tyler Jacobson',
+    
     98,
     'W',
     NULL,
@@ -4515,7 +4518,7 @@ VALUES
     NULL,
     NULL,
     'Enchant creature£When Stratus Walk enters the battlefield, draw a card.£Enchanted creature has flying. #_(It can''t be blocked except by creatures with flying or reach.)_#£Enchanted creature can block only creatures with flying.',
-    'Aaron Miller',
+    
     99,
     'U',
     NULL,
@@ -4533,7 +4536,7 @@ VALUES
     1,
     NULL,
     'When Subterranean Scout enters the battlefield, target creature with power 2 or less can''t be blocked this turn.',
-    'Lucas Graciano',
+    
     67,
     'R',
     NULL,
@@ -4551,7 +4554,7 @@ VALUES
     NULL,
     NULL,
     'Enchant nonland permanent£Enchanted permanent can''t attack or block, and its activated abilities can''t be activated.',
-     
+   
     8,
     'W',
     NULL,
@@ -4569,7 +4572,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'James Paick',
+   
     29,
     'L',
     '{B}',
@@ -4587,7 +4590,7 @@ VALUES
     NULL,
     NULL,
     '#_Spell mastery_# — If there are two or more instant and/or sorcery cards in your graveyard, you may cast Swift Reckoning as though it had flash. #_(You may cast it any time you could cast an instant.)_#£Destroy target tapped creature.',
-    'Chris Rahn',
+    
     120,
     'W',
     NULL,
@@ -4606,7 +4609,7 @@ VALUES
     NULL,
     NULL,
     'Equipped creature gets +1/+1.£Whenever equipped creature attacks, you may search your library for a basic land card, put it onto the battlefield tapped, then shuffle.£Equip {2}',
-     
+   
     5,
     'A',
     NULL,
@@ -4624,7 +4627,7 @@ VALUES
     2,
     NULL,
     'Trample #_(This creature can deal excess combat damage to the player or planeswalker it''s attacking.)_#£When Sylvan Messenger enters the battlefield, reveal the top four cards of your library. Put all Elf cards revealed this way INTO your hand and the rest on the bottom of your library in any order.',
-    'Anthony Palumbo',
+    
     51,
     'G',
     NULL,
@@ -4642,7 +4645,7 @@ VALUES
     NULL,
     NULL,
     'If an opponent would gain life, that player loses that much life instead.',
-    'Izzy',
+    
     80,
     'B',
     NULL,
@@ -4660,7 +4663,7 @@ VALUES
     NULL,
     NULL,
     'Target opponent reveals the top seven cards of their library. You may cast an instant or sorcery spell from among them without paying its mana cost. Then that player puts the rest INTO their graveyard.£#_Spell mastery_# — If there are two or more instant and/or sorcery cards in your graveyard, you may cast up to two instant and/or sorcery spells from among the revealed cards instead of one.',
-    'Peter Mohrbacher',
+    
     31,
     'U',
     NULL,
@@ -4678,7 +4681,7 @@ VALUES
     8,
     NULL,
     'This spell can''t be countered.£Trample #_(This creature can deal excess combat damage to the player or planeswalker it''s attacking.)_#',
-    'Goran Josic',
+    
     100,
     'G',
     NULL,
@@ -4696,7 +4699,7 @@ VALUES
     NULL,
     NULL,
     'Each player shuffles all cards from their hand and all permanents they own INTO their library, then draws that many cards. Each player may put any number of land cards from their hand onto the battlefield. Exile The Great Aurora.',
-    'Sam Burley',
+   
     39,
     'G',
     NULL,
@@ -4714,7 +4717,7 @@ VALUES
     3,
     NULL,
     'When Thopter Engineer enters the battlefield, create a 1/1 colorless Thopter artifact creature token with flying.£Artifact creatures you control have haste. #_(They can attack and {T} as soon as they come under your control.)_#',
-    'Steve Prescott',
+    
     101,
     'R',
     NULL,
@@ -4732,7 +4735,7 @@ VALUES
     NULL,
     NULL,
     'At the beginning of your upkeep, if you control an artifact, create a 1/1 colorless Thopter artifact creature token with flying.£Whenever one or more artifact creatures you control deal combat damage to a player, draw a card.',
-    'Jung Park',
+
     132,
     'U',
     NULL,
@@ -4750,7 +4753,7 @@ VALUES
     2,
     NULL,
     'Whenever Thornbow Archer attacks, each opponent who doesn''t control an Elf loses 1 life.',
-    'Kev Walker',
+    
     21,
     'B',
     NULL,
@@ -4768,7 +4771,7 @@ VALUES
     NULL,
     NULL,
     'Equipped creature gets +2/+0.£Whenever equipped creature attacks, you may sacrifice Throwing Knife. If you do, Throwing Knife deals 2 damage to any target.£Equip {2} #_({2}: Attach to target creature you control. Equip only as a sorcery.)_#',
-    'Mathias Kollros',
+    
     68,
     'A',
     NULL,
@@ -4786,7 +4789,7 @@ VALUES
     3,
     NULL,
     'Flash #_(You may cast this spell any time you could cast an instant.)_#£Flying£Other creatures you control with flying get +1/+1.',
-    'Jason Felix',
+    
     102,
     'WU',
     NULL,
@@ -4804,7 +4807,7 @@ VALUES
     2,
     NULL,
     'Timberpack Wolf gets +1/+1 for each other creature you control named Timberpack Wolf.',
-    'John Avon',
+    
     17,
     'G',
     NULL,
@@ -4822,7 +4825,7 @@ VALUES
     NULL,
     NULL,
     'Target creature gets +4/+4 until end of turn.',
-    'Ryan Pancoast',
+    
     7,
     'G',
     NULL,
@@ -4840,7 +4843,7 @@ VALUES
     NULL,
     NULL,
     'Target creature gets +3/+1 until end of turn. Scry 1. #_(Look at the top card of your library. You may put that card on the bottom of your library.)_#',
-    'Karl Kopinski',
+    
     133,
     'R',
     NULL,
@@ -4858,7 +4861,7 @@ VALUES
     2,
     NULL,
     'Vigilance #_(Attacking doesn''t cause this creature to tap.)_#£Renown 1 #_(When this creature deals combat damage to a player, if it isn''t renowned, put a +1/+1 counter on it and it becomes renowned.)_#',
-    'Johannes Voss',
+   
     24,
     'W',
     NULL,
@@ -4876,7 +4879,7 @@ VALUES
     NULL,
     NULL,
     'As an additional cost to cast this spell, sacrifice a creature.£Target player discards a number of cards equal to the sacrificed creature''s power.',
-    'Allen Williams',
+    
     69,
     'B',
     NULL,
@@ -4894,7 +4897,7 @@ VALUES
     5,
     NULL,
     'When Totem-Guide Hartebeest enters the battlefield, you may search your library for an Aura card, reveal it, put it INTO your hand, then shuffle.',
-    'John Avon',
+    
     17,
     'W',
     NULL,
@@ -4912,7 +4915,7 @@ VALUES
     NULL,
     NULL,
     'Target creature you control gets +1/+0 and gains deathtouch until end of turn. Whenever a creature dealt damage by that creature dies this turn, its controller loses 2 life. #_(Any amount of damage a creature with deathtouch deals to a creature is enough to destroy it.)_#',
-    'Scott Murphy',
+   
     26,
     'B',
     NULL,
@@ -4930,7 +4933,7 @@ VALUES
     2,
     NULL,
     'Flying£When Tower Geist enters the battlefield, look at the top two cards of your library. Put one of them INTO your hand and the other INTO your graveyard.',
-    'Izzy',
+    
     80,
     'U',
     NULL,
@@ -4948,7 +4951,7 @@ VALUES
     NULL,
     NULL,
     'For each player, you choose from among the permanents that player controls an artifact, a creature, an enchantment, and a planeswalker. Then each player sacrifices all other nonland permanents they control.',
-    'Winona Nelson',
+    
     128,
     'W',
     NULL,
@@ -4966,7 +4969,7 @@ VALUES
     NULL,
     NULL,
     'Until end of turn, target creature loses all abilities and becomes a blue Frog with base power and toughness 1/1.',
-    'Warren Mahy',
+    
     64,
     'U',
     NULL,
@@ -4984,7 +4987,7 @@ VALUES
     2,
     NULL,
     'When Undead Servant enters the battlefield, create a 2/2 black Zombie creature token for each card named Undead Servant in your graveyard.',
-    'James Zapata',
+   
     30,
     'B',
     NULL,
@@ -5002,7 +5005,7 @@ VALUES
     2,
     NULL,
     'Renown 1 #_(When this creature deals combat damage to a player, if it isn''t renowned, put a +1/+1 counter on it and it becomes renowned.)_#£{2}{G}: Regenerate Undercity Troll. #_(The next time this creature would be destroyed this turn, it isn''t. Instead tap it, remove all damage from it, and remove it from combat.)_#',
-    'Jason Felix',
+    
     102,
     'G',
     NULL,
@@ -5020,7 +5023,7 @@ VALUES
     NULL,
     NULL,
     'Destroy target creature.£#_Spell mastery_# — If there are two or more instant and/or sorcery cards in your graveyard, you gain 2 life.',
-    'Lius Lasahido',
+    
     25,
     'B',
     NULL,
@@ -5038,7 +5041,7 @@ VALUES
     3,
     NULL,
     'Renown 2 #_(When this creature deals combat damage to a player, if it isn''t renowned, put two +1/+1 counters on it and it becomes renowned.)_#£Whenever a creature you control becomes renowned, draw a card.',
-     
+    
     10,
     'G',
     NULL,
@@ -5056,7 +5059,7 @@ VALUES
     NULL,
     NULL,
     'Whenever a creature enters the battlefield under your control, creatures you control get +1/+1 until end of turn.',
-    'Igor Kieryluk',
+    
     129,
     'W',
     NULL,
@@ -5074,7 +5077,7 @@ VALUES
     6,
     NULL,
     NULL,
-    'Kieran Yanner',
+    
     122,
     'G',
     NULL,
@@ -5092,7 +5095,7 @@ VALUES
     NULL,
     NULL,
     'Equipped creature gets +1/+1.£Equip {1} #_({1}: Attach to target creature you control. Equip only as a sorcery.)_#',
-    'Aaron Miller',
+    
     99,
     'A',
     NULL,
@@ -5110,7 +5113,7 @@ VALUES
     NULL,
     NULL,
     'Prevent all combat damage that would be dealt this turn by creatures with power 4 or less.',
-    'Igor Kieryluk',
+    
     129,
     'G',
     NULL,
@@ -5128,7 +5131,7 @@ VALUES
     4,
     NULL,
     '{2}{R}: Volcanic Rambler deals 1 damage to target player or planeswalker.',
-    'Vincent Proce',
+    
     47,
     'R',
     NULL,
@@ -5146,7 +5149,7 @@ VALUES
     1,
     NULL,
     'Flying£Noncreature spells cost {1} more to cast.',
-    'Seb McKinnon',
+    
     20,
     'W',
     NULL,
@@ -5164,7 +5167,7 @@ VALUES
     NULL,
     NULL,
     'Attacking creatures you control get +1/+0.',
-    'Lars Grant-West',
+    
     88,
     'A',
     NULL,
@@ -5182,7 +5185,7 @@ VALUES
     3,
     NULL,
     'Lifelink #_(Damage dealt by this creature also causes you to gain that much life.)_#£Renown 1 #_(When this creature deals combat damage to a player, if it isn''t renowned, put a +1/+1 counter on it and it becomes renowned.)_#',
-    'Steve Prescott',
+    
     101,
     'W',
     NULL,
@@ -5200,7 +5203,7 @@ VALUES
     3,
     NULL,
     '{U}: Watercourser gets +1/-1 until end of turn.',
-    'Mathias Kollros',
+    
     68,
     'U',
     NULL,
@@ -5218,7 +5221,7 @@ VALUES
     NULL,
     NULL,
     'Draw two cards.',
-   
+    
     114,
     'U',
     NULL,
@@ -5236,7 +5239,7 @@ VALUES
     NULL,
     NULL,
     'Enchant creature£Enchanted creature gets -3/-2.',
-    'Wesley Burt',
+    
     79,
     'B',
     NULL,
@@ -5254,7 +5257,7 @@ VALUES
     2,
     NULL,
     'When Whirler Rogue enters the battlefield, create two 1/1 colorless Thopter artifact creature tokens with flying.£Tap two untapped artifacts you control: Target creature can''t be blocked this turn.',
-    'Winona Nelson',
+    
     128,
     'U',
     NULL,
@@ -5272,7 +5275,7 @@ VALUES
     NULL,
     NULL,
     'Target creature you control gets +2/+2 until end of turn. It fights target creature an opponent controls. #_(Each deals damage equal to its power to the other.)_#',
-    'Igor Kieryluk',
+    
     129,
     'G',
     NULL,
@@ -5290,7 +5293,7 @@ VALUES
     3,
     NULL,
     'Whenever a creature an opponent controls becomes the target of a spell or ability you control, gain control of that creature for as long as you control Willbreaker.',
-    'Dan Scott',
+    
     119,
     'U',
     NULL,
@@ -5308,7 +5311,7 @@ VALUES
     5,
     NULL,
     'When Woodland Bellower enters the battlefield, you may search your library for a nonlegendary green creature card with mana value 3 or less, put it onto the battlefield, then shuffle.',
-    'Jasper Sandner',
+    
     94,
     'G',
     NULL,
@@ -5326,7 +5329,7 @@ VALUES
     NULL,
     NULL,
     '{T}: Add {C}.£{T}: Add {G} or {U}. Yavimaya Coast deals 1 damage to you.',
-    'Anthony S. Waters',
+    
     103,
     'L',
     '{G}{U}{C}',
@@ -5344,7 +5347,7 @@ VALUES
     2,
     NULL,
     'When Yeva''s Forcemage enters the battlefield, target creature gets +2/+2 until end of turn.',
-    'Eric Deschamps',
+    
     110,
     'G',
     NULL,
@@ -5362,7 +5365,7 @@ VALUES
     4,
     NULL,
     NULL,
-    'Ryan Yee',
+    
     75,
     'W',
     NULL,
@@ -5380,7 +5383,7 @@ VALUES
     4,
     NULL,
     'Zendikar Incarnate''s power is equal to the number of lands you control.',
-    'Lucas Graciano',
+    
     67,
     'GR',
     NULL,
@@ -5398,7 +5401,7 @@ VALUES
     NULL,
     NULL,
     '#_Landfall_# — Whenever a land enters the battlefield under your control, create a 2/2 green Elemental creature token.',
-    'Sam Burley',
+   
     39,
     'G',
     NULL,
@@ -5416,7 +5419,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'John Avon',
+    
     17,
     'L',
     '{G}',
@@ -5434,7 +5437,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'Jonas De Ro',
+    
     15,
     'L',
     '{G}',
@@ -5452,7 +5455,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'Vincent Proce',
+    
     47,
     'L',
     '{G}',
@@ -5470,7 +5473,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'Richard Wright',
+   
     116,
     'L',
     '{U}',
@@ -5488,7 +5491,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'Jung Park',
+
     132,
     'L',
     '{U}',
@@ -5506,7 +5509,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'Jung Park',
+
     132,
     'L',
     '{U}',
@@ -5524,7 +5527,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'Sam Burley',
+   
     39,
     'L',
     '{R}',
@@ -5542,7 +5545,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'Noah Bradley',
+    
     104,
     'L',
     '{R}',
@@ -5560,7 +5563,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'Noah Bradley',
+    
     104,
     'L',
     '{R}',
@@ -5578,7 +5581,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'Michael Komarck',
+    
     105,
     'L',
     '{W}',
@@ -5596,7 +5599,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'Adam Paquette',
+    
     57,
     'L',
     '{W}',
@@ -5614,7 +5617,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'Michael Komarck',
+    
     105,
     'L',
     '{W}',
@@ -5632,7 +5635,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'Jung Park',
+
     132,
     'L',
     '{B}',
@@ -5650,7 +5653,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'Dan Frazier',
+
     106,
     'L',
     '{B}',
@@ -5668,7 +5671,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'Larry Elmore',
+    
     107,
     'L',
     '{B}',
