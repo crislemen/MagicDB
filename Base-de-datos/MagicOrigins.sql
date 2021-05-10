@@ -111,7 +111,7 @@ INSERT INTO artista(nombre,apellido,numero_artes) VALUES ("Jim","Nelson",1);
 INSERT INTO artista(nombre,apellido,numero_artes) VALUES ("Volkan","Baga",3);
 INSERT INTO artista(nombre,apellido,numero_artes) VALUES ("Erica","Yang",1);
 INSERT INTO artista(nombre,apellido,numero_artes) VALUES ("Daniel","Ljunggren",3);
-INSERT INTO artista(nombre,apellido,numero_artes) VALUES ("Yan","Li",1);
+INSERT INTO artista(nombre,apellido,numero_artes) VALUES ("Yan","Li",4);
 INSERT INTO artista(nombre,apellido,numero_artes) VALUES ("Ryan","Pancoast",3);
 INSERT INTO artista(nombre,apellido,numero_artes) VALUES ("Chris","Rallis",3);
 INSERT INTO artista(nombre,apellido,numero_artes) VALUES ("Eytan","Zana",1);
@@ -776,7 +776,7 @@ VALUES
     NULL,
     'Flying #_(This creature can''t be blocked except by creatures with flying or reach.)_#£When Aven Battle Priest enters the battlefield, you gain 3 life.',
     
-    '6',
+    6,
     'W',
     NULL,
     'Pauper'
@@ -795,7 +795,7 @@ VALUES
     null,
     '{T}: Add {C}.£{T}: Add {R} or {W}. Battlefield Forge deals 1 damage to you.',
     
-    '244',
+    6,
     'L',
     '{R}{W}{C}',
     'Estándar'
@@ -932,8 +932,8 @@ VALUES
   (
     398539,
     'Bone to Ash',
-    'ORI',
     'Instant',
+    'ORI',
     'C',
     '{2}{U}{U}',
     4,
@@ -986,8 +986,8 @@ VALUES
   (
     398480,
     'Calculated Dismissal',
-    'ORI',
     'Instant',
+    'ORI',
     'C',
     '{2}{U}',
     3,
@@ -1444,7 +1444,7 @@ VALUES
     6,
     6,
     NULL,
-    'Deep-Sea Terror can''t attack unless there are seven or more cards in your graveyard.',
+    'Deep-Sea Terror cant attack unless there are seven or more cards in your graveyard.',
    
     16,
     'U',
@@ -1480,7 +1480,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'At the beginning of your upkeep, choose one that hasn''t been chosen —£• Demonic Pact deals 4 damage to any target and you gain 4 life.£• Target opponent discards two cards.£• Draw two cards.£• You lose the game.',
+    'At the beginning of your upkeep, choose one that hasnt been chosen — Demonic Pact deals 4 damage to any target and you gain 4 life. Target opponent discards two cards. Draw two cards. You lose the game.',
     
     111,
     'B',
@@ -1498,7 +1498,7 @@ VALUES
     3,
     1,
     NULL,
-    'Despoiler of Souls can''t block.£{B}{B}, Exile two other creature cards from your graveyard: Return Despoiler of Souls from your graveyard to the battlefield.',
+    'Despoiler of Souls cant block.£{B}{B}, Exile two other creature cards from your graveyard: Return Despoiler of Souls from your graveyard to the battlefield.',
     
     18,
     'B',
@@ -1516,7 +1516,7 @@ VALUES
     3,
     4,
     NULL,
-    '{1}, Exile an instant or sorcery card from your graveyard: Choose one —£• Counter target noncreature spell unless its controller pays {2}.£• Disciple of the Ring gets +1/+1 until end of turn.£• Tap target creature.£• Untap target creature.',
+    '{1}, Exile an instant or sorcery card from your graveyard: Choose one — Counter target noncreature spell unless its controller pays {2}. Disciple of the Ring gets +1/+1 until end of turn. Tap target creature. Untap target creature.',
     
     131,
     'U',
@@ -1534,7 +1534,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'Return target nonland permanent to its owner''s hand.',
+    'Return target nonland permanent to its owners hand.',
     
     75,
     'U',
@@ -1552,7 +1552,7 @@ VALUES
     NULL,
     NULL,
     NULL,
-    'Return all nonland permanents with mana value X or less to their owners'' hands.',
+    'Return all nonland permanents with mana value X or less to their owners hands.',
     
     20,
     'U',
@@ -1575,7 +1575,7 @@ VALUES
     21,
     'W',
     NULL,
-    'Gigande de dos cabezas'
+    'Gigante de dos cabezas'
   ),
   (
     1398647,
@@ -1593,7 +1593,7 @@ VALUES
     22,
     'R',
     NULL,
-    'Gigande de dos cabezas'
+    'Gigante de dos cabezas'
   ),
   (
     398405,
@@ -1611,7 +1611,7 @@ VALUES
     23,
     'U',
     NULL,
-    'Gigande de dos cabezas'
+    'Gigante de dos cabezas'
   ),
   (
     398546,
@@ -1665,7 +1665,7 @@ VALUES
     26,
     'W',
     NULL,
-    'Gigande de dos cabezas'
+    'Gigante de dos cabezas'
   ),
   (
     398406,
@@ -1701,7 +1701,7 @@ VALUES
     28,
     'G',
     NULL,
-    'Gigande de dos cabezas'
+    'Gigante de dos cabezas'
   ),
   (
     398576,
@@ -1737,7 +1737,7 @@ VALUES
     30,
     'W',
     NULL,
-    'Gigande de dos cabezas'
+    'Gigante de dos cabezas'
   ),
   (
     398654,
@@ -1755,7 +1755,7 @@ VALUES
     10,
     'W',
     NULL,
-    'Gigande de dos cabezas'
+    'Gigante de dos cabezas'
   ),
   (
     398493,
@@ -1823,11 +1823,11 @@ VALUES
     NULL,
     NULL,
     '{T}, Sacrifice Evolving Wilds: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.',
-    'Steven Belledin',
+    
     32,
     'L',
     NULL,
-    'Gigande de dos cabezas'
+    'Gigante de dos cabezas'
   ),
   (
     398513,
@@ -1894,7 +1894,7 @@ VALUES
     1,
     NULL,
     'Flying£When Faerie Miscreant enters the battlefield, if you control another creature named Faerie Miscreant, draw a card.',
-    'Steven Belledin',
+    
     32,
     'U',
     NULL,
@@ -2094,7 +2094,7 @@ VALUES
     5,
     NULL,
     'This spell can''t be countered.£Haste£Gaea''s Revenge can''t be the target of nongreen spells or abilities from nongreen sources.',
-    'Kekai Kotaki',
+    
     40,
     'G',
     NULL,
@@ -3103,7 +3103,7 @@ VALUES
     NULL,
     'As an additional cost to cast this spell, discard a land card.£Draw two cards.',
     
-    '155',
+    6,
     'R',
     NULL,
     'Commander'
