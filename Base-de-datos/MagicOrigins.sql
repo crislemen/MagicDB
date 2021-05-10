@@ -476,7 +476,7 @@ VALUES
     null,
     NULL,
     'Aerial Volley deals 3 damage divided as you choose among one, two, or three target creatures with flying.',
-    'Lake Hurwitz',
+    
     112,
     'G',
     NULL,
@@ -494,7 +494,7 @@ VALUES
     1,
     NULL,
     '{2}{W}, {T}: Tap target creature.',
-    'Anastasia Ovchinnikova',
+    
     113,
     'W',
     NULL,
@@ -512,7 +512,7 @@ VALUES
     2,
     NULL,
     'First strike #_(This creature deals combat damage before creatures without first strike.)_#£Renown 1 #_(When this creature deals combat damage to a player, if it isn''t renowned, put a +1/+1 counter on it and it becomes renowned.)_#',
-    'Zack Stella',
+   
     114,
     'R',
     NULL,
@@ -1201,7 +1201,7 @@ VALUES
     3,
     NULL,
     'Vigilance #_(Attacking doesn''t cause this creature to tap.)_#£Renown 2 #_(When this creature deals combat damage to a player, if it isn''t renowned, put two +1/+1 counters on it and it becomes renowned.)_#',
-    'Anastasia Ovchinnikova',
+    
     113,
     'GW',
     NULL,
@@ -4371,7 +4371,7 @@ VALUES
     3,
     NULL,
     'Reach',
-    'Anastasia Ovchinnikova',
+    
     113,
     'R',
     NULL,
@@ -4389,7 +4389,7 @@ VALUES
     6,
     NULL,
     'Vigilance #_(Attacking doesn''t cause this creature to tap.)_#£Reach #_(This creature can block creatures with flying.)_#',
-    'Filip Burburan',
+    
     96,
     'G',
     NULL,
@@ -4425,7 +4425,7 @@ VALUES
     2,
     NULL,
     'Whenever a creature you control becomes blocked, it gets +1/+1 until end of turn.£{1}{G}: Target creature you control gains trample until end of turn. #_(It can deal excess combat damage to the player or planeswalker it''s attacking.)_#',
-    'Filip Burburan',
+    
     96,
     'G',
     NULL,
@@ -5218,7 +5218,7 @@ VALUES
     NULL,
     NULL,
     'Draw two cards.',
-    'Zack Stella',
+   
     114,
     'U',
     NULL,
