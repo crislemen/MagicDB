@@ -77,7 +77,7 @@ CREATE TABLE carta(
   fuerza INT,
   resistencia INT,
   loyalty TEXT, 
-  descripcion TEXT,
+  descripcion TEXT ,
   codigo_artista INT,
   color TEXT, 
   generated_mana text,
@@ -412,7 +412,7 @@ VALUES
     'R',
     NULL,
     'Commander'
-  );
+  )
   (
     398574,
     'Acolyte of the Inferno',
@@ -424,13 +424,12 @@ VALUES
     3,
     1,
     null,
-    'Renown 1 #_(When this creature deals combat damage to a player, if it isn''t renowned, put a +1/+1 counter on it and it becomes renowned.)_#£Whenever Acolyte of the Inferno becomes blocked by a creature, it deals 2 damage to that creature.',
-    'Joseph Meehan',
+    'Renown 1 (When this creature deals combat damage to a player, if it isnt renowned, put a +1/+1 counter on it and it becomes renowned.)_ £Whenever Acolyte of the Inferno becomes blocked by a creature, it deals 2 damage to that creature.',
     109,
     'R',
     NULL,
     'Commander'
-  ),
+  );
   (
     398578,
     'Act of Treason',
@@ -443,7 +442,6 @@ VALUES
     null,
     null,
     'Gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn. #_(It can attack and {T} this turn.)_#',
-    'Eric Deschamps',
     110,
     'R',
     NULL,
@@ -461,7 +459,6 @@ VALUES
     5,
     NULL,
     'Flying #_(This creature can''t be blocked except by creatures with flying or reach.)_#£When Aegis Angel enters the battlefield, another target permanent gains indestructible for as long as you control Aegis Angel. #_(Effects that say "destroy" don''t destroy it. A creature with indestructible can''t be destroyed by damage.)_#',
-    'Aleksi Briclot',
     111,
     'W',
     NULL,
@@ -1006,7 +1003,7 @@ VALUES
     NULL,
     NULL, 
     'Enchant creature£Enchanted creature gets +3/+2 and has trample. #_(It can deal excess combat damage to the player or planeswalker it''s attacking.)_#£At the beginning of each upkeep, if a player cast two or more spells last turn, sacrifice Call of the Full Moon.',
-    'Nils Hamm',
+     
     1,
     'R',
     NULL,
@@ -1024,7 +1021,7 @@ VALUES
     6,
     NULL,
     NULL,
-    'Nils Hamm',
+     
     1,
     'B',
     NULL,
@@ -1060,7 +1057,7 @@ VALUES
     NULL,
     NULL,
     '{T}: Add {C}.£{T}: Add {W} or {B}. Caves of Koilos deals 1 damage to you.',
-    'Jim Nelson',
+     
     2,
     'L',
     '{W}{B}{C}',
@@ -1132,7 +1129,7 @@ VALUES
     NULL,
     NULL,
     'Chandra''s Fury deals 4 damage to target player or planeswalker and 1 damage to each creature that player or that planeswalker''s controller controls.',
-    'Volkan Baga',
+     
     3,
     'R',
     NULL,
@@ -1168,7 +1165,7 @@ VALUES
     2,
     NULL,
     'Flying #_(This creature can''t be blocked except by creatures with flying or reach.)_#£Whenever Charging Griffin attacks, it gets +1/+1 until end of turn.',
-    'Erica Yang',
+     
     4,
     'W',
     NULL,
@@ -1186,7 +1183,7 @@ VALUES
     3,
     NULL,
     'Other artifact creatures you control get +1/+1.',
-    'Daniel Ljunggren',
+     
     5,
     'A',
     NULL,
@@ -1222,7 +1219,7 @@ VALUES
     NULL,
     NULL,
     'Counter target spell unless its controller pays {X}.',
-    'Yan Li',
+     
     6,
     'U',
     NULL,
@@ -1258,7 +1255,7 @@ VALUES
     2,
     NULL,
     'When Cleric of the Forward Order enters the battlefield, you gain 2 life for each creature you control named Cleric of the Forward Order.',
-    'Chris Rallis',
+     
     8,
     'W',
     NULL,
@@ -1276,7 +1273,7 @@ VALUES
     2,
     NULL,
     NULL,
-    'Eytan Zana',
+     
     9,
     'R',
     NULL,
@@ -1294,7 +1291,7 @@ VALUES
     4,
     NULL,
     'When Conclave Naturalists enters the battlefield, you may destroy target artifact or enchantment.',
-    'Howard Lyon',
+     
     10,
     'G',
     NULL,
@@ -1420,7 +1417,7 @@ VALUES
     1,
     NULL,
     'When Deadbridge Shaman dies, target opponent discards a card.',
-    'Nils Hamm',
+     
     1,
     'B',
     NULL,
@@ -1744,7 +1741,7 @@ VALUES
     NULL,
     NULL,
     'Target creature gets +1/+1 until end of turn. Prevent all damage that would be dealt to it this turn. If it''s renowned, untap it.',
-    'Howard Lyon',
+     
     10,
     'W',
     NULL,
@@ -1906,7 +1903,7 @@ VALUES
     2,
     NULL,
     'Flying£{B}: Fetid Imp gains deathtouch until end of turn. #_(Any amount of damage it deals to a creature is enough to destroy it.)_#',
-    'Nils Hamm',
+     
     1,
     'B',
     NULL,
@@ -2502,7 +2499,7 @@ VALUES
     4,
     NULL,
     'Flash #_(You may cast this spell any time you could cast an instant.)_#£Whenever a creature deals combat damage to you, if Hixus, Prison Warden entered the battlefield this turn, exile that creature until Hixus leaves the battlefield. #_(That creature returns under its owner''s control.)_#',
-    'Chris Rallis',
+     
     8,
     'W',
     NULL,
@@ -3546,7 +3543,7 @@ VALUES
     2,
     NULL,
     'Orchard Spirit can''t be blocked except by creatures with flying or reach.',
-    'Howard Lyon',
+     
     10,
     'G',
     NULL,
@@ -3726,7 +3723,7 @@ VALUES
     NULL,
     NULL,
     'As Prism Ring enters the battlefield, choose a color.£Whenever you cast a spell of the chosen color, you gain 1 life.',
-    'Daniel Ljunggren',
+     
     5,
     'A',
     NULL,
@@ -3924,7 +3921,7 @@ VALUES
     2,
     NULL,
     'Renown 1 #_(When this creature deals combat damage to a player, if it isn''t renowned, put a +1/+1 counter on it and it becomes renowned.)_#£When Relic Seeker becomes renowned, you may search your library for an Equipment card, reveal it, put it INTO your hand, then shuffle.',
-    'Volkan Baga',
+     
     3,
     'W',
     NULL,
@@ -4338,7 +4335,7 @@ VALUES
     3,
     NULL,
     '{T}: Scry 1. #_(Look at the top card of your library. You may put that card on the bottom of your library.)_#',
-    'Nils Hamm',
+     
     1,
     'U',
     NULL,
@@ -4356,7 +4353,7 @@ VALUES
     9,
     NULL,
     'As an additional cost to cast this spell, exile two creature cards from your graveyard.£Trample',
-    'Volkan Baga',
+     
     3,
     'U',
     NULL,
@@ -4554,7 +4551,7 @@ VALUES
     NULL,
     NULL,
     'Enchant nonland permanent£Enchanted permanent can''t attack or block, and its activated abilities can''t be activated.',
-    'Chris Rallis',
+     
     8,
     'W',
     NULL,
@@ -4609,7 +4606,7 @@ VALUES
     NULL,
     NULL,
     'Equipped creature gets +1/+1.£Whenever equipped creature attacks, you may search your library for a basic land card, put it onto the battlefield tapped, then shuffle.£Equip {2}',
-    'Daniel Ljunggren',
+     
     5,
     'A',
     NULL,
@@ -5041,7 +5038,7 @@ VALUES
     3,
     NULL,
     'Renown 2 #_(When this creature deals combat damage to a player, if it isn''t renowned, put two +1/+1 counters on it and it becomes renowned.)_#£Whenever a creature you control becomes renowned, draw a card.',
-    'Howard Lyon',
+     
     10,
     'G',
     NULL,
