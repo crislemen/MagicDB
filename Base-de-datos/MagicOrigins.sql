@@ -1,6 +1,7 @@
 
 DROP DATABASE IF EXISTS magic;
-CREATE DATABASE IF NOT EXISTS magic;
+CREATE DATABASE IF NOT EXISTS  magic CHARACTER SET utf8 COLLATE utf8_general_ci;
+
 USE magic;
 CREATE TABLE baraja(
   codigo INT PRIMARY KEY,
@@ -359,7 +360,6 @@ INSERT INTO mana VALUES ('Isla','Tierra Basica',null);
 INSERT INTO expansion VALUES('ORI', 'Magic Orígenes', '2015-07-08');
 -- END --
 
--- INSERTS DE BARAJA_FORMATO --
 INSERT INTO baraja_formato VALUES (1, 'Commander');
 INSERT INTO baraja_formato VALUES (2, 'Commander');
 INSERT INTO baraja_formato VALUES (3, 'Pauper');
@@ -686,7 +686,7 @@ VALUES
   ),
   (
     398462,
-    'Artificer''s Epiphany',
+    'Artificers Epiphany',
     'Instant',
     'ORI',
     'C',
@@ -696,12 +696,11 @@ VALUES
     NULL,
     NULL ,
     'Draw two cards. If you control no artifacts, discard a card.',
-    
     122,
     'U',
     NULL,
     'Pauper'
-  ),
+  );
   (
     398674,
     'Aspiring Aeronaut',
@@ -756,7 +755,7 @@ VALUES
     NULL,
     'Commander'
     
-  );
+  ),
   (
     398627,
     'Aven Battle Priest',
@@ -1786,7 +1785,7 @@ VALUES
     'B',
     NULL,
     'Commander'
-  );
+  ),
   (
     398573,
     'Evolutionary Leap',
