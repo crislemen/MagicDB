@@ -1,4 +1,4 @@
-package es.iespuertodelacruz.ridel.api;
+package es.iespuertodelacruz.magic.api;
 
 public class Carta {
     

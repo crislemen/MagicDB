@@ -1,4 +1,4 @@
-import es.iespuertodelacruz.ridel.api.Expansion;
+import es.iespuertodelacruz.magic.api.Expansion;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;

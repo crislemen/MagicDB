@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import es.iespuertodelacruz.ridel.api.Baraja;
+import es.iespuertodelacruz.magic.api.Baraja;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;

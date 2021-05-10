@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package es.iespuertodelacruz.ridel.api;
+package es.iespuertodelacruz.magic.api;
 
 import java.util.Enumeration;
 

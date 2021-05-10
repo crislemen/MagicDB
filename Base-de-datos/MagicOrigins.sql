@@ -72,13 +72,12 @@ CREATE TABLE carta(
   tipo TEXT,
   simbolo_expansion VARCHAR(3),
   rareza TEXT,  
-  coste_mana INT,
-  coste_mana_convertido INT, 
+  coste_mana TEXT,
+  coste_mana_convertido VARCHAR (30), 
   fuerza INT,
   resistencia INT,
   loyalty TEXT, 
   descripcion TEXT,
-  artista VARCHAR(20), 
   codigo_artista INT,
   color TEXT, 
   generated_mana text,
@@ -356,7 +355,7 @@ INSERT INTO mana VALUES ('Isla','Tierra Basica',null);
 -- END --
 
 -- INSERTS DE EXPANSION --
-INSERT INTO expansion VALUES('ORI', 'Magic Orígenes', 8-7-2015);
+INSERT INTO expansion VALUES('ORI', 'Magic Orígenes', '2015-07-08');
 -- END --
 
 -- INSERTS DE BARAJA_FORMATO --
@@ -395,7 +394,7 @@ INSERT INTO mana_produce VALUES('Isla','Azul');
 -- INSERTS DE CARTA --
 
 INSERT INTO
-  carta
+  carta(id,nombre,tipo,simbolo_expansion,rareza,coste_mana,coste_mana_convertido,fuerza,resistencia,loyalty,descripcion,codigo_artista,color,generated_mana,nombre_formato) 
 VALUES
   (
     398411,
@@ -408,13 +407,12 @@ VALUES
     2,
     1,
     NULL,
-    'Prowess #_(Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)_#£When Abbot of Keral Keep enters the battlefield, exile the top card of your library. Until end of turn, you may play that card.',
-    'Deruchenko Alexander',
+    'pepe',
     108,
     'R',
     NULL,
     'Commander'
-  ),
+  );
   (
     398574,
     'Acolyte of the Inferno',

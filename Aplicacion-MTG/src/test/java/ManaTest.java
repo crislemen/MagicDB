@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import es.iespuertodelacruz.ridel.api.Mana;
+import es.iespuertodelacruz.magic.api.Mana;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
