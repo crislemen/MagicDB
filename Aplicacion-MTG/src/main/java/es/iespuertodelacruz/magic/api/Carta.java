@@ -2,187 +2,181 @@ package es.iespuertodelacruz.magic.api;
 
 public class Carta {
     
-    private String nombre;
+    private int id;
+    private String nombreCarta;
     private String tipo;
-    private String descripcion;
     private String simboloExpansion;
-    private int costeMana;
-    private int fuerza;
-    private int resistencia;
-    private float precio;
-    private String atributo;
-       
+    private char rareza;
+    private String costeMana;
+    private int costeManaConvertido;
+    private String fuerza;
+    private String resistencia;
+    private int loyalty;
+    private String descripcion;
+    private int codigoArtista;
+    private String color;
+    private String generatedMana;
+    private String nombreFormato;
+
     /**
-     * Constructor de clase con parametros
-     * @param nombre de la carta
+     * Constructor de clase
+     * @param id de la carta
+     * @param nombreCarta de la carta
      * @param tipo de la carta
-     * @param descripcion de la carta
-     * @param simboloExpansion simbolo de la expansion de la carta
-     * @param costeMana coste de mana convertido de la carta
+     * @param simboloExpansion de la carta
+     * @param rareza de la carta
+     * @param costeMana de la carta
+     * @param costeManaConvertido de la carta
      * @param fuerza de la carta
      * @param resistencia de la carta
-     * @param precio de la carta
+     * @param loyalty de la carta
+     * @param descripcion de la carta
+     * @param codigoArtista de la carta
+     * @param color de la carta
+     * @param generatedMana de la carta
+     * @param nombreFormato de la carta
      */
-    public Carta(String nombre, String tipo, String descripcion, String simboloExpansion, 
-            int costeMana, int fuerza, int resistencia, float precio, String atributo) {
-        this.nombre = nombre;
+    public Carta(int id, String nombreCarta, String tipo, String simboloExpansion, char rareza, String costeMana,
+            int costeManaConvertido, String fuerza, String resistencia, int loyalty, String descripcion, int codigoArtista,
+            String color, String generatedMana, String nombreFormato) {
+        this.id = id;
+        this.nombreCarta = nombreCarta;
         this.tipo = tipo;
-        this.descripcion = descripcion;
         this.simboloExpansion = simboloExpansion;
+        this.rareza = rareza;
         this.costeMana = costeMana;
+        this.costeManaConvertido = costeManaConvertido;
         this.fuerza = fuerza;
         this.resistencia = resistencia;
-        this.precio = precio;
-        this.atributo = atributo;
+        this.loyalty = loyalty;
+        this.descripcion = descripcion;
+        this.codigoArtista = codigoArtista;
+        this.color = color;
+        this.generatedMana = generatedMana;
+        this.nombreFormato = nombreFormato;
     }
 
-    /**
-     * Construcor vacío
-     */
     public Carta(){}
     
-    /**
-     * Getter de nombre
-     * @return nombre
-     */
-    public String getNombre() {
-        return nombre;
+    public int getId() {
+        return id;
     }
 
-    /**
-     * Setter de nombre
-     * @param nombre de la carta
-     */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    /**
-     * Getter de tipo
-     * @return tipo
-     */
+    public String getNombreCarta() {
+        return nombreCarta;
+    }
+
+    public void setNombreCarta(String nombreCarta) {
+        this.nombreCarta = nombreCarta;
+    }
+
     public String getTipo() {
         return tipo;
     }
 
-    /**
-     * Setter de tipo
-     * @param tipo de carta
-     */
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
-    /**
-     * Getter descripción
-     * @return descripcion
-     */
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    /**
-     * Setter de descripcion
-     * @param descripcion de la carta
-     */
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    /**
-     * Getter de simbolo expansion
-     * @return simboloExpansion
-     */
     public String getSimboloExpansion() {
         return simboloExpansion;
     }
 
-    /**
-     * Setter simbolo expansio
-     * @param simboloExpansion de la carta
-     */
     public void setSimboloExpansion(String simboloExpansion) {
         this.simboloExpansion = simboloExpansion;
     }
 
-    /**
-     * Getter de coste mana
-     * @return costeMana
-     */
-    public int getCosteMana() {
+    public char getRareza() {
+        return rareza;
+    }
+
+    public void setRareza(char rareza) {
+        this.rareza = rareza;
+    }
+
+    public String getCosteMana() {
         return costeMana;
     }
 
-    /**
-     * Setter de coste mana
-     * @param costeMana de la carta
-     */
-    public void setCosteMana(int costeMana) {
+    public void setCosteMana(String costeMana) {
         this.costeMana = costeMana;
     }
 
-    /**
-     * Getter fuerza
-     * @return fuerza
-     */
-    public int getFuerza() {
+    public int getCosteManaConvertido() {
+        return costeManaConvertido;
+    }
+
+    public void setCosteManaConvertido(int costeManaConvertido) {
+        this.costeManaConvertido = costeManaConvertido;
+    }
+
+    public String getFuerza() {
         return fuerza;
     }
 
-    /**
-     * Setter fuerza
-     * @param fuerza de la carta 
-     */
-    public void setFuerza(int fuerza) {
+    public void setFuerza(String fuerza) {
         this.fuerza = fuerza;
     }
 
-    /**
-     * Getter resistencia
-     * @return resistencia
-     */
-    public int getResistencia() {
+    public String getResistencia() {
         return resistencia;
     }
 
-    /**
-     * Setter reistencia
-     * @param resistencia de la carta 
-     */
-    public void setResistencia(int resistencia) {
+    public void setResistencia(String resistencia) {
         this.resistencia = resistencia;
     }
 
-    /**
-     * Getter precio
-     * @return precio
-     */
-    public float getPrecio() {
-        return precio;
+    public int getLoyalty() {
+        return loyalty;
     }
 
-    /**
-     * Setter precio
-     * @param precio de la carta 
-     */
-    public void setPrecio(float precio) {
-        this.precio = precio;
+    public void setLoyalty(int loyalty) {
+        this.loyalty = loyalty;
     }
 
-    /**
-     * Getter atributo
-     * @return atributo
-     */
-    public String getAtributo() {
-        return atributo;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    /**
-     * Setter atributo
-     * @param atributo de la carta 
-     */
-    public void setAtributo(String atributo) {
-        this.atributo = atributo;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
-      
+
+    public int getCodigoArtista() {
+        return codigoArtista;
+    }
+
+    public void setCodigoArtista(int codigoArtista) {
+        this.codigoArtista = codigoArtista;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getGeneratedMana() {
+        return generatedMana;
+    }
+
+    public void setGeneratedMana(String generatedMana) {
+        this.generatedMana = generatedMana;
+    }
+
+    public String getNombreFormato() {
+        return nombreFormato;
+    }
+
+    public void setNombreFormato(String nombreFormato) {
+        this.nombreFormato = nombreFormato;
+    }
+       
+    
 }
