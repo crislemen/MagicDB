@@ -1,0 +1,20 @@
+CREATE TABLE carta(
+  id INT PRIMARY KEY, 
+  nombre_carta VARCHAR(80),
+  tipo TEXT,
+  simbolo_expansion VARCHAR(3),
+  rareza CHAR,  
+  coste_mana TEXT,
+  coste_mana_convertido INT, 
+  fuerza TEXT,
+  resistencia TEXT,
+  loyalty INT TEXT , 
+  descripcion TEXT,
+  codigo_artista INT,
+  color TEXT, 
+  generated_mana text,
+  nombre_formato VARCHAR(50),  
+  FOREIGN KEY (codigo_artista) REFERENCES artista(codigo),
+  FOREIGN KEY (nombre_formato) REFERENCES formato(nombre),
+  FOREIGN KEY (simbolo_expansion) REFERENCES expansion(simbolo)
+);
