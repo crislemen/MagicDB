@@ -19,9 +19,6 @@ VALUES
     NULL,
     'Commander'
   ),
-INSERT INTO
-  carta(id,nombre_carta,tipo,simbolo_expansion,rareza,coste_mana,coste_mana_convertido,fuerza,resistencia,loyalty,descripcion,codigo_artista,color,generated_mana,nombre_formato)
-VALUES
   (
     398574,
     'Acolyte of the Inferno',
@@ -39,9 +36,6 @@ VALUES
     NULL,
     'Commander'
   ),
-INSERT INTO
-  carta(id,nombre_carta,tipo,simbolo_expansion,rareza,coste_mana,coste_mana_convertido,fuerza,resistencia,loyalty,descripcion,codigo_artista,color,generated_mana,nombre_formato)
-VALUES
   (
     398578,
     'Act of Treason',
