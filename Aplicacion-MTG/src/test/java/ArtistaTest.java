@@ -23,8 +23,7 @@ public class ArtistaTest {
     
     private int codigoDefault = 1;
     private String nombreDefault = "Juan";
-    private String apellido1Default = "Martin";
-    private String apellido2Default = "Perez";
+    private String apellidoDefault = "Martin";
     private int numeroArtesDefault = 20;
     
     private static final String LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD = "Los valores del objeto no son los esperados";  
@@ -34,38 +33,34 @@ public class ArtistaTest {
         if(artista == null){
             artista = new Artista();
         }
-        artista = generarArtista(20, "Pedro", "Gonzales", "Martin", 15);
-        artista2 = generarArtista(0, null, null, null, 0);
+        artista = generarArtista(20, "Pedro", "Gonzales", 15);
+        artista2 = generarArtista(0, null, null, 0);
     }
     
     @Test
     public void comprobarArtista(){
         assertNotNull(artista2, "El objeto no se ha generado correctamente");
-        assertEquals(artista.getCodigo(), 20, LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
+        assertEquals(20, artista.getCodigo(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
         assertTrue(artista.getNombre().contains("Pedro"), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
-        assertTrue(artista.getApellido1().contains("Gonzales"), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
-        assertTrue(artista.getApellido2().contains("Martin"),LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
-        assertEquals(artista.getNumeroArtes(),15 ,LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD );
+        assertTrue(artista.getApellido().contains("Gonzales"), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
+        assertEquals(15, artista.getNumeroArtes(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD );
     }
     
     /**
      * Funcion encargada de generar un artista
      * @param codigo 
      * @param nombre
-     * @param apellido1
-     * @param apellido2
+     * @param apellido
      * @param numeroArtes
      * @return artista
      */
-    private Artista generarArtista(int codigo, String nombre, String apellido1, 
-            String apellido2, int numeroArtes){
+    private Artista generarArtista(int codigo, String nombre, String apellido, int numeroArtes){
     
         Artista artista = null;
         
-        if(codigo !=0 && nombre != null && apellido1 != null && apellido2 != null
-                && numeroArtes !=0){
+        if(codigo !=0 && nombre != null && apellido != null && numeroArtes !=0){
             
-            artista = new Artista(codigo, nombre, apellido1, apellido2, numeroArtes);
+            artista = new Artista(codigo, nombre, apellido, numeroArtes);
             
             } else {
         
@@ -73,8 +68,7 @@ public class ArtistaTest {
             
             artista.setCodigo(codigoDefault);
             artista.setNombre(nombreDefault);
-            artista.setApellido1(apellido1Default);
-            artista.setApellido2(apellido2Default);
+            artista.setApellido(apellidoDefault);
             artista.setNumeroArtes(numeroArtesDefault);
 
         

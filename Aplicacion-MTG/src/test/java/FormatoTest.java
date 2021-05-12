@@ -23,7 +23,7 @@ public class FormatoTest {
     
     private String nombreDefault = "Estandar";
     private String descripcionDefault = "descripcion";
-    private String bansDefault = "Cauldron familiar";
+    private boolean bansDefault = true;
     
     private static final String LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD = "Los valores del objeto no son los esperados";    
     
@@ -33,8 +33,8 @@ public class FormatoTest {
         if(formato == null){
             formato = new Formato();
         }
-        formato = generarFormato("Modern", "modern descripcion", "mox opal");
-        formato2 = generarFormato(null, null, null);
+        formato = generarFormato("Modern", "modern descripcion", true);
+        formato2 = generarFormato(null, null, false);
         
     }
     
@@ -43,7 +43,7 @@ public class FormatoTest {
         assertNotNull(formato2, "El objeto no se ha generado correctamente");
         assertTrue(formato.getNombre().contains("Modern"), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
         assertTrue(formato.getDescripcion().contains("modern descripcion"), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
-        assertTrue(formato.getBans().contains("mox opal"), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
+        assertEquals(true, formato.getBans(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
     }
 
     
@@ -54,11 +54,11 @@ public class FormatoTest {
      * @param bans del formato
      * @return formato
      */
-    private Formato generarFormato(String nombre, String descripcion, String bans){
+    private Formato generarFormato(String nombre, String descripcion, boolean bans){
     
         Formato formato = null;
         
-        if(nombre != null && descripcion != null && bans != null){
+        if(nombre != null && descripcion != null && bans != false){
             
             formato = new Formato(nombre, descripcion, bans);
             

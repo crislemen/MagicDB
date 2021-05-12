@@ -14,7 +14,6 @@ public class ExpansionTest {
     private String nombreDefault = "Alpha";
     private String simboloDefault = "A";
     private String fechaLanzamientoDefault = "10-10-1999";
-    private String descripcionDefault = "descripcion expansion";
     
     private static final String LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD = "Los valores del objeto no son los esperados";    
     
@@ -23,8 +22,8 @@ public class ExpansionTest {
         if(expansion == null){
             expansion = new Expansion();
         }
-        expansion = generarExpansion("Beta", "B", "1-1-1998", "descripcion beta");
-        expansion2 = generarExpansion(null, null, null, null);
+        expansion = generarExpansion("Beta", "B", "1-1-1998");
+        expansion2 = generarExpansion(null, null, null);
     }
     
     @Test
@@ -34,7 +33,6 @@ public class ExpansionTest {
         assertTrue(expansion.getNombre().contains("Beta"), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
         assertTrue(expansion.getSimbolo().contains("B"), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
         assertTrue(expansion.getFechaLanzamiento().contains("1-1-1998"), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
-        assertTrue(expansion.getDescripcion().contains("descripcion beta"), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
     
     }
     
@@ -46,13 +44,13 @@ public class ExpansionTest {
      * @param descripcion de la expansion
      * @return expansion
      */
-    private Expansion generarExpansion(String nombre, String simbolo, String fechaLanzamiento, String descripcion){
+    private Expansion generarExpansion(String nombre, String simbolo, String fechaLanzamiento){
     
         Expansion expansion = null;
         
-        if(nombre != null && simbolo != null && fechaLanzamiento != null && descripcion !=null){
+        if(nombre != null && simbolo != null && fechaLanzamiento != null){
             
-            expansion = new Expansion(nombre, simbolo, fechaLanzamiento, descripcion);
+            expansion = new Expansion(nombre, simbolo, fechaLanzamiento);
         } else{
         
             expansion = new Expansion();
@@ -60,7 +58,6 @@ public class ExpansionTest {
             expansion.setNombre(nombreDefault);
             expansion.setSimbolo(simboloDefault);
             expansion.setFechaLanzamiento(fechaLanzamientoDefault);
-            expansion.setDescripcion(descripcionDefault);
         }
         
         return expansion;

@@ -24,7 +24,6 @@ public class ManaTest {
     private String nombreDefault = "Bosque";
     private String tipoDefault = "tierra basica";
     private String descripcionDefault = "descripcion";
-    private String manaProduceDefault = "verde";
         
     private static final String LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD = "Los valores del objeto no son los esperados";    
     
@@ -34,8 +33,8 @@ public class ManaTest {
         
             mana = new Mana();
         }
-        mana = generarMana("Pantano", "Tierra basica", "descripcion carta", "negro");
-        mana2 = generarMana(null, null, null, null);
+        mana = generarMana("Pantano", "Tierra basica", "descripcion carta");
+        mana2 = generarMana(null, null, null);
     }
     
     
@@ -46,7 +45,6 @@ public class ManaTest {
         assertTrue(mana.getNombre().contains("Pantano"), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
         assertTrue(mana.getTipo().contains("Tierra basica"), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
         assertTrue(mana.getDescripcion().contains("descripcion carta"), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
-        assertTrue(mana.getManaProduce().contains("negro"), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
     }
     
     /**
@@ -57,13 +55,13 @@ public class ManaTest {
      * @param manaProduce la carta
      * @return mana
      */
-    private Mana generarMana(String nombre, String tipo, String descripcion, String manaProduce){
+    private Mana generarMana(String nombre, String tipo, String descripcion){
     
         Mana mana = null;
         
-        if( nombre != null && tipo != null && descripcion != null && manaProduce != null){
+        if( nombre != null && tipo != null && descripcion != null){
             
-            mana = new Mana(nombre, tipo, descripcion, manaProduce);
+            mana = new Mana(nombre, tipo, descripcion);
         
         } else{
         
@@ -72,7 +70,6 @@ public class ManaTest {
             mana.setNombre(nombreDefault);
             mana.setTipo(tipoDefault);
             mana.setDescripcion(descripcionDefault);
-            mana.setManaProduce(manaProduceDefault);
         }
         
         return mana;
