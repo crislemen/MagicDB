@@ -14,7 +14,6 @@ public class Expansion {
     private String nombre;
     private String simbolo;
     private String fechaLanzamiento;
-    private String descripcion;
 
     /**
      * Constructor de clase con parametros
@@ -22,11 +21,10 @@ public class Expansion {
      * @param simbolo de la expansion
      * @param fechaLanzamiento de la expansion
      */
-    public Expansion(String nombre, String simbolo, String fechaLanzamiento, String descripcion) {
+    public Expansion(String nombre, String simbolo, String fechaLanzamiento) {
         this.nombre = nombre;
         this.simbolo = simbolo;
         this.fechaLanzamiento = fechaLanzamiento;
-        this.descripcion = descripcion;
     }
     
     /**
@@ -81,24 +79,5 @@ public class Expansion {
     public void setFechaLanzamiento(String fechaLanzamiento) {
         this.fechaLanzamiento = fechaLanzamiento;
     }
-
-    /**
-     * Getter de descripcion
-     * @return descripcion
-     */
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    /**
-     * Setter de descripcion
-     * @param descripcion de la expansion
-     */
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-    
-    
-    
     
 }

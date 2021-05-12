@@ -16,20 +16,17 @@ public class Mana {
     private String nombre;
     private String tipo;
     private String descripcion;
-    private String manaProduce;
 
     /**
      * Constructor de clase con parametros
      * @param nombre del mana
      * @param tipo de mana
      * @param descripcion del mana
-     * @param manaProduce la carta
      */
-    public Mana(String nombre, String tipo, String descripcion, String manaProduce) {
+    public Mana(String nombre, String tipo, String descripcion) {
         this.nombre = nombre;
         this.tipo = tipo;
         this.descripcion = descripcion;
-        this.manaProduce = manaProduce;
     }
     
     /**
@@ -85,25 +82,5 @@ public class Mana {
         this.descripcion = descripcion;
     }
 
-    /**
-     * Getter del mana que produce
-     * @return manaProduce
-     */
-    public String getManaProduce() {
-        return manaProduce;
-    }
-
-    /**
-     * Setter mana produce
-     * @param manaProduce la carta
-     */
-    public void setManaProduce(String manaProduce) {
-        this.manaProduce = manaProduce;
-    }
-    
-    
-    
-    
-    
     
 }

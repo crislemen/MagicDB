@@ -13,23 +13,20 @@ public class Artista {
     
     private int codigo;
     private String nombre;
-    private String apellido1;
-    private String apellido2;
+    private String apellido;
     private int numeroArtes;
 
     /**
      * Constructor con parametros
      * @param codigo del artista 
      * @param nombre del artista
-     * @param apellido1 del artista
-     * @param apellido2 del artista
+     * @param apellido del artista
      * @param numeroArtes del artista
      */
-    public Artista(int codigo, String nombre, String apellido1, String apellido2, int numeroArtes) {
+    public Artista(int codigo, String nombre, String apellido, int numeroArtes) {
         this.codigo = codigo;
         this.nombre = nombre;
-        this.apellido1 = apellido1;
-        this.apellido2 = apellido2;
+        this.apellido = apellido;
         this.numeroArtes = numeroArtes;
     }
     
@@ -74,32 +71,16 @@ public class Artista {
      * Getter de apellido1
      * @return apellido1
      */
-    public String getApellido1() {
-        return apellido1;
+    public String getApellido() {
+        return apellido;
     }
 
     /**
      * Setter de apellido1
      * @param apellido1 del artista
      */
-    public void setApellido1(String apellido1) {
-        this.apellido1 = apellido1;
-    }
-
-    /**
-     * Getter de apellido2
-     * @return apellido2
-     */
-    public String getApellido2() {
-        return apellido2;
-    }
-
-    /**
-     * Setter de apellido2
-     * @param apellido2 dela artista
-     */
-    public void setApellido2(String apellido2) {
-        this.apellido2 = apellido2;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     /**

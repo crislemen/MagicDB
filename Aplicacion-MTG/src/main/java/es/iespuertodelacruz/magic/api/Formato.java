@@ -13,7 +13,7 @@ public class Formato {
     
     private String nombre;
     private String descripcion;
-    private String bans;
+    private boolean bans;
 
     /**
      * Constructor de clase
@@ -21,7 +21,7 @@ public class Formato {
      * @param descripcion del formato
      * @param bans del formato
      */
-    public Formato(String nombre, String descripcion, String bans) {
+    public Formato(String nombre, String descripcion, boolean bans) {
         this.nombre = nombre;
         this.descripcion = descripcion;
 
@@ -37,7 +37,7 @@ public class Formato {
      * Getter de bans
      * @return bans
      */
-    public String getBans() {
+    public boolean getBans() {
         return bans;
     }
 
@@ -45,7 +45,7 @@ public class Formato {
      * Setter de bans
      * @param bans del formato
      */
-    public void setBans(String bans) {
+    public void setBans(boolean bans) {
         this.bans = bans;
     }
     

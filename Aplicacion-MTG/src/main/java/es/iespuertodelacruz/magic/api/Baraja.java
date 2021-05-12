@@ -11,35 +11,49 @@ package es.iespuertodelacruz.magic.api;
  */
 public class Baraja {
     
+    private int codigo;
     private String nombre;
-    private String formato;
     private float precio;
     private int numeroCartas;
     private int balanceMana;
-    private String colores;
 
     /**
      * Construcotr de clase con parametros
+     * @param codigo de la baraja
      * @param nombre de la baraja
-     * @param formato de la baraja
      * @param precio de la baraja
      * @param numeroCartas de la baraja
      * @param balanceMana de la baraja
-     * @param colores de la baraja
      */
-    public Baraja(String nombre, String formato, float precio, int numeroCartas, int balanceMana, String colores) {
+    public Baraja(int codigo, String nombre, float precio, int numeroCartas, int balanceMana) {
+        this.codigo = codigo;
         this.nombre = nombre;
-        this.formato = formato;
         this.precio = precio;
         this.numeroCartas = numeroCartas;
         this.balanceMana = balanceMana;
-        this.colores = colores;
     }
     
     /**
      * Constructor vacio
      */
     public Baraja(){}
+
+    
+    /**
+     * Getter de codigo
+     * @return codigo
+     */
+    public int getCodigo() {
+        return codigo;
+    }
+    
+    /**
+     * Setter de codigo
+     * @param codigo de la baraja
+     */
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
 
     /**
      * Getter de nombre
@@ -55,22 +69,6 @@ public class Baraja {
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    /**
-     * Getter de formato
-     * @return formato
-     */
-    public String getFormato() {
-        return formato;
-    }
-
-    /**
-     * Setter de formato
-     * @param formato de la baraja
-     */
-    public void setFormato(String formato) {
-        this.formato = formato;
     }
 
     /**
@@ -119,25 +117,6 @@ public class Baraja {
      */
     public void setBalanceMana(int balanceMana) {
         this.balanceMana = balanceMana;
-    }
-
-    /**
-     * Getter de colores
-     * @return colores
-     */
-    public String getColores() {
-        return colores;
-    }
-
-    /**
-     * Setter de colores
-     * @param colores 
-     */
-    public void setColores(String colores) {
-        this.colores = colores;
-    }
-    
-    
-    
+    }    
     
 }
