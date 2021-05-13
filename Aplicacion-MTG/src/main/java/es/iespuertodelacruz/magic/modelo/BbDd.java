@@ -19,6 +19,12 @@ public class BbDd {
       this.password = password;
    }
 
+   /**
+    * Metodo que se encarga de realizar la conexion con la base de datos
+    * 
+    * @return conecction
+    * @throws PersistenciaException error controlado
+    */
    private Connection getConnection() throws PersistenciaException {
       Connection connection = null;
 
@@ -53,29 +59,36 @@ public class BbDd {
             + "', '" + carta.getGeneratedMana() + "'," + " '" + carta.getNombreFormato() + "')";
       actualizar(sql);
    }
+
+   /**
+    * Metodo que elimina una carta por el identificador
+    * 
+    * @param carta a eliminar
+    * @throws PersistenciaException
+    */
+   public void eliminar(Carta carta) throws PersistenciaException {
+      String sql = "DELETE from carta where id = '" + carta.getId() + "'";
+      actualizar(sql);
+   }
+
    /**
     * Metodo que se encarga de modificar una carta
+    * 
     * @param carta
     * @throws PersistenciaException
     */
    public void modificar(Carta carta) throws PersistenciaException {
-      String sql = " UPDATE FRUTA SET id = '" + carta.getId() + "', '"
-            +" nombreCarta = '" + carta.getNombreCarta() + "', '"
-            +" tipo = '" + carta.getTipo() + "', '"
-            +" simboloExpansion = '" + carta.getSimboloExpansion()+ "', '"
-            +" rareza = '" + carta.getRareza() + "', '"
-            +" costeMana = '" + carta.getCosteMana() + "', '"
-            +" costeManaConvertido = '" + carta.getCosteManaConvertido() + "', '"
-            +" fuerza = '" + carta.getFuerza() + "', '"
-            +" resistencia = '" + carta.getResistencia()+ "', '"
-            +" loyalty = '" + carta.getLoyalty() + "', '"
-            +" descripcion = '" + carta.getDescripcion() + "', '"
-            +" codigoArtista = '" + carta.getCodigoArtista() + "', '"
-            +" color = '" + carta.getColor()+ "', '"
-            +" generatedMana = '" + carta.getGeneratedMana() + "', '"
-            +" nombreFormato = '" + carta.getNombreFormato() + "', '";
+      String sql = " UPDATE FRUTA SET id = '" + carta.getId() + "', '" + " nombreCarta = '" + carta.getNombreCarta()
+            + "', '" + " tipo = '" + carta.getTipo() + "', '" + " simboloExpansion = '" + carta.getSimboloExpansion()
+            + "', '" + " rareza = '" + carta.getRareza() + "', '" + " costeMana = '" + carta.getCosteMana() + "', '"
+            + " costeManaConvertido = '" + carta.getCosteManaConvertido() + "', '" + " fuerza = '" + carta.getFuerza()
+            + "', '" + " resistencia = '" + carta.getResistencia() + "', '" + " loyalty = '" + carta.getLoyalty()
+            + "', '" + " descripcion = '" + carta.getDescripcion() + "', '" + " codigoArtista = '"
+            + carta.getCodigoArtista() + "', '" + " color = '" + carta.getColor() + "', '" + " generatedMana = '"
+            + carta.getGeneratedMana() + "', '" + " nombreFormato = '" + carta.getNombreFormato() + "', '";
       actualizar(sql);
    }
+
    /**
     * Metodo encargado de actualizar la BBDD
     * 
@@ -118,7 +131,7 @@ public class BbDd {
             String nombreCarta = resultSet.getString("nombreCarta");
             String tipo = resultSet.getString("tipo");
             String simboloExpansion = resultSet.getString("simboloExpansion");
-            String campoRareza =resultSet.getString("rareza");
+            String campoRareza = resultSet.getString("rareza");
             char rareza = campoRareza.charAt(0);
             String costeMana = resultSet.getString("costeMana");
             int costeManaConvertido = resultSet.getInt("costeManaConvertido");
