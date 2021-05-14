@@ -16,8 +16,8 @@ public class App {
         Scanner sn = new Scanner(System.in);
         boolean salir = false;
         MagicController magicController;
-       magicController = new MagicController();
-       
+        magicController = new MagicController();
+
         // Guardaremos la opcion del usuario
 
         while (!salir) {
@@ -53,36 +53,36 @@ public class App {
                                         salir = true;
                                         break;
                                     case 1:
-                                    magicController.insertar();
-                                    break;
-                                    case 2 :
-                                    magicController.modificar();
-                                    break;
-                                    case 3:
-                                    magicController.buscar();
-                                    break;
-                                    default:
+                                        magicController.insertar();
                                         break;
+                                    case 2:
+                                        magicController.modificar();
+                                        break;
+                                    case 3:
+                                        magicController.buscar();
+                                        break;
+                                    default:
+                                        System.out.println("Solo números entre 0 y 3");
                                 }
                                 break;
 
                             case 2:
 
-                            System.out.println("Bienvenido al modo usuario");
-                            System.out.println("Elige una opcion a realizar");
-                            System.out.println("");
-                            System.out.println("0.Salir");
-                            System.out.println("1.Buscar una Carta");
-                            int opcion2 = sn.nextInt();
+                                System.out.println("Bienvenido al modo usuario");
+                                System.out.println("Elige una opcion a realizar");
+                                System.out.println("");
+                                System.out.println("0.Salir");
+                                System.out.println("1.Buscar una Carta");
+                                int opcion2 = sn.nextInt();
                                 switch (opcion2) {
                                     case 0:
                                         salir = true;
                                         break;
-                                case 1:
-                                magicController.buscar();
-                                break;
-                                default:
-                                break;
+                                    case 1:
+                                        magicController.buscar();
+                                        break;
+                                    default:
+                                        System.out.println("Solo números entre 0 y 1");
                                 }
                             case 0:
                                 salir = true;
