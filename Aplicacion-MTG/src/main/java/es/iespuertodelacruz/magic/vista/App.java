@@ -11,7 +11,7 @@ public class App {
  
             Scanner sn = new Scanner(System.in);
             boolean salir = false;
-            int opcion; //Guardaremos la opcion del usuario
+             //Guardaremos la opcion del usuario
      
             while (!salir) {
      
@@ -22,12 +22,13 @@ public class App {
                 try {
      
                     System.out.println("Escribe una de las opciones");
-                    opcion = sn.nextInt();
+                    int opcion = sn.nextInt();
      
                     while(!salir){
 
                         System.out.println("Bienvenido al modo administrador");
                         System.out.println("Elige una opcion a realizar");
+                        System.out.println("");
                         System.out.println("0.Salir");
                         System.out.println("1.Insertar una Carta");
                         System.out.println("2.Modificar una Carta");
@@ -40,33 +41,36 @@ public class App {
                             System.out.println("Escribe una de las opciones");
                             int opcion1 = sn.nextInt();
 
-                            switch (opcion) {
+                            switch (opcion1) {
+
                                 case 1:
                                 
-                                    
-                                    opcion1 = sn.nextInt();
+                                    System.out.println("Has seleccionado la opcion 1");                                  
                                     break;
+
                                 case 2:
+
                                     System.out.println("Has seleccionado la opcion 2");
                                     break;
+
                                 case 3:
-                                    System.out.println("Has seleccionado la opcion 3");
+                                    System.out.println("Has seleccionado la opcion 3");                                 
                                     break;
-                                case 4:
+                                case 0:
                                     salir = true;
                                     break;
                                 default:
-                                    System.out.println("Solo números entre 1 y 4");
+                                    System.out.println("Solo números entre 1 y 3");
                             }
                         } catch (InputMismatchException e) {
-                            System.out.println("Debes insertar un número");
+                            System.err.println("Debes insertar un número");
                             salir=true;
                         }
                     }
                     
                     
                 } catch (InputMismatchException e) {
-                    System.out.println("Debes insertar un número");
+                    System.err.println("Debes insertar un número");
                     salir=true;
                 }
             }
