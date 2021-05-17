@@ -34,9 +34,9 @@ Por favor lea la LICENCIA para mas información respecto a MagicDB
 
 # Tested on
 
-- Window 7
-- Window 8
-- Window 10
+- 
+- 
+- 
 
 # Requisitos
 
