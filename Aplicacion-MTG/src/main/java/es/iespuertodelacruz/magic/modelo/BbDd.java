@@ -174,11 +174,45 @@ public class BbDd {
     * @return carta buscada
     * @throws PersistenciaException error controlado
     */
-   public Carta obtenerCarta(int id) throws PersistenciaException {
+   public Carta obtenerCartaId(int id) throws PersistenciaException {
       Carta carta = null;
       ArrayList<Carta> listaCartas = null;
       String sql = "SELECT * FROM carta where id=";
       sql = sql + "'" + id + "'";
+      listaCartas = obtenerListado(sql);
+      if (!listaCartas.isEmpty()) {
+         carta = listaCartas.get(0);
+      }
+      return carta;
+   }
+   /**
+    * Metodo que busca una carta por nombre
+    * @param nombre
+    * @return
+    * @throws PersistenciaException
+    */
+   public Carta obtenerCartaNombre(String nombreCarta) throws PersistenciaException {
+      Carta carta = null;
+      ArrayList<Carta> listaCartas = null;
+      String sql = "SELECT * FROM carta where id=";
+      sql = sql + "'" + nombreCarta + "'";
+      listaCartas = obtenerListado(sql);
+      if (!listaCartas.isEmpty()) {
+         carta = listaCartas.get(0);
+      }
+      return carta;
+   }
+   /**
+    * Metodo que busca una carta por costeMana
+    * @param costeMana
+    * @return
+    * @throws PersistenciaException
+    */
+   public Carta obtenerCartaMana(String costeMana) throws PersistenciaException {
+      Carta carta = null;
+      ArrayList<Carta> listaCartas = null;
+      String sql = "SELECT * FROM carta where id=";
+      sql = sql + "'" + costeMana + "'";
       listaCartas = obtenerListado(sql);
       if (!listaCartas.isEmpty()) {
          carta = listaCartas.get(0);
