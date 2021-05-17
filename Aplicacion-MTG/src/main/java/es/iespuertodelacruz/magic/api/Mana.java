@@ -5,8 +5,6 @@
  */
 package es.iespuertodelacruz.magic.api;
 
-import java.util.Enumeration;
-
 /**
  *
  * @author risaa
