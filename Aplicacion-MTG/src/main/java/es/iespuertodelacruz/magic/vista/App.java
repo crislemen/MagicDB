@@ -33,13 +33,11 @@ public class App {
 
                 while (!salir) {
 
-                    try {
+                    System.out.println("Escribe una de las opciones");
 
-                        System.out.println("Escribe una de las opciones");
+                    switch (opcion) {
 
-                        switch (opcion) {
-
-                            case 1:
+                        case 1:
                                 System.out.println("Bienvenido al modo administrador");
                                 System.out.println("Elige una opcion a realizar");
                                 System.out.println("");
@@ -65,9 +63,9 @@ public class App {
                                         System.out.println("Solo números entre 0 y 3");
                                 }
                                 break;
+                            
 
-                            case 2:
-
+                        case 2:
                                 System.out.println("Bienvenido al modo usuario");
                                 System.out.println("Elige una opcion a realizar");
                                 System.out.println("");
@@ -84,15 +82,13 @@ public class App {
                                     default:
                                         System.out.println("Solo números entre 0 y 1");
                                 }
+                                break;
                             case 0:
                                 salir = true;
                                 break;
                             default:
                                 System.out.println("Solo números entre 0 y 2");
-                        }
-                    } catch (InputMismatchException e) {
-                        System.err.println("Debes insertar un número");
-                        salir = true;
+
                     }
                 }
 
