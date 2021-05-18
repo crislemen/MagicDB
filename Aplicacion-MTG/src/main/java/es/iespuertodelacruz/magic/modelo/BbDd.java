@@ -159,7 +159,7 @@ public class BbDd {
    /**
     * Metodo que obtiene todos los datos de la lista sql de carta
     * 
-    * @return
+    * @return obtenerLista
     * @throws PersistenciaException
     */
    public ArrayList<Carta> obtenerListado() throws PersistenciaException {
@@ -171,7 +171,7 @@ public class BbDd {
     * metodo que busca una carta dentro de la tabla carta por id
     * 
     * @param id de la carta a buscar
-    * @return carta buscada
+    * @return carta 
     * @throws PersistenciaException error controlado
     */
    public Carta obtenerCartaId(int id) throws PersistenciaException {
@@ -187,8 +187,8 @@ public class BbDd {
    }
    /**
     * Metodo que busca una carta por nombre
-    * @param nombre
-    * @return
+    * @param nombre de la carta
+    * @return carta
     * @throws PersistenciaException
     */
    public Carta obtenerCartaNombre(String nombreCarta) throws PersistenciaException {
@@ -204,8 +204,8 @@ public class BbDd {
    }
    /**
     * Metodo que busca una carta por costeMana
-    * @param costeMana
-    * @return
+    * @param costeMana de la carta
+    * @return carta
     * @throws PersistenciaException
     */
    public Carta obtenerCartaMana(String costeMana) throws PersistenciaException {
@@ -221,7 +221,7 @@ public class BbDd {
    }
 
    /**
-    * Metodo encartgado de cerrar la conexion a la base de datos
+    * Metodo encargado de cerrar la conexion a la base de datos
     * 
     * @param connection
     * @param statement
