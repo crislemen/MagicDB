@@ -1,6 +1,9 @@
 package es.iespuertodelacruz.magic.api;
 
-public class Carta {
+import es.iespuertodelacruz.magic.controlador.MagicController;
+import es.iespuertodelacruz.magic.exception.CartaException;
+
+public class Carta extends MagicController{
     
     private int id;
     private String nombreCarta;
@@ -35,10 +38,15 @@ public class Carta {
      * @param color de la carta
      * @param generatedMana de la carta
      * @param nombreFormato de la carta
+     * @throws CartaException
      */
     public Carta(int id, String nombreCarta, String tipo, String simboloExpansion, char rareza, String costeMana,
             int costeManaConvertido, String fuerza, String resistencia, int loyalty, String descripcion, int codigoArtista,
-            String color, String generatedMana, String nombreFormato) {
+            String color, String generatedMana, String nombreFormato) throws CartaException {
+        
+        validarColor(color);
+        validarMana(costeMana);
+
         this.id = id;
         this.nombreCarta = nombreCarta;
         this.tipo = tipo;
