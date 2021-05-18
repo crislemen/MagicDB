@@ -58,16 +58,71 @@ public class BbDd {
             listaTablas.add(resultSet.getString("TABLE_CARTA"));
             listaTablas.add(resultSet.getString("TABLE_BARAJA_CARTA"));
          }
-         if (!listaTablas.contains(TABLE_BARAJA) && !listaTablas.contains(TABLE_ARTISTA)) {
+         if (!listaTablas.contains(TABLE_BARAJA) && !listaTablas.contains(TABLE_ARTISTA)
+               && !listaTablas.contains(TABLE_FORMATO) && !listaTablas.contains(TABLE_MANA)
+               && !listaTablas.contains(TABLE_EXPANSION) && !listaTablas.contains(TABLE_BARAJA_FORMATO)
+               && !listaTablas.contains(TABLE_BARAJA_COLORES) && !listaTablas.contains(TABLE_BARAJA_MANA)
+               && !listaTablas.contains(TABLE_MANA_PRODUCE) && !listaTablas.contains(TABLE_CARTA)
+               && !listaTablas.contains(TABLE_BARAJA_CARTA)) {
             // Crear tabla cuenta
-            String sqlCrearTablaBaraja = "CREATE TABLE baraja(" + " codigo INT PRIMARY KEY,"
+            String sqlCrearTablaBaraja = "CREATE TABLE IF NOT EXISTS baraja(" + " codigo INT PRIMARY KEY,"
                   + "nombre VARCHAR(50)," + "precio FLOAT," + "numero_cartas INT," + "balance_mana INT" + ");";
 
-            String sqlCrearTablaArtista = "CREATE TABLE artista(" + " codigo INT AUTO_INCREMENT PRIMARY KEY," + 
-            "nombre VARCHAR(50)," + "apellido VARCHAR(50)," + "numero_artes INT"+");";
+            String sqlCrearTablaArtista = "CREATE TABLE IF NOT EXISTS artista("
+                  + " codigo INT AUTO_INCREMENT PRIMARY KEY," + "nombre VARCHAR(50)," + "apellido VARCHAR(50),"
+                  + "numero_artes INT" + ");";
+
+            String sqlCrearTablaFormato = "CREATE TABLE IF NOT EXISTS formato(" + "nombre VARCHAR(50) PRIMARY KEY,"
+                  + "descripcion VARCHAR(350)," + "baneo BOOLEAN" + ");";
+
+            String sqlCrearTablaMana = "CREATE TABLE IF NOT EXISTS mana(" + "nombre VARCHAR(50) PRIMARY KEY,"
+                  + "tipo VARCHAR(30)," + "descripcion VARCHAR(150)" + ");";
+
+            String sqlCrearTablaExpansion = "CREATE TABLE IF NOT EXISTS expansion(" + "simbolo VARCHAR(3) PRIMARY KEY,"
+                  + "nombre VARCHAR(50)," + "fecha_lanzamiento DATE" + ");";
+
+            String sqlCrearTablaBarajaFormato = "CREATE TABLE IF NOT EXISTS baraja_formato(" + "codigo_baraja INT,"
+                  + "formato VARCHAR(50)," + "PRIMARY KEY(codigo_baraja, formato),"
+                  + "FOREIGN KEY (codigo_baraja) REFERENCES baraja(codigo)" + ");";
+
+            String sqlCrearTablaBarajaColores = "CREATE TABLE IF NOT EXISTS baraja_colores(" + "codigo_baraja INT,"
+                  + "colores VARCHAR(30)," + "PRIMARY KEY (codigo_baraja, colores),"
+                  + "FOREIGN KEY (codigo_baraja) REFERENCES baraja(codigo)" + ");";
+
+            String sqlCrearTablaBarajaMana = "CREATE TABLE IF NOT EXISTS baraja_mana(" + "codigo_baraja INT,"
+                  + "nombre_mana VARCHAR(50)," + "PRIMARY KEY (codigo_baraja, nombre_mana),"
+                  + "FOREIGN KEY (codigo_baraja) REFERENCES baraja(codigo),"
+                  + "FOREIGN KEY (nombre_mana) REFERENCES mana(nombre)" + ");";
+
+            String sqlCrearTablaManaProduce = "CREATE TABLE IF NOT EXISTS mana_produce(" + "nombre_mana VARCHAR(50),"
+                  + "mana_produce VARCHAR(50)," + "PRIMARY KEY (nombre_mana, mana_produce),"
+                  + "FOREIGN KEY (nombre_mana) REFERENCES mana(nombre)" + ");";
+
+            String sqlCrearTablaCarta = "CREATE TABLE IF NOT EXISTS carta(" + "id INT PRIMARY KEY,"
+                  + "nombre_carta VARCHAR(80)," + "tipo TEXT" + "simbolo_expansion VARCHAR(3)," + "rareza CHAR,"
+                  + "coste_mana TEXT," + "coste_mana_convertido INT," + "fuerza TEXT," + "resistencia TEXT,"
+                  + "loyalty INT," + "descripcion TEXT," + "codigo_artista INT," + "color TEXT,"
+                  + "generated_mana text," + "nombre_formato VARCHAR(50),"
+                  + "FOREIGN KEY (codigo_artista) REFERENCES artista(codigo),"
+                  + "FOREIGN KEY (nombre_formato) REFERENCES formato(nombre),"
+                  + "FOREIGN KEY (simbolo_expansion) REFERENCES expansion(simbolo)" + ");";
+
+            String sqlCrearTablaBarajaCarta = "CREATE TABLE IF NOT EXISTS baraja_carta(" + "codigo_baraja INT,"
+                  + "codigo_carta INT," + "PRIMARY KEY (codigo_baraja, codigo_carta),"
+                  + "FOREIGN KEY (codigo_baraja) REFERENCES baraja(codigo),"
+                  + "FOREIGN KEY (codigo_carta) REFERENCES carta(id)" + ");";
 
             actualizar(sqlCrearTablaBaraja);
             actualizar(sqlCrearTablaArtista);
+            actualizar(sqlCrearTablaFormato);
+            actualizar(sqlCrearTablaMana);
+            actualizar(sqlCrearTablaExpansion);
+            actualizar(sqlCrearTablaBarajaFormato);
+            actualizar(sqlCrearTablaBarajaColores);
+            actualizar(sqlCrearTablaBarajaMana);
+            actualizar(sqlCrearTablaManaProduce);
+            actualizar(sqlCrearTablaCarta);
+            actualizar(sqlCrearTablaBarajaCarta);
             // Extraer de fichero las sentencias sql para insertar en la BBDD
             // String sqlInsertarDatos = null;
             // update(sqlInsertarDatos);
