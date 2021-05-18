@@ -13,8 +13,17 @@ public class BbDd {
    private String usuario;
    private String password;
 
-   private static final String TABLE = "TABLE";
-   private static final String TABLE_NAME = "CUENTA";
+   private static final String TABLE_BARAJA = "artista";
+   private static final String TABLE_ARTISTA = "artista";
+   private static final String TABLE_FORMATO = "formato";
+   private static final String TABLE_MANA = "mana";
+   private static final String TABLE_EXPANSION = "expansion";
+   private static final String TABLE_BARAJA_FORMATO = "baraja_formato";
+   private static final String TABLE_BARAJA_COLORES = "baraja_colores";
+   private static final String TABLE_BARAJA_MANA = "baraja_mana";
+   private static final String TABLE_MANA_PRODUCE = "mana_produce";
+   private static final String TABLE_CARTA = "carta";
+   private static final String TABLE_BARAJA_CARTA = "baraja_carta";
 
    public BbDd(String driver, String url, String usuario, String password) throws PersistenciaException {
       this.driver = driver;
@@ -32,15 +41,33 @@ public class BbDd {
       try {
          connection = getConnection();
          databaseMetaData = connection.getMetaData();
-         resultSet = databaseMetaData.getTables(null, null, null, new String[] { TABLE });
+         resultSet = databaseMetaData.getTables(null, null, null,
+               new String[] { TABLE_BARAJA, TABLE_ARTISTA, TABLE_FORMATO, TABLE_MANA, TABLE_EXPANSION,
+                     TABLE_BARAJA_FORMATO, TABLE_BARAJA_COLORES, TABLE_BARAJA_MANA, TABLE_MANA_PRODUCE, TABLE_CARTA,
+                     TABLE_BARAJA_CARTA });
          while (resultSet.next()) {
-            listaTablas.add(resultSet.getString("TABLE_NAME"));
+            listaTablas.add(resultSet.getString("TABLE_BARAJA"));
+            listaTablas.add(resultSet.getString("TABLE_ARTISTA"));
+            listaTablas.add(resultSet.getString("TABLE_FORMATO"));
+            listaTablas.add(resultSet.getString("TABLE_MANA"));
+            listaTablas.add(resultSet.getString("TABLE_EXPANSION"));
+            listaTablas.add(resultSet.getString("TABLE_BARAJA_FORMATO"));
+            listaTablas.add(resultSet.getString("TABLE_BARAJA_COLORES"));
+            listaTablas.add(resultSet.getString("TABLE_BARAJA_MANA"));
+            listaTablas.add(resultSet.getString("TABLE_MANA_PRODUCE"));
+            listaTablas.add(resultSet.getString("TABLE_CARTA"));
+            listaTablas.add(resultSet.getString("TABLE_BARAJA_CARTA"));
          }
-         if (!listaTablas.contains(TABLE_NAME)) {
+         if (!listaTablas.contains(TABLE_BARAJA) && !listaTablas.contains(TABLE_ARTISTA)) {
             // Crear tabla cuenta
-            String sqlCrearTabla = "CREATE TABLE IF NOT EXISTS CUENTA (" + " codigo VARCHAR(50) PRIMARY KEY,"
-                  + "cliente VARCHAR(9) NOT NULL," + "email VARCHAR(50) NOT NULL," + "saldo DOUBLE NOT NULL);";
-            actualizar(sqlCrearTabla);
+            String sqlCrearTablaBaraja = "CREATE TABLE baraja(" + " codigo INT PRIMARY KEY,"
+                  + "nombre VARCHAR(50)," + "precio FLOAT," + "numero_cartas INT," + "balance_mana INT" + ");";
+
+            String sqlCrearTablaArtista = "CREATE TABLE artista(" + " codigo INT AUTO_INCREMENT PRIMARY KEY," + 
+            "nombre VARCHAR(50)," + "apellido VARCHAR(50)," + "numero_artes INT"+");";
+
+            actualizar(sqlCrearTablaBaraja);
+            actualizar(sqlCrearTablaArtista);
             // Extraer de fichero las sentencias sql para insertar en la BBDD
             // String sqlInsertarDatos = null;
             // update(sqlInsertarDatos);
@@ -113,7 +140,7 @@ public class BbDd {
     * @param carta
     * @throws PersistenciaException
     */
-   public void actualizar(Carta carta) throws PersistenciaException {
+   public void modificar(Carta carta) throws PersistenciaException {
       String sql = " UPDATE FRUTA SET id = '" + carta.getId() + "', '" + " nombreCarta = '" + carta.getNombreCarta()
             + "', '" + " tipo = '" + carta.getTipo() + "', '" + " simboloExpansion = '" + carta.getSimboloExpansion()
             + "', '" + " rareza = '" + carta.getRareza() + "', '" + " costeMana = '" + carta.getCosteMana() + "', '"
