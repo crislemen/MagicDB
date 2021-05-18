@@ -2,6 +2,7 @@ package es.iespuertodelacruz.magic.controlador;
 
 import es.iespuertodelacruz.magic.api.Carta;
 import es.iespuertodelacruz.magic.exception.CartaException;
+import es.iespuertodelacruz.magic.exception.PersistenciaException;
 import es.iespuertodelacruz.magic.modelo.MagicModelo;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -9,7 +10,7 @@ import java.util.regex.Pattern;
 public class MagicController {
     MagicModelo magicModelo;
 
-    public MagicController() {
+    public MagicController() throws PersistenciaException {
         magicModelo = new MagicModelo();
     }
 

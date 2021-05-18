@@ -1,5 +1,6 @@
 import es.iespuertodelacruz.magic.api.Carta;
 import es.iespuertodelacruz.magic.exception.CartaException;
+import es.iespuertodelacruz.magic.exception.PersistenciaException;
 
 public class UtilsTest {
 
@@ -41,9 +42,10 @@ public class UtilsTest {
      * @param nombreFormato de la carta
      * @return carta
      * @throws CartaException
+     * @throws PersistenciaException
      */
     public Carta generarCarta(int id, String nombreCarta, String tipo, String simboloExpansion, char rareza, String costeMana, int costeManaConvertido, String fuerza,
-                                String resistencia, int loyalty,  String descripcion, int codigoArtista, String color, String generatedMana, String nombreFormato) throws CartaException{
+                                String resistencia, int loyalty,  String descripcion, int codigoArtista, String color, String generatedMana, String nombreFormato) throws CartaException, PersistenciaException{
         
         Carta carta = null;
         

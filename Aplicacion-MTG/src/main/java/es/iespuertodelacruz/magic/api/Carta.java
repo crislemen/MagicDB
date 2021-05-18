@@ -2,6 +2,7 @@ package es.iespuertodelacruz.magic.api;
 
 import es.iespuertodelacruz.magic.controlador.MagicController;
 import es.iespuertodelacruz.magic.exception.CartaException;
+import es.iespuertodelacruz.magic.exception.PersistenciaException;
 
 public class Carta extends MagicController{
     
@@ -42,7 +43,7 @@ public class Carta extends MagicController{
      */
     public Carta(int id, String nombreCarta, String tipo, String simboloExpansion, char rareza, String costeMana,
             int costeManaConvertido, String fuerza, String resistencia, int loyalty, String descripcion, int codigoArtista,
-            String color, String generatedMana, String nombreFormato) throws CartaException {
+            String color, String generatedMana, String nombreFormato) throws CartaException, PersistenciaException {
         
         validarColor(color);
         validarMana(costeMana);
@@ -67,7 +68,7 @@ public class Carta extends MagicController{
     /**
      * Constructor por defecto
      */
-    public Carta(){}
+    public Carta() throws PersistenciaException{}
     
     /**
      * Getter de id carta

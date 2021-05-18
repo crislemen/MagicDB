@@ -14,11 +14,11 @@ public class MagicControllerTest{
     Carta carta1;
 
     @BeforeEach
-    public void setUp() throws CartaException{
+    public void setUp() throws PersistenciaException{
         if(magicController == null){
             magicController = new MagicController();
         }
-        carta = new Carta(11111, "Bibliopex assistant", "artifact", "ORI", 'C', "{3}{G}", 4, "3", "3", 3, "descripcion", 7, "W", "{R}", "Pauper");
+        
     }
 
     /*

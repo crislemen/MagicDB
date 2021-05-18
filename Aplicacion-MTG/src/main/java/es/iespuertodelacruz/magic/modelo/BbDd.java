@@ -7,16 +7,52 @@ import es.iespuertodelacruz.magic.api.Carta;
 import es.iespuertodelacruz.magic.exception.PersistenciaException;
 
 public class BbDd {
+
    private String driver;
    private String url;
    private String usuario;
    private String password;
 
-   public BbDd(String driver, String url, String usuario, String password) {
+   private static final String TABLE = "TABLE";
+   private static final String TABLE_NAME = "CUENTA";
+
+   public BbDd(String driver, String url, String usuario, String password) throws PersistenciaException {
       this.driver = driver;
       this.url = url;
       this.usuario = usuario;
       this.password = password;
+      inicializarDdBd();
+   }
+
+   private void inicializarDdBd() throws PersistenciaException {
+      DatabaseMetaData databaseMetaData;
+      Connection connection = null;
+      ResultSet resultSet = null;
+      ArrayList<String> listaTablas = new ArrayList<>();
+      try {
+         connection = getConnection();
+         databaseMetaData = connection.getMetaData();
+         resultSet = databaseMetaData.getTables(null, null, null, new String[] { TABLE });
+         while (resultSet.next()) {
+            listaTablas.add(resultSet.getString("TABLE_NAME"));
+         }
+         if (!listaTablas.contains(TABLE_NAME)) {
+            // Crear tabla cuenta
+            String sqlCrearTabla = "CREATE TABLE IF NOT EXISTS CUENTA (" + " codigo VARCHAR(50) PRIMARY KEY,"
+                  + "cliente VARCHAR(9) NOT NULL," + "email VARCHAR(50) NOT NULL," + "saldo DOUBLE NOT NULL);";
+            actualizar(sqlCrearTabla);
+            // Extraer de fichero las sentencias sql para insertar en la BBDD
+            // String sqlInsertarDatos = null;
+            // update(sqlInsertarDatos);
+            // Insertar datos
+         }
+
+      } catch (Exception e) {
+         throw new PersistenciaException("Se ha producido un error en la inicializacion de la BBDD", e);
+      } finally {
+         closeConecction(connection, null, resultSet);
+      }
+
    }
 
    /**
@@ -25,18 +61,18 @@ public class BbDd {
     * @return conecction
     * @throws PersistenciaException error controlado
     */
-   private Connection getConnection() throws PersistenciaException {
+   public Connection getConnection() throws PersistenciaException {
       Connection connection = null;
 
       try {
          Class.forName(driver);
-         if (usuario == null || password == null) {
-            connection = DriverManager.getConnection(url);
+         if (usuario != null && password != null) {
+            connection = DriverManager.getConnection(url, usuario, password);
          } else {
-            DriverManager.getConnection(url, usuario, password);
+            connection = DriverManager.getConnection(url);
          }
-      } catch (Exception exception) {
-         throw new PersistenciaException("No se ha podido establecer la coneccion con la BBDD", exception);
+      } catch (ClassNotFoundException | SQLException exception) {
+         throw new PersistenciaException("No se ha podido estabalecer la conexion", exception);
       }
 
       return connection;
@@ -77,7 +113,7 @@ public class BbDd {
     * @param carta
     * @throws PersistenciaException
     */
-   public void modificar(Carta carta) throws PersistenciaException {
+   public void actualizar(Carta carta) throws PersistenciaException {
       String sql = " UPDATE FRUTA SET id = '" + carta.getId() + "', '" + " nombreCarta = '" + carta.getNombreCarta()
             + "', '" + " tipo = '" + carta.getTipo() + "', '" + " simboloExpansion = '" + carta.getSimboloExpansion()
             + "', '" + " rareza = '" + carta.getRareza() + "', '" + " costeMana = '" + carta.getCosteMana() + "', '"
@@ -171,7 +207,7 @@ public class BbDd {
     * metodo que busca una carta dentro de la tabla carta por id
     * 
     * @param id de la carta a buscar
-    * @return carta 
+    * @return carta
     * @throws PersistenciaException error controlado
     */
    public Carta obtenerCartaId(int id) throws PersistenciaException {
@@ -185,8 +221,10 @@ public class BbDd {
       }
       return carta;
    }
+
    /**
     * Metodo que busca una carta por nombre
+    * 
     * @param nombre de la carta
     * @return carta
     * @throws PersistenciaException
@@ -202,8 +240,10 @@ public class BbDd {
       }
       return carta;
    }
+
    /**
     * Metodo que busca una carta por costeMana
+    * 
     * @param costeMana de la carta
     * @return carta
     * @throws PersistenciaException

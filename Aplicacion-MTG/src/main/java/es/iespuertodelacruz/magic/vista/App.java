@@ -5,14 +5,16 @@ import java.util.Scanner;
 
 import es.iespuertodelacruz.magic.api.Carta;
 import es.iespuertodelacruz.magic.controlador.MagicController;
+import es.iespuertodelacruz.magic.exception.CartaException;
+import es.iespuertodelacruz.magic.exception.PersistenciaException;
 import es.iespuertodelacruz.magic.modelo.MagicModelo;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CartaException, PersistenciaException {
         menu();
     }
 
-    private static void menu() {
+    private static void menu() throws CartaException, PersistenciaException {
 
         Scanner sn = new Scanner(System.in);
         boolean salir = false;
@@ -155,7 +157,7 @@ public class App {
         }
 
     }
-    public static void crearCarta() {
+    public static void crearCarta() throws CartaException, PersistenciaException {
         Scanner sn = new Scanner(System.in);
         System.out.println("Inserte los siguientes valores");
         System.out.println("Inserte la Id de la carta");

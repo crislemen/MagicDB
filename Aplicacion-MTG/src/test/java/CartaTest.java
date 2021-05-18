@@ -1,6 +1,7 @@
 
 import es.iespuertodelacruz.magic.api.Carta;
 import es.iespuertodelacruz.magic.exception.CartaException;
+import es.iespuertodelacruz.magic.exception.PersistenciaException;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +17,7 @@ public class CartaTest extends UtilsTest{
     private static final String LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD = "Los valores del objeto no son los esperados";
     
     @BeforeEach
-    public void setUp() throws CartaException {
+    public void setUp() throws CartaException, PersistenciaException {
         if(carta == null){
             carta = new Carta();
         }

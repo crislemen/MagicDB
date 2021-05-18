@@ -4,11 +4,10 @@ import es.iespuertodelacruz.magic.exception.PersistenciaException;
 
 public class MagicModelo {
     
-    BbDd persistencia;
+    DdBbSqLite persistencia;
 
-    public MagicModelo(){
-        persistencia = new BbDd("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/test"
-        , "minty", "greatsqldb");
+    public MagicModelo() throws PersistenciaException{
+        persistencia = new DdBbSqLite(null, null);
     }
 
     /**
