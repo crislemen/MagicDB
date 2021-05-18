@@ -194,7 +194,7 @@ public class BbDd {
    public Carta obtenerCartaNombre(String nombreCarta) throws PersistenciaException {
       Carta carta = null;
       ArrayList<Carta> listaCartas = null;
-      String sql = "SELECT * FROM carta where id=";
+      String sql = "SELECT * FROM carta where nombre_carta=";
       sql = sql + "'" + nombreCarta + "'";
       listaCartas = obtenerListado(sql);
       if (!listaCartas.isEmpty()) {
@@ -211,7 +211,7 @@ public class BbDd {
    public Carta obtenerCartaMana(String costeMana) throws PersistenciaException {
       Carta carta = null;
       ArrayList<Carta> listaCartas = null;
-      String sql = "SELECT * FROM carta where id=";
+      String sql = "SELECT * FROM carta where coste_mana=";
       sql = sql + "'" + costeMana + "'";
       listaCartas = obtenerListado(sql);
       if (!listaCartas.isEmpty()) {
@@ -228,7 +228,7 @@ public class BbDd {
     * @param resultSet
     * @throws PersistenciaException
     */
-   private void closeConecction(Connection connection, Statement statement, ResultSet resultSet)
+   public void closeConecction(Connection connection, Statement statement, ResultSet resultSet)
          throws PersistenciaException {
       try {
          if (resultSet != null) {
