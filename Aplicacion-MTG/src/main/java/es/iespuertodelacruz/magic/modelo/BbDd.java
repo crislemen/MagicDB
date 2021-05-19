@@ -1,8 +1,10 @@
 package es.iespuertodelacruz.magic.modelo;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 
+import es.iespuertodelacruz.magic.api.Artista;
 import es.iespuertodelacruz.magic.api.Carta;
 import es.iespuertodelacruz.magic.exception.PersistenciaException;
 
@@ -12,6 +14,7 @@ public class BbDd {
    private String url;
    private String usuario;
    private String password;
+   Fichero fichero;
 
    private static final String TABLE_BARAJA = "artista";
    private static final String TABLE_ARTISTA = "artista";
@@ -30,6 +33,7 @@ public class BbDd {
       this.url = url;
       this.usuario = usuario;
       this.password = password;
+      fichero = new Fichero();
       inicializarDdBd();
    }
 
@@ -158,6 +162,24 @@ public class BbDd {
       }
 
       return connection;
+   }
+   /**
+    * Metodo que inserta todos los artistas que hay en el fichero InsertsArtista.sql
+    * @throws PersistenciaException
+    * @throws IOException
+    */
+   public void insertarArtistas() throws PersistenciaException, IOException {
+      String sql = fichero.leerResource("sql/InsertsArtista.sql");
+      actualizar(sql);
+   }
+   /**
+    * Metodo que inserta todos los valores que hay en el fichero InsertsBaraja.sql
+    * @throws PersistenciaException
+    * @throws IOException
+    */
+   public void insertarBarajas() throws PersistenciaException, IOException {
+      String sql = fichero.leerResource("sql/InsertsBaraja.sql");
+      actualizar(sql);
    }
 
    /**

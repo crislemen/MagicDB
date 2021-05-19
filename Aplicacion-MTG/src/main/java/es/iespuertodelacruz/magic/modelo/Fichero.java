@@ -3,6 +3,7 @@ package es.iespuertodelacruz.magic.modelo;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Scanner;
 
 import es.iespuertodelacruz.magic.exception.PersistenciaException;
@@ -43,6 +44,19 @@ public class Fichero {
           scanner.close();
        }
     }
+    return informacion.toString();
+ }
+ /**
+  * Metodo que le un fichero que está en la carpeta resources
+  * @param nombre
+  * @return
+  * @throws IOException
+  */
+ public String leerResource(String nombre) throws IOException {
+   StringBuilder informacion = null;
+    ClassLoader classLoader = getClass().getClassLoader();
+    File file = new File(classLoader.getResource(nombre).getFile());
+    String contenido = new String(Files.readAllBytes(file.toPath()));
     return informacion.toString();
  }
 
