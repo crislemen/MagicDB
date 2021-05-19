@@ -19,14 +19,25 @@ public class MagicControllerTest{
             magicController = new MagicController();
         }
         
+        
     }
 
-    /*
+    
     @Test
-    public void verificarManaTest(){
-        String costeMana = "{3}{G";
-        assertEquals("{3}{G" , magicController.validarMana(costeMana), "");
-    }*/
+    public void verificarManaTest() {
+        
+        String coste_Mana = "{2}{W";
+        try {
+            magicController.validarMana(coste_Mana);
+            
+        } catch (CartaException e) {
+            
+            assertTrue(e.getMessage().contains("no tiene"));
+        }
+        
+        
+        
+    }
     @Test
     public void h(){
         assertTrue(true);
@@ -47,15 +58,5 @@ public class MagicControllerTest{
         
     }*/
 
-    /*
-    @Test
-    public void insertarTest(){
-        try {
-            
-            magicController.insertar(carta);
-        } catch (PersistenciaException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } 
-    }*/
+    
 }

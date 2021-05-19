@@ -54,9 +54,9 @@ public class MagicController {
      * @param costeMana a comprobar
      * @throws CartaException error controlado
      */
-    public void validarMana(String costeMana) throws CartaException{
+    public boolean validarMana(String costeMana) throws CartaException{
 
-        String patronMana = "^[{]{1}([0-9,X])[}]{1}|([{]{1}[W,R,G,B,U]{1}[}]{1}){0,25}$";
+        String patronMana = "^[{]{1}([0-9,X])[}]{1}([{]{1}[W,R,G,B,U]{1}[}]{1}){0,25}$";
        
         boolean resultado = false;
         Pattern pattern;
@@ -65,11 +65,13 @@ public class MagicController {
 
         pattern = Pattern.compile(patronMana);
         matcher = pattern.matcher(costeMana);
-        resultado = matcher.find();
+        resultado = matcher.matches();
 
         if (!resultado) {
-            throw new CartaException("El coste de mana:" +costeMana+ ", no tiene un formato correcto");
+            throw new CartaException("El coste de mana: " +costeMana+ " , no tiene un formato correcto");
         }
+
+        return resultado;
        
     }
 
