@@ -99,7 +99,7 @@ public class BbDd {
                   + "FOREIGN KEY (nombre_mana) REFERENCES mana(nombre)" + ");";
 
             String sqlCrearTablaCarta = "CREATE TABLE IF NOT EXISTS carta(" + "id INT PRIMARY KEY,"
-                  + "nombre_carta VARCHAR(80)," + "tipo TEXT" + "simbolo_expansion VARCHAR(3)," + "rareza CHAR,"
+                  + "nombre_carta VARCHAR(80)," + "tipo TEXT," + "simbolo_expansion VARCHAR(3)," + "rareza CHAR,"
                   + "coste_mana TEXT," + "coste_mana_convertido INT," + "fuerza TEXT," + "resistencia TEXT,"
                   + "loyalty INT," + "descripcion TEXT," + "codigo_artista INT," + "color TEXT,"
                   + "generated_mana text," + "nombre_formato VARCHAR(50),"
