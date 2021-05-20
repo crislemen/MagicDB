@@ -1,6 +1,7 @@
 package es.iespuertodelacruz.magic.modelo;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -168,8 +169,8 @@ public class BbDd {
     * @throws PersistenciaException
     * @throws IOException
     */
-   public void insertarArtistas() throws PersistenciaException, IOException {
-      String sql = fichero.leerResource("sql/InsertsArtista.sql");
+   public void insertarArtistas() throws PersistenciaException, IOException{
+      String sql = fichero.leerResource("./src/main/resources/sql/InsertsArtista.sql");
       actualizar(sql);
    }
    /**

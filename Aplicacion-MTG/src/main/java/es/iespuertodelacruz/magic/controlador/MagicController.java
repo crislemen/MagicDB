@@ -77,9 +77,10 @@ public class MagicController {
 
     /**
      * Metodo que inserta una carta
+     * @throws PersistenciaException
      */
-    public void insertar() {
-        
+    public void insertar(Carta carta) throws PersistenciaException {
+        magicModelo.insertarCarta(carta);
     }
 
     /**
@@ -90,12 +91,31 @@ public class MagicController {
     }
 
     /**
-     * Metodo que busca una carta
+     * Metodo encargado de buscar por el id
+     * @param carta a buscar
+     * @throws PersistenciaException error controlado
      */
-    public void buscar() {
-
+    public void buscarPorID(Carta carta) throws PersistenciaException {
+        magicModelo.buscarPorID(carta);
     }
 
+    /**
+     * Metodo encargado de buscar por el nombre
+     * @param carta a buscar
+     * @throws PersistenciaException error controlado
+     */
+    public void buscarPorNombre(Carta carta) throws PersistenciaException{
+        magicModelo.buscarPorNombre(carta);
+    }
+
+    /**
+     * Metodo encargado de buscar por el coste de mana
+     * @param carta a buscar
+     * @throws PersistenciaException error controlado
+     */
+    public void buscarPorCosteMana(Carta carta) throws PersistenciaException{
+        magicModelo.buscarPorCosteDeMana(carta);
+    }
     /**
      * Metodo que modifica una carta
      */

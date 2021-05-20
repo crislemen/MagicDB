@@ -98,6 +98,12 @@ public class Artista {
     public void setNumeroArtes(int numeroArtes) {
         this.numeroArtes = numeroArtes;
     }
+
+    @Override
+    public String toString() {
+        return "Artista [apellido=" + apellido + ", codigo=" + codigo + ", nombre=" + nombre + ", numeroArtes="
+                + numeroArtes + "]";
+    }
     
     
     
