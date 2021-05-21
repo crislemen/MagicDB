@@ -50,14 +50,11 @@ public class Fichero {
    }
 
    /**
-    * Metodo que le un fichero que está en la carpeta resources
-    * 
-    * @param nombre
-    * @return
-    * @return
-    * @return
-    * @throws IOException
-    * @throws PersistenciaException
+    * Metodo encargado de leer desde resources
+    * @param nombre del fichero
+    * @return content
+    * @throws IOException error no controlado
+    * @throws PersistenciaException error controlado
     */
    public String leerResource(String nombre) throws IOException, PersistenciaException {
 
@@ -103,9 +100,8 @@ public class Fichero {
 
    /**
     * Funcion que verifica si el fichero existo
-    * 
     * @param fichero
-    * @return
+    * @return true/false
     */
    public boolean validarFichero(File fichero) {
       return fichero.exists();
