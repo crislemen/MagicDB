@@ -15,7 +15,7 @@ public class App {
     }
 
     private static void menu() throws CartaException, PersistenciaException {
-
+    Carta carta = null;
         Scanner sn = new Scanner(System.in);
         boolean salir = false;
         MagicController magicController;
