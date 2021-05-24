@@ -99,6 +99,16 @@ public class Artista {
         this.numeroArtes = numeroArtes;
     }
     
+
+    @Override
+    public String toString() {
+        return "{" +
+            " codigo='" + getCodigo() + "'" +
+            ", nombre='" + getNombre() + "'" +
+            ", apellido='" + getApellido() + "'" +
+            ", numeroArtes='" + getNumeroArtes() + "'" +
+            "}";
+    }
     
     
 }

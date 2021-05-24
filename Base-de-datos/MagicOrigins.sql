@@ -5694,10 +5694,10 @@ INSERT INTO baraja_carta VALUES(4, 398565);
 INSERT INTO baraja_carta VALUES(5, 398656);
 
 
---Procedimientos almacenados--
+-- Procedimientos almacenados --
 
---pa_artista_cartas--
---Este procedimiento funciona de manera que dando un nombre de artista. Devuelva los nomnbres de las cartas que tiene este artista.--
+-- pa_artista_cartas --
+--Este procedimiento funciona de manera que dando un nombre de artista. Devuelva los nomnbres de las cartas que tiene este artista. --
  drop procedure if EXISTS pa_artista_carta;
  delimiter //
  create procedure pa_artista_carta(in p_artista varchar(50))
@@ -5707,6 +5707,6 @@ INSERT INTO baraja_carta VALUES(5, 398656);
      where artista.nombre = p_artista;
  end //
  delimiter ;
- --Vamos a comprobar que ha funcionado el almacenamiento almacenado--
+ -- Vamos a comprobar que ha funcionado el almacenamiento almacenado --
  call pa_artista_carta('Winona');
---END--
+-- END --

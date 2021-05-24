@@ -177,10 +177,20 @@ public class BbDd {
     * @throws PersistenciaException
     * @throws IOException
     */
-   public void insertarBarajas() throws PersistenciaException, IOException {
-      String sql = fichero.leerResource("sql/InsertsBaraja.sql");
+   public void insertarBarajas(String sql) throws PersistenciaException, IOException {
+       sql = fichero.leerResource("sql/InsertsBaraja.sql");
       actualizar(sql);
    }
+   /**
+    * Metodo que inserta todos los valores que hay en el fichero InsertsFormato.sql
+    * @throws PersistenciaException
+    * @throws IOException
+    */
+   public void insertarFormatos() throws PersistenciaException, IOException {
+      String sql = fichero.leerResource("sql/InsertsFormato.sql");
+      actualizar(sql);
+   }
+   
 
    /**
     * Metodo encargado de insertar una carta en la BBDD en la tabla carta
