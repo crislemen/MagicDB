@@ -98,6 +98,7 @@ public class Artista {
     public void setNumeroArtes(int numeroArtes) {
         this.numeroArtes = numeroArtes;
     }
+
     
 
     @Override

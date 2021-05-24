@@ -7,7 +7,7 @@ import es.iespuertodelacruz.magic.controlador.MagicController;
 import es.iespuertodelacruz.magic.exception.CartaException;
 import es.iespuertodelacruz.magic.exception.PersistenciaException;
 
-public class MagicControllerTest{
+public class MagicControllerTest extends UtilsTest{
     
     MagicController magicController;
     Carta carta;
@@ -18,44 +18,74 @@ public class MagicControllerTest{
         if(magicController == null){
             magicController = new MagicController();
         }
-        
-    }
-
-    /*
-    @Test
-    public void verificarManaTest(){
-        String costeMana = "{3}{G";
-        assertEquals("{3}{G" , magicController.validarMana(costeMana), "");
-    }*/
-    @Test
-    public void h(){
-        assertTrue(true);
-    }
-    /*
-    @Test
-    public void buscarPorColorTest(){}
-
-    @Test
-    public void buscarPorCosteDeManaTest(){}
-
-    @Test
-    public void buscarPorNombreTest(){}
-
-    @Test
-    public void buscarPorIDTest(){
-        
-        
-    }*/
-
-    /*
-    @Test
-    public void insertarTest(){
         try {
+            carta = generarCarta(11111, "Bibliopex assistant", "artifact", "ORI", 'C', "{3}{G}", 4, "3", "3", 3, "descripcion", 7, "W", "{R}", "Pauper");
+        } catch (CartaException e) {
+            fail("Se ha producido un error a la hora de inicializar el test");
+        }     
+    }
+
+    
+    @Test
+    public void verificarManaTest() {
+        
+        String coste_Mana = "{2}{W";
+        try {
+            magicController.validarMana(coste_Mana);
             
-            magicController.insertar(carta);
+        } catch (CartaException e) {
+            
+            assertTrue(e.getMessage().contains("no tiene"));
+        }
+        
+        
+        
+    }
+    @Test 
+    public void verificarColorTest(){
+        String color = "{M}";
+
+        try {
+            magicController.validarColor(color);
+        } catch (CartaException e) {
+            assertTrue(e.getMessage().contains("no tiene"));
+        }
+
+    }
+    
+    @Test
+    public void buscarCartaPorId(){
+
+        try {
+            magicController.buscarPorID(carta);
         } catch (PersistenciaException e) {
-            // TODO Auto-generated catch block
+            e.getMessage().contains("s");
+        }
+    }
+
+    @Test
+    public void buscarPorNombreTest(){
+
+        try {
+            magicController.buscarPorNombre(carta);
+        } catch (PersistenciaException e) {
+           
             e.printStackTrace();
-        } 
-    }*/
+        }
+    }
+
+    @Test
+    public void buscarPorCosteManaTest(){
+
+        try {
+            magicController.buscarPorCosteMana(carta);
+        } catch (PersistenciaException e) {
+            
+            e.printStackTrace();
+        }
+    }
+
+
+
+    
 }

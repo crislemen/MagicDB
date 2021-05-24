@@ -54,9 +54,9 @@ public class MagicController {
      * @param costeMana a comprobar
      * @throws CartaException error controlado
      */
-    public void validarMana(String costeMana) throws CartaException{
+    public boolean validarMana(String costeMana) throws CartaException{
 
-        String patronMana = "^[{]{1}([0-9,X])[}]{1}|([{]{1}[W,R,G,B,U]{1}[}]{1}){0,25}$";
+        String patronMana = "^[{]{1}([0-9,X])[}]{1}([{]{1}[W,R,G,B,U]{1}[}]{1}){0,25}$";
        
         boolean resultado = false;
         Pattern pattern;
@@ -65,19 +65,22 @@ public class MagicController {
 
         pattern = Pattern.compile(patronMana);
         matcher = pattern.matcher(costeMana);
-        resultado = matcher.find();
+        resultado = matcher.matches();
 
         if (!resultado) {
-            throw new CartaException("El coste de mana:" +costeMana+ ", no tiene un formato correcto");
+            throw new CartaException("El coste de mana: " +costeMana+ " , no tiene un formato correcto");
         }
+
+        return resultado;
        
     }
 
     /**
      * Metodo que inserta una carta
+     * @throws PersistenciaException
      */
-    public void insertar() {
-        
+    public void insertar(Carta carta) throws PersistenciaException {
+        magicModelo.insertarCarta(carta);
     }
 
     /**
@@ -88,12 +91,31 @@ public class MagicController {
     }
 
     /**
-     * Metodo que busca una carta
+     * Metodo encargado de buscar por el id
+     * @param carta a buscar
+     * @throws PersistenciaException error controlado
      */
-    public void buscar() {
-
+    public void buscarPorID(Carta carta) throws PersistenciaException {
+        magicModelo.buscarPorID(carta);
     }
 
+    /**
+     * Metodo encargado de buscar por el nombre
+     * @param carta a buscar
+     * @throws PersistenciaException error controlado
+     */
+    public void buscarPorNombre(Carta carta) throws PersistenciaException{
+        magicModelo.buscarPorNombre(carta);
+    }
+
+    /**
+     * Metodo encargado de buscar por el coste de mana
+     * @param carta a buscar
+     * @throws PersistenciaException error controlado
+     */
+    public void buscarPorCosteMana(Carta carta) throws PersistenciaException{
+        magicModelo.buscarPorCosteDeMana(carta);
+    }
     /**
      * Metodo que modifica una carta
      */

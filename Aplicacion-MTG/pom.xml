@@ -44,6 +44,12 @@
       <version>${junit.jupiter.version}</version>
       <scope>test</scope>
     </dependency>
+  
+    <dependency>
+      <groupId>io.microservices.tools.canvas</groupId>
+      <artifactId>microservice-canvas-cli</artifactId>
+      <version>0.7.0.TEST.RELEASE</version>
+    </dependency>
   </dependencies>
 
   <build>

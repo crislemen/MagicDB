@@ -15,7 +15,7 @@ public class App {
     }
 
     private static void menu() throws CartaException, PersistenciaException {
-
+    Carta carta = null;
         Scanner sn = new Scanner(System.in);
         boolean salir = false;
         MagicController magicController;
@@ -55,7 +55,7 @@ public class App {
                                         break;
                                     case 1:
                                         crearCarta();
-                                        magicController.insertar();
+                                        //magicController.insertar(carta);
                                         break;
                                     case 2:
                                         crearCarta();
@@ -76,17 +76,17 @@ public class App {
                                         case 1:
                                         System.out.println("Inserta el nombre de la carta a buscar");
                                         String nombre = sn.next();
-                                        magicController.buscar();
+                                       // magicController.buscarPorNombre(carta);
                                         break;
                                         case 2:
                                         System.out.println("Inserta el id de la carta a buscar");
                                         int id = sn.nextInt();
-                                        magicController.buscar();
+                                       // magicController.buscarPorID(carta);
                                         break;
                                         case 3:
                                         System.out.println("Inserta el coste de mana");
                                         String costeMana = sn.next();
-                                        magicController.buscar();
+                                       // magicController.buscarPorCosteMana(carta);
                                         break;
                                     }
                                         break;
@@ -123,17 +123,17 @@ public class App {
                                         case 1:
                                         System.out.println("Inserta el nombre de la carta a buscar");
                                         String nombre = sn.next();
-                                        magicController.buscar();
+                                        //magicController.buscarPorNombre(carta);;
                                         break;
                                         case 2:
                                         System.out.println("Inserta el id de la carta a buscar");
                                         int id = sn.nextInt();
-                                        magicController.buscar();
+                                       // magicController.buscarPorID(carta);
                                         break;
                                         case 3:
                                         System.out.println("Inserta el coste de mana");
                                         String costeMana = sn.next();
-                                        magicController.buscar();
+                                       // magicController.buscarPorCosteMana(carta);
                                         break;
                                     }
                                         break;
