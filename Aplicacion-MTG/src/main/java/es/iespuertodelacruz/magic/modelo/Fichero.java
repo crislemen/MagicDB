@@ -1,6 +1,7 @@
 package es.iespuertodelacruz.magic.modelo;
 
 import java.io.*;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
@@ -13,7 +14,7 @@ import es.iespuertodelacruz.magic.exception.PersistenciaException;
 
 public class Fichero {
    private static final String RETORNO_CARRO = "\n";
-
+   private static final String ARTISTA = "/InsertsArtista.sql";
    /**
     * Funcion encargada de leer un fichero
     * 
@@ -56,20 +57,9 @@ public class Fichero {
     * @throws IOException error no controlado
     * @throws PersistenciaException error controlado
     */
-   public String leerResource(String nombre) throws IOException, PersistenciaException {
-
-      
-      ClassLoader classLoader = getClass().getClassLoader();
-
-      File file = new File(classLoader.getResource(nombre).getFile());
-      
-      if(!file.exists()){
-         throw new PersistenciaException("El fichero con nombre "+nombre+ " no existe en el path "+file.getAbsolutePath());
-      }
-      
-      String content;
-      content = new String(Files.readAllBytes(file.toPath()));
-      return content;
+   public String leerResource(String nombre){
+          
+      return null;
 
    }
 
