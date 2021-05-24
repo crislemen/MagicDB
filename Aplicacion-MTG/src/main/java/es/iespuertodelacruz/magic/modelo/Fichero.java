@@ -6,8 +6,10 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.util.Scanner;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.util.ResourceUtils;
 
 import es.iespuertodelacruz.magic.exception.PersistenciaException;
 
@@ -58,18 +60,17 @@ public class Fichero {
     */
    public String leerResource(String nombre) throws IOException, PersistenciaException {
 
-      
-      ClassLoader classLoader = getClass().getClassLoader();
+   
+        // The class loader that loaded the class
+        ClassLoader classLoader = getClass().getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(nombre);
 
-      File file = new File(classLoader.getResource(nombre).getFile());
-      
-      if(!file.exists()){
-         throw new PersistenciaException("El fichero con nombre "+nombre+ " no existe en el path "+file.getAbsolutePath());
-      }
-      
-      String content;
-      content = new String(Files.readAllBytes(file.toPath()));
-      return content;
+        // the stream holding the file content
+        if (inputStream == null) {
+            throw new IllegalArgumentException("file not found! " + nombre);
+        } else {
+            return inputStream.toString();
+        }
 
    }
 
@@ -100,6 +101,7 @@ public class Fichero {
 
    /**
     * Funcion que verifica si el fichero existo
+    * 
     * @param fichero
     * @return true/false
     */

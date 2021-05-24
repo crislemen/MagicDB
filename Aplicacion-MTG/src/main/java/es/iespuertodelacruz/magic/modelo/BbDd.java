@@ -170,7 +170,7 @@ public class BbDd {
     * @throws IOException
     */
    public void insertarArtistas() throws PersistenciaException, IOException{
-      String sql = fichero.leerResource("./src/main/resources/sql/InsertsArtista.sql");
+      String sql = fichero.leerResource("/sql/InsertsArtista.sql");
       actualizar(sql);
    }
    /**
@@ -178,19 +178,23 @@ public class BbDd {
     * @throws PersistenciaException
     * @throws IOException
     */
+    /** 
    public void insertarBarajas(String sql) throws PersistenciaException, IOException {
        sql = fichero.leerResource("sql/InsertsBaraja.sql");
       actualizar(sql);
    }
+   */
    /**
     * Metodo que inserta todos los valores que hay en el fichero InsertsFormato.sql
     * @throws PersistenciaException
     * @throws IOException
     */
+    /** 
    public void insertarFormatos() throws PersistenciaException, IOException {
       String sql = fichero.leerResource("sql/InsertsFormato.sql");
       actualizar(sql);
    }
+   */
    
 
    /**
