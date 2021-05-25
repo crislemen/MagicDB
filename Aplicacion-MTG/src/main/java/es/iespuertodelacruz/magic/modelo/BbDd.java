@@ -233,7 +233,7 @@ public class BbDd {
     * @param sql a ejecutar
     * @throws PersistenciaException error controlado
     */
-   private void actualizar(String sql) throws PersistenciaException {
+   public void actualizar(String sql) throws PersistenciaException {
       Statement statement = null;
       Connection connection = null;
       try {
@@ -254,7 +254,7 @@ public class BbDd {
     * @return lista de resultados
     * @throws PersistenciaException error controlado
     */
-   private ArrayList<Carta> buscar(String sql) throws PersistenciaException {
+   public ArrayList<Carta> buscar(String sql) throws PersistenciaException {
       ArrayList<Carta> listaCartas = new ArrayList<>();
       Statement statement = null;
       ResultSet resultSet = null;

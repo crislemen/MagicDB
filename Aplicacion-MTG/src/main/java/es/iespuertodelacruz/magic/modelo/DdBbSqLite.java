@@ -1,7 +1,5 @@
 package es.iespuertodelacruz.magic.modelo;
 
-import javax.tools.Diagnostic;
-
 import es.iespuertodelacruz.magic.exception.PersistenciaException;
 
 public class DdBbSqLite extends BbDd {

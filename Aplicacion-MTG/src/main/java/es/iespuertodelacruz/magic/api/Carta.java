@@ -45,8 +45,7 @@ public class Carta extends MagicController{
             int costeManaConvertido, String fuerza, String resistencia, int loyalty, String descripcion, int codigoArtista,
             String color, String generatedMana, String nombreFormato) throws CartaException, PersistenciaException {
         
-        validarColor(color);
-        validarMana(costeMana);
+        
 
         this.id = id;
         this.nombreCarta = nombreCarta;
@@ -63,6 +62,9 @@ public class Carta extends MagicController{
         this.color = color;
         this.generatedMana = generatedMana;
         this.nombreFormato = nombreFormato;
+        validarMana(costeMana);
+        validarColor(color);
+        
     }
 
     /**

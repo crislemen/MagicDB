@@ -17,11 +17,60 @@ public class MagicController {
     /**
      * Metodo encargado de la validacion del objeto
      * @param carta a vlaidar
+     * @throws CartaException
      */
-    public void validar(Carta carta){
+    public void validar(Carta carta) throws CartaException{
+        String mensaje = "";
 
+        if(carta == null){
+            mensaje = "Se esta validando un objeto nulo";
+            throw new CartaException(mensaje);
+        }
+        if(carta.getId() == 0){
+            mensaje = "El id es 0 o esta vacio";
+        }
+        if(carta.getNombreCarta() == null || carta.getNombreCarta().isEmpty()){
+            mensaje += "El nombre de la carta el nulo o esta vacio";
+        }
+        if(carta.getTipo() == null || carta.getTipo().isEmpty()){
+            mensaje += "El tipo de la carta el nulo o esta vacio";
+        }
+        if(carta.getSimboloExpansion() == null || carta.getSimboloExpansion().isEmpty()){
+            mensaje += "El simbolo de expansion de la carta el nulo o esta vacio";
+        }
+        if(carta.getRareza() == '\u0000'){
+            mensaje += "La rareza de la carta es nulo o esta vacio";
+        }       
+        if(carta.getCosteManaConvertido() <= -1){
+            mensaje += "El coste de mana convertido de la carta es nulo, esta vacio o es invalido";
+        }
+        if(carta.getFuerza() == null || carta.getFuerza().isEmpty()){
+            mensaje += "La fuerza de la carta es nulo o esta vacio";
+        }
+        if(carta.getResistencia() == null || carta.getResistencia().isEmpty()){
+            mensaje += "La resistencia de la carta es nulo o esta vacio";
+        }
+        if(carta.getLoyalty() <= -1){
+            mensaje += "La lealtad de la carta el nulo, esta vacio o es invalido";
+        }
+        if(carta.getDescripcion() == null || carta.getDescripcion().isEmpty()){
+            mensaje += "La descripcion de la carta es nulo o esta vacio";
+        }
+        if(carta.getCodigoArtista() <= 0){
+            mensaje += "El codigo del artista el nulo, esta vacio o es invalido";
+        }
+        if(carta.getGeneratedMana() == null || carta.getGeneratedMana().isEmpty()){
+            mensaje += "El mana que produce es nulo o esta vacio";
+        }
+        if(carta.getNombreFormato() == null || carta.getNombreFormato().isEmpty()){
+            mensaje += "El nombre del formato es nulo o esta vacio";
+        }
+        if(!mensaje.isEmpty()){
+            throw new CartaException(mensaje);
+        }
         
 
+       
     }
 
     /**
@@ -30,8 +79,8 @@ public class MagicController {
      * @param color a comprobar
      * @throws CartaException error controlado
      */
-    public void validarColor(String color) throws CartaException{
-
+    public boolean validarColor(String color) throws CartaException{
+        
         String patronColor = "^[W,R,G,B,U]{1}$";
 
         boolean resultado = false;
@@ -45,6 +94,7 @@ public class MagicController {
         if (!resultado) {
             throw new CartaException("El coste de mana:" +color+ ", no tiene un formato correcto");
         }
+        return resultado;
     }
 
     
@@ -77,6 +127,7 @@ public class MagicController {
 
     /**
      * Metodo que inserta una carta
+     * @param carta a isnertar
      * @throws PersistenciaException
      */
     public void insertar(Carta carta) throws PersistenciaException {
@@ -85,9 +136,11 @@ public class MagicController {
 
     /**
      * Metodo que elimina una carta
+     * @param carta  a eliminar
+     * @throws PersistenciaException
      */
-    public void eliminar() {
-
+    public void eliminar(Carta carta) throws PersistenciaException {
+        magicModelo.eliminar(carta);
     }
 
     /**

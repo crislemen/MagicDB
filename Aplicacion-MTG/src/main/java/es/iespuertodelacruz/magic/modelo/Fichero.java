@@ -1,15 +1,7 @@
 package es.iespuertodelacruz.magic.modelo;
 
 import java.io.*;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.util.Scanner;
-
-import org.apache.commons.io.IOUtils;
-import org.springframework.core.io.ClassPathResource;
-
 import es.iespuertodelacruz.magic.exception.PersistenciaException;
 
 public class Fichero {

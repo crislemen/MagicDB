@@ -10,22 +10,67 @@ import es.iespuertodelacruz.magic.exception.PersistenciaException;
 public class MagicControllerTest extends UtilsTest{
     
     MagicController magicController;
+    Carta cartaVacia;
     Carta carta;
-    Carta carta1;
-
+    Carta carta3 = null;
+    private static final String LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD = "Los valores del objeto no son los esperados";
+    
     @BeforeEach
-    public void setUp() throws PersistenciaException{
+    public void setUp() throws PersistenciaException, CartaException{
         if(magicController == null){
             magicController = new MagicController();
         }
-        try {
-            carta = generarCarta(11111, "Bibliopex assistant", "artifact", "ORI", 'C', "{3}{G}", 4, "3", "3", 3, "descripcion", 7, "W", "{R}", "Pauper");
-        } catch (CartaException e) {
-            fail("Se ha producido un error a la hora de inicializar el test");
-        }     
+        
+        cartaVacia = new Carta(0, "", "", "", CHAR_NULL, "{3}{G}", -1, "", "", -1, "", 0, "W", "", "");
+        carta = generarCarta(11111, "Bibliopex assistant", "artifact", "ORI", 'C', "{3}{G}", 4, "3", "3", 3, "descripcion", 7, "W", "{R}", "Pauper");
+            
+         
+        
+
     }
 
-    
+    @Test
+    public void validarTest() {
+
+        try {
+            magicController.validar(cartaVacia);
+        } catch (CartaException e) {
+            assertTrue(e.getMessage().contains("vacio"));
+        }
+    }
+    @Test
+    public void verificarTest(){
+        try {
+            magicController.validar(carta3);
+        } catch (CartaException e) {
+            assertTrue(e.getMessage().contains("nulo"));
+        }
+    }
+
+    @Test
+    public void validarVacioTest() throws CartaException, PersistenciaException {
+        
+        
+
+        assertEquals(0, cartaVacia.getId(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
+        assertTrue(cartaVacia.getNombreCarta().isEmpty(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
+        assertTrue(cartaVacia.getTipo().isEmpty(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
+        assertTrue(cartaVacia.getSimboloExpansion().isEmpty(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
+        assertEquals(CHAR_NULL, cartaVacia.getRareza(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
+        //assertTrue(cartaVacia.getCosteMana().isEmpty(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
+        assertEquals(-1, cartaVacia.getCosteManaConvertido(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
+        assertTrue(cartaVacia.getFuerza().isEmpty(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
+        assertTrue(cartaVacia.getResistencia().isEmpty(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
+        assertEquals(-1, cartaVacia.getLoyalty(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
+        assertTrue(cartaVacia.getDescripcion().isEmpty(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
+        assertEquals(0, cartaVacia.getCodigoArtista(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
+        //assertTrue(cartaVacia.getColor().isEmpty(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
+        assertTrue(cartaVacia.getGeneratedMana().isEmpty(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
+        assertTrue(cartaVacia.getNombreFormato().isEmpty(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
+        
+    }
+
+
     @Test
     public void verificarManaTest() {
         

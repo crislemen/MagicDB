@@ -72,6 +72,7 @@ public class FicheriTest {
         }
     }
 
+    /*
     @Test
     public void leerResourceTest(){
         String nombre = "hola.txt";
@@ -79,7 +80,7 @@ public class FicheriTest {
         String path = fichero.leerResource(nombre);
         System.out.println(path);
         assertNotNull(path, "El path no puede ser nulo");
-    }
+    }*/
 
     private void crearFichero()  {
         try {
