@@ -12,6 +12,7 @@ public class MagicControllerTest extends UtilsTest {
     MagicController magicController;
     Carta cartaVacia;
     Carta carta;
+    Carta carta4;
     Carta carta3 = null;
     static final String LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD = "Los valores del objeto no son los esperados";
 
@@ -23,6 +24,8 @@ public class MagicControllerTest extends UtilsTest {
 
         cartaVacia = new Carta(0, "", "", "", CHAR_NULL, "{3}{G}", -1, "", "", -1, "", 0, "W", "", "");
         carta = generarCarta(11111, "Bibliopex assistant", "artifact", "ORI", 'C', "{3}{G}", 4, "3", "3", 3,
+                "descripcion", 7, "W", "{R}", "Pauper");
+        carta4 = generarCarta(11112, "Bibliopex assistant", "artifact", "ORI", 'C', "{3}{G}", 4, "3", "3", 3,
                 "descripcion", 7, "W", "{R}", "Pauper");
     }
 
@@ -36,16 +39,15 @@ public class MagicControllerTest extends UtilsTest {
         }
     }
 
-    /*
     @Test
     public void insertarTest() {
         try {
-            magicController.insertar(carta);
+            magicController.insertar(carta4);
         } catch (PersistenciaException | CartaException e) {
 
             assertTrue(e.getMessage().contains("consulta"));
         }
-    }*/
+    }
 
     @Test
     public void verificarTest() {
@@ -111,7 +113,7 @@ public class MagicControllerTest extends UtilsTest {
         try {
             magicController.buscarPorID(carta);
         } catch (PersistenciaException e) {
-            assertTrue(e.getMessage().contains("consulta"));
+            assertFalse(e.getMessage().contains("consulta"));
         }
     }
 
@@ -122,7 +124,7 @@ public class MagicControllerTest extends UtilsTest {
             magicController.buscarPorNombre(carta);
         } catch (PersistenciaException e) {
 
-            assertTrue(e.getMessage().contains("consulta"));
+            assertFalse(e.getMessage().contains("consulta"));
         }
     }
 
@@ -133,7 +135,7 @@ public class MagicControllerTest extends UtilsTest {
             magicController.buscarPorCosteMana(carta);
         } catch (PersistenciaException e) {
 
-            assertTrue(e.getMessage().contains("consulta"));
+            assertFalse(e.getMessage().contains("consulta"));
         }
     }
 
@@ -143,7 +145,7 @@ public class MagicControllerTest extends UtilsTest {
             magicController.eliminar(carta);
         } catch (PersistenciaException e) {
 
-            assertTrue(e.getMessage().contains("consulta"));
+            assertFalse(e.getMessage().contains("consulta"));
         }
     }
 
@@ -169,9 +171,8 @@ public class MagicControllerTest extends UtilsTest {
         try {
             magicController.insertar(carta);
         } catch (PersistenciaException | CartaException e1) {
-            assertTrue(e1.getMessage().contains("consulta"));
+            assertFalse(e1.getMessage().contains("consulta"));
         }
-
 
         carta.setId(idNuevo);
         carta.setNombreCarta(nombreCartaNuevo);
@@ -189,12 +190,11 @@ public class MagicControllerTest extends UtilsTest {
         carta.setGeneratedMana(generatedManaNuevo);
         carta.setNombreFormato(nombreFormatoNuevo);
 
-        
         try {
             magicController.modificar(carta);
 
         } catch (PersistenciaException e) {
-            assertTrue(e.getMessage().contains("consulta"));
+            assertFalse(e.getMessage().contains("consulta"));
         }
 
     }
