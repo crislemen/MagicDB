@@ -173,8 +173,9 @@ public class MagicController {
     }
     /**
      * Metodo que modifica una carta
+     * @throws PersistenciaException
      */
-    public void modificar() {
-
+    public void modificar(Carta carta) throws PersistenciaException {
+        magicModelo.modificar(carta);
     }
 }

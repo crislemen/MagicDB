@@ -59,7 +59,7 @@ public class App {
                                     break;
                                 case 2:
                                     crearCarta();
-                                    magicController.modificar();
+                                    //magicController.modificar();
                                     break;
                                 case 3:
                                     System.out.println("Elige una opcion a realizar");

@@ -213,12 +213,21 @@ public class BbDd {
    public void insertar(Carta carta) throws PersistenciaException {
       String sql = "INSERT INTO carta(id,nombre_carta,tipo,simbolo_expansion,rareza,"
             + "coste_mana,coste_mana_convertido,fuerza,resistencia,loyalty,"
-            + "descripcion,codigo_artista,color,generated_mana,nombre_formato)" + " VALUES ('" + carta.getId() + "', '"
-            + carta.getNombreCarta() + "'," + " '" + carta.getTipo() + "', '" + carta.getSimboloExpansion() + "')"
-            + " '" + carta.getRareza() + "', '" + carta.getCosteMana() + "'," + " '" + carta.getCosteManaConvertido()
-            + "', '" + carta.getFuerza() + "')" + " '" + carta.getResistencia() + "', '" + carta.getLoyalty() + "',"
-            + " '" + carta.getDescripcion() + "', '" + carta.getCodigoArtista() + "')" + " '" + carta.getColor()
-            + "', '" + carta.getGeneratedMana() + "'," + " '" + carta.getNombreFormato() + "')";
+            + "descripcion,codigo_artista,color,generated_mana,nombre_formato)" + " VALUES ('" + carta.getId() + "',"
+            + "'" + carta.getNombreCarta() + "', " 
+            + "'" + carta.getTipo() + "', " 
+            + "'" + carta.getSimboloExpansion() + "',"
+            + "'" + carta.getRareza() + "', "
+            + "'" + carta.getCosteMana() + "', " 
+            + "'" + carta.getCosteManaConvertido() + "', "
+            + "'" + carta.getFuerza() + "', "
+            + "'" + carta.getResistencia() + "', "
+            + "'" + carta.getLoyalty() + "', "
+            + "'" + carta.getDescripcion() + "', "
+            + "'" + carta.getCodigoArtista() + "', "
+            + "'" + carta.getColor() + "', "
+            + "'" + carta.getGeneratedMana() + "', " 
+            + "'" + carta.getNombreFormato() + "');";
       actualizar(sql);
    }
 
@@ -240,14 +249,14 @@ public class BbDd {
     * @throws PersistenciaException
     */
    public void modificar(Carta carta) throws PersistenciaException {
-      String sql = " UPDATE carta SET id = '" + carta.getId() + "', '" + " nombreCarta = '" + carta.getNombreCarta()
-            + "', '" + " tipo = '" + carta.getTipo() + "', '" + " simboloExpansion = '" + carta.getSimboloExpansion()
-            + "', '" + " rareza = '" + carta.getRareza() + "', '" + " costeMana = '" + carta.getCosteMana() + "', '"
-            + " costeManaConvertido = '" + carta.getCosteManaConvertido() + "', '" + " fuerza = '" + carta.getFuerza()
-            + "', '" + " resistencia = '" + carta.getResistencia() + "', '" + " loyalty = '" + carta.getLoyalty()
-            + "', '" + " descripcion = '" + carta.getDescripcion() + "', '" + " codigoArtista = '"
-            + carta.getCodigoArtista() + "', '" + " color = '" + carta.getColor() + "', '" + " generatedMana = '"
-            + carta.getGeneratedMana() + "', '" + " nombreFormato = '" + carta.getNombreFormato() + "';";
+      String sql = " UPDATE carta SET id = '" + carta.getId() + "', " + " nombre_carta = '" + carta.getNombreCarta()
+            + "', " + " tipo = '" + carta.getTipo() + "', " + " simbolo_expansion = '" + carta.getSimboloExpansion()
+            + "', " + " rareza = '" + carta.getRareza() + "', " + " coste_mana = '" + carta.getCosteMana() + "', "
+            + " coste_mana_convertido = '" + carta.getCosteManaConvertido() + "', " + " fuerza = '" + carta.getFuerza()
+            + "', " + " resistencia = '" + carta.getResistencia() + "', " + " loyalty = '" + carta.getLoyalty()
+            + "', " + " descripcion = '" + carta.getDescripcion() + "', " + " codigo_artista = '"
+            + carta.getCodigoArtista() + "', " + " color = '" + carta.getColor() + "', " + " generated_mana = '"
+            + carta.getGeneratedMana() + "', " + " nombre_formato = '" + carta.getNombreFormato() + "';";
       actualizar(sql);
    }
 

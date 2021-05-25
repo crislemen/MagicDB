@@ -37,14 +37,14 @@ public class MagicModelo {
      * @throws PersistenciaException error controlado
      */
     public void modificar(Carta carta) throws PersistenciaException{
-        String sql = " UPDATE carta SET id = '" + carta.getId() + "', '" + " nombreCarta = '" + carta.getNombreCarta()
-            + "', '" + " tipo = '" + carta.getTipo() + "', '" + " simboloExpansion = '" + carta.getSimboloExpansion()
-            + "', '" + " rareza = '" + carta.getRareza() + "', '" + " costeMana = '" + carta.getCosteMana() + "', '"
-            + " costeManaConvertido = '" + carta.getCosteManaConvertido() + "', '" + " fuerza = '" + carta.getFuerza()
-            + "', '" + " resistencia = '" + carta.getResistencia() + "', '" + " loyalty = '" + carta.getLoyalty()
-            + "', '" + " descripcion = '" + carta.getDescripcion() + "', '" + " codigoArtista = '"
-            + carta.getCodigoArtista() + "', '" + " color = '" + carta.getColor() + "', '" + " generatedMana = '"
-            + carta.getGeneratedMana() + "', '" + " nombreFormato = '" + carta.getNombreFormato() + "';";
+        String sql = " UPDATE carta SET id = '" + carta.getId() + "', " + " nombre_carta = '" + carta.getNombreCarta()
+            + "', " + " tipo = '" + carta.getTipo() + "', " + " simbolo_expansion = '" + carta.getSimboloExpansion()
+            + "', " + " rareza = '" + carta.getRareza() + "', " + " coste_mana = '" + carta.getCosteMana() + "', "
+            + " coste_mana_convertido = '" + carta.getCosteManaConvertido() + "', " + " fuerza = '" + carta.getFuerza()
+            + "', " + " resistencia = '" + carta.getResistencia() + "', " + " loyalty = '" + carta.getLoyalty()
+            + "', " + " descripcion = '" + carta.getDescripcion() + "', " + " codigo_artista = '"
+            + carta.getCodigoArtista() + "', " + " color = '" + carta.getColor() + "', " + " generated_mana = '"
+            + carta.getGeneratedMana() + "', " + " nombre_formato = '" + carta.getNombreFormato() + "';";
       persistencia.actualizar(sql);
     }
 
