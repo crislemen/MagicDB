@@ -2,6 +2,12 @@ package es.iespuertodelacruz.magic.modelo;
 
 import java.io.*;
 import java.util.Scanner;
+
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.util.ResourceUtils;
 import es.iespuertodelacruz.magic.exception.PersistenciaException;
 
 public class Fichero {
@@ -49,11 +55,18 @@ public class Fichero {
     * @throws IOException error no controlado
     * @throws PersistenciaException error controlado
     */
-   public String leerResource(String nombre){
-          
-      return null;
 
-   }
+   public String leerResource(String nombre) throws IOException, PersistenciaException {
+
+           ClassLoader classLoader = getClass().getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(nombre);
+
+        if (inputStream == null) {
+            throw new IllegalArgumentException("file not found! " + nombre);
+        } else {
+            return inputStream.toString();
+        }
+      }
 
    /**
     * Metodo encargado de crear un fichero
@@ -82,6 +95,7 @@ public class Fichero {
 
    /**
     * Funcion que verifica si el fichero existo
+    * 
     * @param fichero
     * @return true/false
     */

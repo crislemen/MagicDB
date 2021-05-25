@@ -2,6 +2,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import java.io.IOException;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +12,7 @@ import es.iespuertodelacruz.magic.exception.FicheroException;
 import es.iespuertodelacruz.magic.exception.PersistenciaException;
 import es.iespuertodelacruz.magic.modelo.Fichero;
 
-public class FicheriTest {
+public class FicheroTest {
     String nombre;
 
     Fichero fichero = null;
@@ -74,8 +76,8 @@ public class FicheriTest {
 
     /*
     @Test
-    public void leerResourceTest(){
-        String nombre = "hola.txt";
+    public void leerResourceTest() throws IOException, PersistenciaException{
+        String nombre = "sql/InsertsArtista.sql";
         
         String path = fichero.leerResource(nombre);
         System.out.println(path);

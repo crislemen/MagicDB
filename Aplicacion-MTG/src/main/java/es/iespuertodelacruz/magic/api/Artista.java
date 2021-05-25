@@ -100,6 +100,16 @@ public class Artista {
     }
 
     
+
+    @Override
+    public String toString() {
+        return "{" +
+            " codigo='" + getCodigo() + "'" +
+            ", nombre='" + getNombre() + "'" +
+            ", apellido='" + getApellido() + "'" +
+            ", numeroArtes='" + getNumeroArtes() + "'" +
+            "}";
+    }
     
     
 }

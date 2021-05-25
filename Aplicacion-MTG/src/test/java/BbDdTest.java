@@ -1,7 +1,9 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.beans.Statement;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -15,33 +17,37 @@ import org.junit.jupiter.api.Test;
 import es.iespuertodelacruz.magic.api.Carta;
 import es.iespuertodelacruz.magic.controlador.MagicController;
 import es.iespuertodelacruz.magic.exception.CartaException;
+import es.iespuertodelacruz.magic.exception.PersistenciaException;
+import es.iespuertodelacruz.magic.modelo.BbDd;
 
 public class BbDdTest {
 
-    BbDdTest bbDd;
+    BbDd bbDd;
     Connection connection;
     Statement statement; 
     ResultSet resultSet;
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() throws PersistenciaException, SQLException{
         if(bbDd == null){
-            bbDd = new BbDdTest();
+            bbDd = new BbDd("org.sqlite.JDBC", "jdbc:sqlite:test.db", null, null);
+            
         }
+        bbDd.getConnection();
         
     }
 
-    /*
+    
     @Test
-    public void he() throws SQLException{
-        new BbDdTest();
-        Connection connection = DriverManager.getConnection("jbdc:mysql:test.db", null, null);
+    public void getconnectionUrltest() throws SQLException, PersistenciaException{
         assertEquals(connection != null, true);
-    }*/
-
-    @Test
-    public void h(){
-        assertTrue(true);
     }
-
+    @Test
+    public void InsertarArtistasTest() throws IOException, SQLException {
+        try {
+            bbDd.insertarArtistas();
+        } catch (PersistenciaException e) {
+            assertTrue(e.getMessage().contains("insertar"));
+        }
+    }
 }

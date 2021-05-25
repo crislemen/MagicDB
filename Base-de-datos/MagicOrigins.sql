@@ -5693,11 +5693,23 @@ INSERT INTO baraja_carta VALUES(3, 401452);
 INSERT INTO baraja_carta VALUES(4, 398565);
 INSERT INTO baraja_carta VALUES(5, 398656);
 
+-- Vistas --
+-- Vista que te da el nombre y apellidos de los artistas junto con el codigo de la carta que ha diseñado --
+CREATE VIEW vista_artistas AS
+SELECT CONCAT(nombre, ' ',apellido) as nombre,artista.codigo,carta.id from artista
+INNER JOIN carta on carta.codigo_artista = artista.codigo;
+-- Vista que te da el nombre del formato de una carta y la cantidad de cartas de ese formato --
+drop view if exists vista_formato_cartas;
+CREATE VIEW vista_formato_cartas AS
+SELECT DISTINCT nombre_formato,count(carta.nombre_formato) as numero_cartas FROM carta
+GROUP BY nombre_formato;
+SELECT * from vista_formato_cartas;
+-- END --
 
---Procedimientos almacenados--
+-- Procedimientos almacenados --
 
---pa_artista_cartas--
---Este procedimiento funciona de manera que dando un nombre de artista. Devuelva los nomnbres de las cartas que tiene este artista.--
+-- pa_artista_cartas --
+--Este procedimiento funciona de manera que dando un nombre de artista. Devuelva los nomnbres de las cartas que tiene este artista. --
  drop procedure if EXISTS pa_artista_carta;
  delimiter //
  create procedure pa_artista_carta(in p_artista varchar(50))
@@ -5707,6 +5719,6 @@ INSERT INTO baraja_carta VALUES(5, 398656);
      where artista.nombre = p_artista;
  end //
  delimiter ;
- --Vamos a comprobar que ha funcionado el almacenamiento almacenado--
+ -- Vamos a comprobar que ha funcionado el almacenamiento almacenado --
  call pa_artista_carta('Winona');
---END--
+-- END --

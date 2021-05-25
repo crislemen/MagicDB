@@ -161,22 +161,46 @@ public class BbDd {
 
       return connection;
    }
+
    /**
-    * Metodo que inserta todos los artistas que hay en el fichero InsertsArtista.sql
+    * Metodo que inserta todos los artistas que hay en el fichero
+    * InsertsArtista.sql
+    * 
     * @throws PersistenciaException
     * @throws IOException
     */
-   public void insertarArtistas() throws PersistenciaException, IOException{
-      String sql = fichero.leerResource("InsertsArtista.sql");
+   public void insertarArtistas() throws PersistenciaException, IOException {
+      String sql;
+      try {
+          sql = fichero.leerResource("sql/InsertsArtista.sql");
+      } catch (PersistenciaException e) {
+         throw new PersistenciaException("No se ha podido insertar los artistas");
+      }
+
       actualizar(sql);
    }
+
    /**
     * Metodo que inserta todos los valores que hay en el fichero InsertsBaraja.sql
+    * 
     * @throws PersistenciaException
     * @throws IOException
     */
+
    public void insertarBarajas() throws PersistenciaException, IOException {
-      String sql = fichero.leerResource("InsertsBaraja.sql");
+      String sql = fichero.leerResource("sql/InsertsBaraja.sql");
+      actualizar(sql);
+   }
+
+   /**
+    * Metodo que inserta todos los valores que hay en el fichero InsertsFormato.sql
+    * 
+    * @throws PersistenciaException
+    * @throws IOException
+    */
+
+   public void insertarFormatos() throws PersistenciaException, IOException {
+      String sql = fichero.leerResource("sql/InsertsFormato.sql");
       actualizar(sql);
    }
 
@@ -276,7 +300,7 @@ public class BbDd {
             carta.setNombreCarta(resultSet.getString("nombreCarta"));
             carta.setTipo(resultSet.getString("tipo"));
             carta.setSimboloExpansion(resultSet.getString("simboloExpansion"));
-            carta.setRareza(rareza);            
+            carta.setRareza(rareza);
             carta.setCosteMana(resultSet.getString("costeMana"));
             carta.setCosteManaConvertido(resultSet.getInt("costeManaConvertido"));
             carta.setFuerza(resultSet.getString("fuerza"));
@@ -287,7 +311,7 @@ public class BbDd {
             carta.setColor(resultSet.getString("color"));
             carta.setGeneratedMana(resultSet.getString("generatedMana"));
             carta.setNombreFormato(resultSet.getString("nombreFormato"));
-            
+
             listaCartas.add(carta);
          }
       } catch (Exception exception) {
@@ -301,6 +325,7 @@ public class BbDd {
 
    /**
     * Metodo encargado de obtener el listado
+    * 
     * @param sql setencia sql
     * @return carta
     * @throws PersistenciaException error controlado
@@ -342,11 +367,12 @@ public class BbDd {
          closeConecction(connection, statement, resultSet);
       }
       return listaCartas;
-  
+
    }
 
    /**
     * Metodo encargado de obtener un elemento
+    * 
     * @param id a buscar
     * @return elemento
     * @throws PersistenciaException error controlado
