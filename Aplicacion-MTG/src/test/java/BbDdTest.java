@@ -1,7 +1,9 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.beans.Statement;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -26,18 +28,26 @@ public class BbDdTest {
     ResultSet resultSet;
 
     @BeforeEach
-    public void setUp() throws PersistenciaException{
+    public void setUp() throws PersistenciaException, SQLException{
         if(bbDd == null){
             bbDd = new BbDd("org.sqlite.JDBC", "jdbc:sqlite:test.db", null, null);
+            
         }
+        bbDd.getConnection();
         
     }
 
     
     @Test
     public void getconnectionUrltest() throws SQLException, PersistenciaException{
-        new BbDd("org.sqlite.JDBC", "jdbc:sqlite:test.db", null, null);
-        Connection connection = DriverManager.getConnection("jdbc:sqlite:test.db", null, null);
         assertEquals(connection != null, true);
+    }
+    @Test
+    public void InsertarArtistasTest() throws IOException, SQLException {
+        try {
+            bbDd.insertarArtistas();
+        } catch (PersistenciaException e) {
+            assertTrue(e.getMessage().contains("insertar"));
+        }
     }
 }

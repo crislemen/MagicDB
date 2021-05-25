@@ -1,11 +1,8 @@
 package es.iespuertodelacruz.magic.modelo;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
-
-import es.iespuertodelacruz.magic.api.Artista;
 import es.iespuertodelacruz.magic.api.Carta;
 import es.iespuertodelacruz.magic.exception.PersistenciaException;
 
@@ -164,38 +161,48 @@ public class BbDd {
 
       return connection;
    }
+
    /**
-    * Metodo que inserta todos los artistas que hay en el fichero InsertsArtista.sql
+    * Metodo que inserta todos los artistas que hay en el fichero
+    * InsertsArtista.sql
+    * 
     * @throws PersistenciaException
     * @throws IOException
     */
-   public void insertarArtistas() throws PersistenciaException, IOException{
-      String sql = fichero.leerResource("/sql/InsertsArtista.sql");
+   public void insertarArtistas() throws PersistenciaException, IOException {
+      String sql;
+      try {
+          sql = fichero.leerResource("sql/InsertsArtista.sql");
+      } catch (PersistenciaException e) {
+         throw new PersistenciaException("No se ha podido insertar los artistas");
+      }
+
       actualizar(sql);
    }
+
    /**
     * Metodo que inserta todos los valores que hay en el fichero InsertsBaraja.sql
+    * 
     * @throws PersistenciaException
     * @throws IOException
     */
-    /** 
-   public void insertarBarajas(String sql) throws PersistenciaException, IOException {
-       sql = fichero.leerResource("sql/InsertsBaraja.sql");
+
+   public void insertarBarajas() throws PersistenciaException, IOException {
+      String sql = fichero.leerResource("sql/InsertsBaraja.sql");
       actualizar(sql);
    }
-   */
+
    /**
     * Metodo que inserta todos los valores que hay en el fichero InsertsFormato.sql
+    * 
     * @throws PersistenciaException
     * @throws IOException
     */
-    /** 
+
    public void insertarFormatos() throws PersistenciaException, IOException {
       String sql = fichero.leerResource("sql/InsertsFormato.sql");
       actualizar(sql);
    }
-   */
-   
 
    /**
     * Metodo encargado de insertar una carta en la BBDD en la tabla carta
@@ -233,14 +240,14 @@ public class BbDd {
     * @throws PersistenciaException
     */
    public void modificar(Carta carta) throws PersistenciaException {
-      String sql = " UPDATE FRUTA SET id = '" + carta.getId() + "', '" + " nombreCarta = '" + carta.getNombreCarta()
+      String sql = " UPDATE carta SET id = '" + carta.getId() + "', '" + " nombreCarta = '" + carta.getNombreCarta()
             + "', '" + " tipo = '" + carta.getTipo() + "', '" + " simboloExpansion = '" + carta.getSimboloExpansion()
             + "', '" + " rareza = '" + carta.getRareza() + "', '" + " costeMana = '" + carta.getCosteMana() + "', '"
             + " costeManaConvertido = '" + carta.getCosteManaConvertido() + "', '" + " fuerza = '" + carta.getFuerza()
             + "', '" + " resistencia = '" + carta.getResistencia() + "', '" + " loyalty = '" + carta.getLoyalty()
             + "', '" + " descripcion = '" + carta.getDescripcion() + "', '" + " codigoArtista = '"
             + carta.getCodigoArtista() + "', '" + " color = '" + carta.getColor() + "', '" + " generatedMana = '"
-            + carta.getGeneratedMana() + "', '" + " nombreFormato = '" + carta.getNombreFormato() + "', '";
+            + carta.getGeneratedMana() + "', '" + " nombreFormato = '" + carta.getNombreFormato() + "';";
       actualizar(sql);
    }
 
@@ -271,7 +278,59 @@ public class BbDd {
     * @return lista de resultados
     * @throws PersistenciaException error controlado
     */
-   private ArrayList<Carta> obtenerListado(String sql) throws PersistenciaException {
+   private ArrayList<Carta> buscar(String sql) throws PersistenciaException {
+      ArrayList<Carta> listaCartas = new ArrayList<>();
+      Statement statement = null;
+      ResultSet resultSet = null;
+      Connection connection = null;
+
+      try {
+
+         connection = getConnection();
+         statement = connection.createStatement();
+         resultSet = statement.executeQuery(sql);
+
+         while (resultSet.next()) {
+            Carta carta = new Carta();
+
+            String campoRareza = resultSet.getString("rareza");
+            char rareza = campoRareza.charAt(0);
+
+            carta.setId(resultSet.getInt("id"));
+            carta.setNombreCarta(resultSet.getString("nombreCarta"));
+            carta.setTipo(resultSet.getString("tipo"));
+            carta.setSimboloExpansion(resultSet.getString("simboloExpansion"));
+            carta.setRareza(rareza);
+            carta.setCosteMana(resultSet.getString("costeMana"));
+            carta.setCosteManaConvertido(resultSet.getInt("costeManaConvertido"));
+            carta.setFuerza(resultSet.getString("fuerza"));
+            carta.setResistencia(resultSet.getString("resistencia"));
+            carta.setLoyalty(resultSet.getInt("loyalty"));
+            carta.setDescripcion(resultSet.getString("descripcion"));
+            carta.setCodigoArtista(resultSet.getInt("codigoArtista"));
+            carta.setColor(resultSet.getString("color"));
+            carta.setGeneratedMana(resultSet.getString("generatedMana"));
+            carta.setNombreFormato(resultSet.getString("nombreFormato"));
+
+            listaCartas.add(carta);
+         }
+      } catch (Exception exception) {
+         throw new PersistenciaException("Se ha producido un error realizando la consulta", exception);
+      } finally {
+         closeConecction(connection, statement, resultSet);
+      }
+      return listaCartas;
+
+   }
+
+   /**
+    * Metodo encargado de obtener el listado
+    * 
+    * @param sql setencia sql
+    * @return carta
+    * @throws PersistenciaException error controlado
+    */
+   public ArrayList<Carta> obtenerListado(String sql) throws PersistenciaException {
       ArrayList<Carta> listaCartas = new ArrayList<>();
       Carta carta = null;
       Statement statement = null;
@@ -309,6 +368,23 @@ public class BbDd {
       }
       return listaCartas;
 
+   }
+
+   /**
+    * Metodo encargado de obtener un elemento
+    * 
+    * @param id a buscar
+    * @return elemento
+    * @throws PersistenciaException error controlado
+    */
+   public Object buscarElemento(String id) throws PersistenciaException {
+      Object elemento = null;
+      String sql = "SELECT * FROM censo WHERE id = '" + id + "';";
+      ArrayList<Carta> listaCartas = buscar(sql);
+      if (!listaCartas.isEmpty()) {
+         elemento = listaCartas.get(0);
+      }
+      return elemento;
    }
 
    /**

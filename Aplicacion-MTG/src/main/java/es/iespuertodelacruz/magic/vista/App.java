@@ -15,7 +15,7 @@ public class App {
     }
 
     private static void menu() throws CartaException, PersistenciaException {
-    Carta carta = null;
+        Carta carta = null;
         Scanner sn = new Scanner(System.in);
         boolean salir = false;
         MagicController magicController;
@@ -41,27 +41,27 @@ public class App {
                     switch (opcion) {
 
                         case 1:
-                                System.out.println("Bienvenido al modo administrador");
-                                System.out.println("Elige una opcion a realizar");
-                                System.out.println("");
-                                System.out.println("0.Salir");
-                                System.out.println("1.Insertar una Carta");
-                                System.out.println("2.Modificar una Carta");
-                                System.out.println("3.Buscar una Carta");
-                                int opcion1 = sn.nextInt();
-                                switch (opcion1) {
-                                    case 0:
-                                        salir = true;
-                                        break;
-                                    case 1:
-                                        crearCarta();
-                                        //magicController.insertar(carta);
-                                        break;
-                                    case 2:
-                                        crearCarta();
-                                        magicController.modificar();
-                                        break;
-                                    case 3:
+                            System.out.println("Bienvenido al modo administrador");
+                            System.out.println("Elige una opcion a realizar");
+                            System.out.println("");
+                            System.out.println("0.Salir");
+                            System.out.println("1.Insertar una Carta");
+                            System.out.println("2.Modificar una Carta");
+                            System.out.println("3.Buscar una Carta");
+                            int opcion1 = sn.nextInt();
+                            switch (opcion1) {
+                                case 0:
+                                    salir = true;
+                                    break;
+                                case 1:
+                                    crearCarta();
+                                    // magicController.insertar(carta);
+                                    break;
+                                case 2:
+                                    crearCarta();
+                                    magicController.modificar();
+                                    break;
+                                case 3:
                                     System.out.println("Elige una opcion a realizar");
                                     System.out.println("");
                                     System.out.println("0.Salir");
@@ -69,46 +69,45 @@ public class App {
                                     System.out.println("2.Buscar por ID");
                                     System.out.println("3.Buscar por coste de mana");
                                     int opcion3 = sn.nextInt();
-                                    switch(opcion3){
+                                    switch (opcion3) {
                                         case 0:
-                                        salir = true;
-                                        break;
+                                            salir = true;
+                                            break;
                                         case 1:
-                                        System.out.println("Inserta el nombre de la carta a buscar");
-                                        String nombre = sn.next();
-                                       // magicController.buscarPorNombre(carta);
-                                        break;
+                                            System.out.println("Inserta el nombre de la carta a buscar");
+                                            String nombre = sn.next();
+                                            // magicController.buscarPorNombre(carta);
+                                            break;
                                         case 2:
-                                        System.out.println("Inserta el id de la carta a buscar");
-                                        int id = sn.nextInt();
-                                       // magicController.buscarPorID(carta);
-                                        break;
+                                            System.out.println("Inserta el id de la carta a buscar");
+                                            int id = sn.nextInt();
+                                            // magicController.buscarPorID(carta);
+                                            break;
                                         case 3:
-                                        System.out.println("Inserta el coste de mana");
-                                        String costeMana = sn.next();
-                                       // magicController.buscarPorCosteMana(carta);
-                                        break;
+                                            System.out.println("Inserta el coste de mana");
+                                            String costeMana = sn.next();
+                                            // magicController.buscarPorCosteMana(carta);
+                                            break;
                                     }
-                                        break;
-                                    default:
-                                        System.out.println("Solo números entre 0 y 3");
-                                }
-                                break;
-                            
+                                    break;
+                                default:
+                                    System.out.println("Solo números entre 0 y 3");
+                            }
+                            break;
 
                         case 2:
-                                System.out.println("Bienvenido al modo usuario");
-                                System.out.println("Elige una opcion a realizar");
-                                System.out.println("");
-                                System.out.println("0.Salir");
-                                System.out.println("1.Buscar una Carta");
-                                int opcion2 = sn.nextInt();
-                                switch (opcion2) {
-                                    case 0:
-                                        salir = true;
-                                        break;
-                                    case 1:
-                                    case 3:
+                            System.out.println("Bienvenido al modo usuario");
+                            System.out.println("Elige una opcion a realizar");
+                            System.out.println("");
+                            System.out.println("0.Salir");
+                            System.out.println("1.Buscar una Carta");
+                            int opcion2 = sn.nextInt();
+                            switch (opcion2) {
+                                case 0:
+                                    salir = true;
+                                    break;
+                                case 1:
+                                case 3:
                                     System.out.println("Elige una opcion a realizar");
                                     System.out.println("");
                                     System.out.println("0.Salir");
@@ -116,36 +115,36 @@ public class App {
                                     System.out.println("2.Buscar por ID");
                                     System.out.println("3.Buscar por coste de mana");
                                     int opcion4 = sn.nextInt();
-                                    switch(opcion4){
+                                    switch (opcion4) {
                                         case 0:
-                                        salir = true;
-                                        break;
+                                            salir = true;
+                                            break;
                                         case 1:
-                                        System.out.println("Inserta el nombre de la carta a buscar");
-                                        String nombre = sn.next();
-                                        //magicController.buscarPorNombre(carta);;
-                                        break;
+                                            System.out.println("Inserta el nombre de la carta a buscar");
+                                            String nombre = sn.next();
+                                            // magicController.buscarPorNombre(carta);;
+                                            break;
                                         case 2:
-                                        System.out.println("Inserta el id de la carta a buscar");
-                                        int id = sn.nextInt();
-                                       // magicController.buscarPorID(carta);
-                                        break;
+                                            System.out.println("Inserta el id de la carta a buscar");
+                                            int id = sn.nextInt();
+                                            // magicController.buscarPorID(carta);
+                                            break;
                                         case 3:
-                                        System.out.println("Inserta el coste de mana");
-                                        String costeMana = sn.next();
-                                       // magicController.buscarPorCosteMana(carta);
-                                        break;
+                                            System.out.println("Inserta el coste de mana");
+                                            String costeMana = sn.next();
+                                            // magicController.buscarPorCosteMana(carta);
+                                            break;
                                     }
-                                        break;
-                                    default:
-                                        System.out.println("Solo números entre 0 y 1");
-                                }
-                                break;
-                            case 0:
-                                salir = true;
-                                break;
-                            default:
-                                System.out.println("Solo números entre 0 y 2");
+                                    break;
+                                default:
+                                    System.out.println("Solo números entre 0 y 1");
+                            }
+                            break;
+                        case 0:
+                            salir = true;
+                            break;
+                        default:
+                            System.out.println("Solo números entre 0 y 2");
 
                     }
                 }
@@ -157,6 +156,7 @@ public class App {
         }
 
     }
+
     public static void crearCarta() throws CartaException, PersistenciaException {
         Scanner sn = new Scanner(System.in);
         System.out.println("Inserte los siguientes valores");
@@ -191,8 +191,8 @@ public class App {
         String generatedMana = sn.next();
         System.out.println("Inserta el formato");
         String nombreFormato = sn.next();
-        new Carta(id, nombreCarta, tipo, simboloExpansion, rareza, costeMana, costeManaConvertido, 
-        fuerza, resistencia, loyalty, descripcion, codigoArtista, color, generatedMana, nombreFormato);
-        
+        new Carta(id, nombreCarta, tipo, simboloExpansion, rareza, costeMana, costeManaConvertido, fuerza, resistencia,
+                loyalty, descripcion, codigoArtista, color, generatedMana, nombreFormato);
+
     }
 }
