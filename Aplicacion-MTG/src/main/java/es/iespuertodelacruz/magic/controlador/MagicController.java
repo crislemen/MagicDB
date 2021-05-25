@@ -129,8 +129,10 @@ public class MagicController {
      * Metodo que inserta una carta
      * @param carta a isnertar
      * @throws PersistenciaException
+     * @throws CartaException
      */
-    public void insertar(Carta carta) throws PersistenciaException {
+    public void insertar(Carta carta) throws PersistenciaException, CartaException {
+        validar(carta);
         magicModelo.insertarCarta(carta);
     }
 

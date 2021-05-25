@@ -37,6 +37,7 @@ public class BbDdTest {
         
     }
 
+    /*
     
     @Test
     public void getconnectionUrltest() throws SQLException, PersistenciaException{
@@ -49,5 +50,5 @@ public class BbDdTest {
         } catch (PersistenciaException e) {
             assertTrue(e.getMessage().contains("insertar"));
         }
-    }
+    }*/
 }

@@ -23,10 +23,6 @@ public class MagicControllerTest extends UtilsTest{
         
         cartaVacia = new Carta(0, "", "", "", CHAR_NULL, "{3}{G}", -1, "", "", -1, "", 0, "W", "", "");
         carta = generarCarta(11111, "Bibliopex assistant", "artifact", "ORI", 'C', "{3}{G}", 4, "3", "3", 3, "descripcion", 7, "W", "{R}", "Pauper");
-            
-         
-        
-
     }
 
     @Test
@@ -127,6 +123,16 @@ public class MagicControllerTest extends UtilsTest{
         } catch (PersistenciaException e) {
             
             e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void eliminarTest() {
+        try {
+            magicController.eliminar(carta);
+        } catch (PersistenciaException e) {
+
+            assertTrue(e.getMessage().contains("consulta"));
         }
     }
 
