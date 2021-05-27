@@ -436,8 +436,7 @@ public class BbDd {
    public Carta obtenerCartaNombre(String nombreCarta) throws PersistenciaException {
       Carta carta = null;
       ArrayList<Carta> listaCartas = null;
-      String sql = "SELECT * FROM carta where nombre_carta=";
-      sql = sql + "'" + nombreCarta + "'";
+      String sql = "SELECT * FROM carta where nombre_carta='" + nombreCarta + "';";
       listaCartas = obtenerListado(sql);
       if (!listaCartas.isEmpty()) {
          carta = listaCartas.get(0);
