@@ -152,7 +152,7 @@ public class MagicControllerTest extends UtilsTest {
     @Test
     public void modificarTest() {
 
-        int idNuevo = 384444;
+        int idNuevo = 384445;
         String nombreCartaNuevo = "Archmage Emiritus";
         String tipoNuevo = "Human Wizard";
         String simboloExpansionNuevo = "ORI";
@@ -194,7 +194,7 @@ public class MagicControllerTest extends UtilsTest {
             magicController.modificar(carta);
 
         } catch (PersistenciaException e) {
-            assertFalse(e.getMessage().contains("consulta"));
+            assertTrue(e.getMessage().contains("consulta"));
         }
 
     }
