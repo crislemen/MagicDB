@@ -172,7 +172,7 @@ public class BbDd {
    public void insertarArtistas() throws PersistenciaException, IOException {
       String sql;
       try {
-          sql = fichero.leerResource("sql/InsertsArtista.sql");
+         sql = fichero.leerResource("sql/InsertsArtista.sql");
       } catch (PersistenciaException e) {
          throw new PersistenciaException("No se ha podido insertar los artistas");
       }
@@ -214,19 +214,11 @@ public class BbDd {
       String sql = "INSERT INTO carta(id,nombre_carta,tipo,simbolo_expansion,rareza,"
             + "coste_mana,coste_mana_convertido,fuerza,resistencia,loyalty,"
             + "descripcion,codigo_artista,color,generated_mana,nombre_formato)" + " VALUES ('" + carta.getId() + "',"
-            + "'" + carta.getNombreCarta() + "', " 
-            + "'" + carta.getTipo() + "', " 
-            + "'" + carta.getSimboloExpansion() + "',"
-            + "'" + carta.getRareza() + "', "
-            + "'" + carta.getCosteMana() + "', " 
-            + "'" + carta.getCosteManaConvertido() + "', "
-            + "'" + carta.getFuerza() + "', "
-            + "'" + carta.getResistencia() + "', "
-            + "'" + carta.getLoyalty() + "', "
-            + "'" + carta.getDescripcion() + "', "
-            + "'" + carta.getCodigoArtista() + "', "
-            + "'" + carta.getColor() + "', "
-            + "'" + carta.getGeneratedMana() + "', " 
+            + "'" + carta.getNombreCarta() + "', " + "'" + carta.getTipo() + "', " + "'" + carta.getSimboloExpansion()
+            + "'," + "'" + carta.getRareza() + "', " + "'" + carta.getCosteMana() + "', " + "'"
+            + carta.getCosteManaConvertido() + "', " + "'" + carta.getFuerza() + "', " + "'" + carta.getResistencia()
+            + "', " + "'" + carta.getLoyalty() + "', " + "'" + carta.getDescripcion() + "', " + "'"
+            + carta.getCodigoArtista() + "', " + "'" + carta.getColor() + "', " + "'" + carta.getGeneratedMana() + "', "
             + "'" + carta.getNombreFormato() + "');";
       actualizar(sql);
    }
@@ -253,10 +245,10 @@ public class BbDd {
             + "', " + " tipo = '" + carta.getTipo() + "', " + " simbolo_expansion = '" + carta.getSimboloExpansion()
             + "', " + " rareza = '" + carta.getRareza() + "', " + " coste_mana = '" + carta.getCosteMana() + "', "
             + " coste_mana_convertido = '" + carta.getCosteManaConvertido() + "', " + " fuerza = '" + carta.getFuerza()
-            + "', " + " resistencia = '" + carta.getResistencia() + "', " + " loyalty = '" + carta.getLoyalty()
-            + "', " + " descripcion = '" + carta.getDescripcion() + "', " + " codigo_artista = '"
-            + carta.getCodigoArtista() + "', " + " color = '" + carta.getColor() + "', " + " generated_mana = '"
-            + carta.getGeneratedMana() + "', " + " nombre_formato = '" + carta.getNombreFormato() + "';";
+            + "', " + " resistencia = '" + carta.getResistencia() + "', " + " loyalty = '" + carta.getLoyalty() + "', "
+            + " descripcion = '" + carta.getDescripcion() + "', " + " codigo_artista = '" + carta.getCodigoArtista()
+            + "', " + " color = '" + carta.getColor() + "', " + " generated_mana = '" + carta.getGeneratedMana() + "', "
+            + " nombre_formato = '" + carta.getNombreFormato() + "';";
       actualizar(sql);
    }
 
@@ -414,16 +406,14 @@ public class BbDd {
     * @return carta
     * @throws PersistenciaException error controlado
     */
-   public Carta obtenerCartaId(int id) throws PersistenciaException {
-      Carta carta = null;
-      ArrayList<Carta> listaCartas = null;
-      String sql = "SELECT * FROM carta where id=";
-      sql = sql + "'" + id + "'";
-      listaCartas = obtenerListado(sql);
+   public Object obtenerCartaId(int id) throws PersistenciaException {
+      Object elemento = null;
+      String sql = "SELECT * FROM carta WHERE id = '" + id + "';";
+      ArrayList<Carta> listaCartas = buscar(sql);
       if (!listaCartas.isEmpty()) {
-         carta = listaCartas.get(0);
+         elemento = listaCartas.get(0);
       }
-      return carta;
+      return elemento;
    }
 
    /**
@@ -433,16 +423,14 @@ public class BbDd {
     * @return carta
     * @throws PersistenciaException
     */
-   public Carta obtenerCartaNombre(String nombreCarta) throws PersistenciaException {
-      Carta carta = null;
-      ArrayList<Carta> listaCartas = null;
-      String sql = "SELECT * FROM carta where nombre_carta=";
-      sql = sql + "'" + nombreCarta + "'";
-      listaCartas = obtenerListado(sql);
+   public Object obtenerCartaNombre(String nombre_carta) throws PersistenciaException {
+      Object elemento = null;
+      String sql = "SELECT * FROM carta WHERE nombre_carta = '" + nombre_carta + "';";
+      ArrayList<Carta> listaCartas = buscar(sql);
       if (!listaCartas.isEmpty()) {
-         carta = listaCartas.get(0);
+         elemento = listaCartas.get(0);
       }
-      return carta;
+      return elemento;
    }
 
    /**
