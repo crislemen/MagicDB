@@ -306,20 +306,20 @@ public class BbDd {
             char rareza = campoRareza.charAt(0);
 
             carta.setId(resultSet.getInt("id"));
-            carta.setNombreCarta(resultSet.getString("nombreCarta"));
+            carta.setNombreCarta(resultSet.getString("nombre_carta"));
             carta.setTipo(resultSet.getString("tipo"));
-            carta.setSimboloExpansion(resultSet.getString("simboloExpansion"));
+            carta.setSimboloExpansion(resultSet.getString("simbolo_expansion"));
             carta.setRareza(rareza);
-            carta.setCosteMana(resultSet.getString("costeMana"));
-            carta.setCosteManaConvertido(resultSet.getInt("costeManaConvertido"));
+            carta.setCosteMana(resultSet.getString("coste_mana"));
+            carta.setCosteManaConvertido(resultSet.getInt("coste_mana_convertido"));
             carta.setFuerza(resultSet.getString("fuerza"));
             carta.setResistencia(resultSet.getString("resistencia"));
             carta.setLoyalty(resultSet.getInt("loyalty"));
             carta.setDescripcion(resultSet.getString("descripcion"));
-            carta.setCodigoArtista(resultSet.getInt("codigoArtista"));
+            carta.setCodigoArtista(resultSet.getInt("codigo_artista"));
             carta.setColor(resultSet.getString("color"));
-            carta.setGeneratedMana(resultSet.getString("generatedMana"));
-            carta.setNombreFormato(resultSet.getString("nombreFormato"));
+            carta.setGeneratedMana(resultSet.getString("generated_mana"));
+            carta.setNombreFormato(resultSet.getString("nombre_formato"));
 
             listaCartas.add(carta);
          }
@@ -351,21 +351,21 @@ public class BbDd {
          resultSet = statement.executeQuery(sql);
          while (resultSet.next()) {
             int id = resultSet.getInt("id");
-            String nombreCarta = resultSet.getString("nombreCarta");
+            String nombreCarta = resultSet.getString("nombre_carta");
             String tipo = resultSet.getString("tipo");
-            String simboloExpansion = resultSet.getString("simboloExpansion");
+            String simboloExpansion = resultSet.getString("simbolo_expansion");
             String campoRareza = resultSet.getString("rareza");
             char rareza = campoRareza.charAt(0);
-            String costeMana = resultSet.getString("costeMana");
-            int costeManaConvertido = resultSet.getInt("costeManaConvertido");
+            String costeMana = resultSet.getString("coste_mana");
+            int costeManaConvertido = resultSet.getInt("coste_mana_convertido");
             String fuerza = resultSet.getString("fuerza");
             String resistencia = resultSet.getString("resistencia");
             int loyalty = resultSet.getInt("loyalty");
             String descripcion = resultSet.getString("descripcion");
-            int codigoArtista = resultSet.getInt("codigoArtista");
+            int codigoArtista = resultSet.getInt("codigo_artista");
             String color = resultSet.getString("color");
-            String generatedMana = resultSet.getString("generatedMana");
-            String nombreFormato = resultSet.getString("nombreFormato");
+            String generatedMana = resultSet.getString("generated_mana");
+            String nombreFormato = resultSet.getString("nombre_formato");
             carta = new Carta(id, nombreCarta, tipo, simboloExpansion, rareza, costeMana, costeManaConvertido, fuerza,
                   resistencia, loyalty, descripcion, codigoArtista, color, generatedMana, nombreFormato);
             listaCartas.add(carta);

@@ -55,7 +55,7 @@ public class App {
                                     break;
                                 case 1:
                                     crearCarta();
-                                    // magicController.insertar(carta);
+                                    magicController.insertar(carta);
                                     break;
                                 case 2:
                                     crearCarta();
