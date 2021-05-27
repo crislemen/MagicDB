@@ -65,7 +65,7 @@ public class MagicModelo {
      * @throws PersistenciaException error controlado
      */
     public Carta buscarPorNombre(String nombreCarta) throws PersistenciaException {
-        return persistencia.obtenerCartaNombre(nombreCarta);
+        return (Carta) persistencia.obtenerCartaNombre(nombreCarta);
     }
 
     /**
