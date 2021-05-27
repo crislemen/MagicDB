@@ -159,8 +159,8 @@ public class MagicController {
      * @param carta a buscar
      * @throws PersistenciaException error controlado
      */
-    public void buscarPorNombre(Carta carta) throws PersistenciaException{
-        magicModelo.buscarPorNombre(carta);
+    public void buscarPorNombre(String nombreCarta) throws PersistenciaException{
+        magicModelo.buscarPorNombre(nombreCarta);
     }
 
     /**

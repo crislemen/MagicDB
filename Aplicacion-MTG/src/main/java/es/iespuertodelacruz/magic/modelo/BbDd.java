@@ -298,11 +298,11 @@ public class BbDd {
             char rareza = campoRareza.charAt(0);
 
             carta.setId(resultSet.getInt("id"));
-            carta.setNombreCarta(resultSet.getString("nombreCarta"));
+            carta.setNombreCarta(resultSet.getString("nombre_carta"));
             carta.setTipo(resultSet.getString("tipo"));
-            carta.setSimboloExpansion(resultSet.getString("simboloExpansion"));
+            carta.setSimboloExpansion(resultSet.getString("simbolo_expansion"));
             carta.setRareza(rareza);
-            carta.setCosteMana(resultSet.getString("costeMana"));
+            carta.setCosteMana(resultSet.getString("coste_mana"));
             carta.setCosteManaConvertido(resultSet.getInt("costeManaConvertido"));
             carta.setFuerza(resultSet.getString("fuerza"));
             carta.setResistencia(resultSet.getString("resistencia"));
@@ -423,9 +423,9 @@ public class BbDd {
     * @return carta
     * @throws PersistenciaException
     */
-   public Object obtenerCartaNombre(String nombre_carta) throws PersistenciaException {
+   public Object obtenerCartaNombre(String nombreCarta) throws PersistenciaException {
       Object elemento = null;
-      String sql = "SELECT * FROM carta WHERE nombre_carta = '" + nombre_carta + "';";
+      String sql = "SELECT * FROM carta WHERE nombre_carta = '" + nombreCarta + "';";
       ArrayList<Carta> listaCartas = buscar(sql);
       if (!listaCartas.isEmpty()) {
          elemento = listaCartas.get(0);

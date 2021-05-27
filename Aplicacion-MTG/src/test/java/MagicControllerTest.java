@@ -119,9 +119,9 @@ public class MagicControllerTest extends UtilsTest {
 
     @Test
     public void buscarPorNombreTest() {
-
+        String nombreCarta = "Bibliopex assistant";
         try {
-            magicController.buscarPorNombre(carta);
+            magicController.buscarPorNombre(nombreCarta);
         } catch (PersistenciaException e) {
 
             assertFalse(e.getMessage().contains("consulta"));
