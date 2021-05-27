@@ -1,4 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -23,11 +25,12 @@ public class MagicControllerTest extends UtilsTest {
         }
 
         cartaVacia = new Carta(0, "", "", "", CHAR_NULL, "{3}{G}", -1, "", "", -1, "", 0, "W", "", "");
-        carta = generarCarta(11111, "Bibliopex assistant", "artifact", "ORI", 'C', "{3}{G}", 4, "3", "3", 3,
-                "descripcion", 7, "W", "{R}", "Pauper");
+        carta = generarCarta(1, "Bibliopex assistant", "artifact", "ORI", 'C', "{3}{G}", 4, "3", "3", 3, "descripcion",
+                7, "W", "{R}", "Pauper");
         carta4 = generarCarta(11112, "Bibliopex assistant", "artifact", "ORI", 'C', "{3}{G}", 4, "3", "3", 3,
                 "descripcion", 7, "W", "{R}", "Pauper");
     }
+
 
     @Test
     public void validarTest() {
@@ -119,26 +122,31 @@ public class MagicControllerTest extends UtilsTest {
 
     @Test
     public void buscarPorNombreTest() {
-
+        String nombreCarta = "Bibliopex assistant";
         try {
-            magicController.buscarPorNombre(carta);
-        } catch (PersistenciaException e) {
+            magicController.insertar(carta);
+        } catch (PersistenciaException | CartaException e) {
 
             assertFalse(e.getMessage().contains("consulta"));
         }
-    }
-
-    @Test
-    public void buscarPorCosteManaTest() {
 
         try {
-            magicController.buscarPorCosteMana(carta);
-        } catch (PersistenciaException e) {
+            magicController.buscarPorNombre(nombreCarta);
+        } catch (PersistenciaException e2) {
 
-            assertFalse(e.getMessage().contains("consulta"));
+            assertFalse(e2.getMessage().contains("consulta"));
         }
+
     }
 
+    /*
+     * @Test public void buscarPorCosteManaTest() throws PersistenciaException,
+     * CartaException { magicController.insertar(carta); try {
+     * magicController.buscarPorCosteMana(carta); } catch (PersistenciaException e)
+     * {
+     * 
+     * assertFalse(e.getMessage().contains("consulta")); } }
+     */
     @Test
     public void eliminarTest() {
         try {
@@ -148,55 +156,38 @@ public class MagicControllerTest extends UtilsTest {
             assertFalse(e.getMessage().contains("consulta"));
         }
     }
-
-    @Test
-    public void modificarTest() {
-
-        int idNuevo = 384444;
-        String nombreCartaNuevo = "Archmage Emiritus";
-        String tipoNuevo = "Human Wizard";
-        String simboloExpansionNuevo = "ORI";
-        char rarezaNuevo = 'R';
-        String costeManaNuevo = "{1}{R}";
-        int costeManaConvertidoNuevo = 2;
-        String fuerzaNuevo = "2";
-        String resistenciaNuevo = "2";
-        int loyaltyNuevo = 2;
-        String descripcionNuevo = "Magecraft- Whenever you cast or copy an instant" + " or sorcery spell, draw a card";
-        int codigoArtistaNuevo = 6;
-        String colorNuevo = "W";
-        String generatedManaNuevo = "{G}";
-        String nombreFormatoNuevo = "Commander";
-
-        try {
-            magicController.insertar(carta);
-        } catch (PersistenciaException | CartaException e1) {
-            assertFalse(e1.getMessage().contains("consulta"));
-        }
-
-        carta.setId(idNuevo);
-        carta.setNombreCarta(nombreCartaNuevo);
-        carta.setTipo(tipoNuevo);
-        carta.setSimboloExpansion(simboloExpansionNuevo);
-        carta.setRareza(rarezaNuevo);
-        carta.setCosteMana(costeManaNuevo);
-        carta.setCosteManaConvertido(costeManaConvertidoNuevo);
-        carta.setFuerza(fuerzaNuevo);
-        carta.setResistencia(resistenciaNuevo);
-        carta.setLoyalty(loyaltyNuevo);
-        carta.setDescripcion(descripcionNuevo);
-        carta.setCodigoArtista(codigoArtistaNuevo);
-        carta.setColor(colorNuevo);
-        carta.setGeneratedMana(generatedManaNuevo);
-        carta.setNombreFormato(nombreFormatoNuevo);
-
-        try {
-            magicController.modificar(carta);
-
-        } catch (PersistenciaException e) {
-            assertFalse(e.getMessage().contains("consulta"));
-        }
-
-    }
+    /*
+     * @Test public void modificarTest() {
+     * 
+     * int idNuevo = 384444; String nombreCartaNuevo = "Archmage Emiritus"; String
+     * tipoNuevo = "Human Wizard"; String simboloExpansionNuevo = "ORI"; char
+     * rarezaNuevo = 'R'; String costeManaNuevo = "{1}{R}"; int
+     * costeManaConvertidoNuevo = 2; String fuerzaNuevo = "2"; String
+     * resistenciaNuevo = "2"; int loyaltyNuevo = 2; String descripcionNuevo =
+     * "Magecraft- Whenever you cast or copy an instant" +
+     * " or sorcery spell, draw a card"; int codigoArtistaNuevo = 6; String
+     * colorNuevo = "W"; String generatedManaNuevo = "{G}"; String
+     * nombreFormatoNuevo = "Commander";
+     * 
+     * try { magicController.insertar(carta); } catch (PersistenciaException |
+     * CartaException e1) { assertFalse(e1.getMessage().contains("consulta")); }
+     * 
+     * carta.setId(idNuevo); carta.setNombreCarta(nombreCartaNuevo);
+     * carta.setTipo(tipoNuevo); carta.setSimboloExpansion(simboloExpansionNuevo);
+     * carta.setRareza(rarezaNuevo); carta.setCosteMana(costeManaNuevo);
+     * carta.setCosteManaConvertido(costeManaConvertidoNuevo);
+     * carta.setFuerza(fuerzaNuevo); carta.setResistencia(resistenciaNuevo);
+     * carta.setLoyalty(loyaltyNuevo); carta.setDescripcion(descripcionNuevo);
+     * carta.setCodigoArtista(codigoArtistaNuevo); carta.setColor(colorNuevo);
+     * carta.setGeneratedMana(generatedManaNuevo);
+     * carta.setNombreFormato(nombreFormatoNuevo);
+     * 
+     * try { magicController.modificar(carta);
+     * 
+     * } catch (PersistenciaException e) {
+     * assertFalse(e.getMessage().contains("consulta")); }
+     * 
+     * }
+     */
 
 }
