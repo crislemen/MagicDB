@@ -192,6 +192,7 @@ public class App {
     public static void crearCarta() throws CartaException, PersistenciaException {
 
         Scanner sn = new Scanner(System.in);
+<<<<<<< HEAD
         Scanner str = new Scanner(System.in);
 
         System.out.println("[*]Inserte los siguientes valores[*]");
@@ -256,6 +257,40 @@ public class App {
         System.out.println("> Inserta el formato");
         String nombreFormato = str.nextLine();
 
+=======
+        System.out.println("Inserte los siguientes valores");
+        System.out.println("Inserte la Id de la carta(Formato Numerico)");
+        int id = sn.nextInt();
+        System.out.println("Inserte el nombre de la carta");
+        String nombreCarta = sn.next();
+        System.out.println("Inserta el tipo de la carta(Formato: texto)");
+        String tipo = sn.next();
+        System.out.println("Inserta el simbolo de expansion(ORI)");
+        String simboloExpansion = sn.next();
+        System.out.println("Inserta la rareza(Formato:Un caracter)");
+        String campoRareza = sn.next();
+        char rareza = campoRareza.charAt(0);
+        System.out.println("Inserta el coste de mana(Debe tener el siguiente formato:{}{})");
+        String costeMana = sn.next();
+        System.out.println("Inserta el coste de mana convertido(Formato numerico)");
+        int costeManaConvertido = sn.nextInt();
+        System.out.println("Inserta la fuerza(Formato numerico)");
+        String fuerza = sn.next();
+        System.out.println("Inserta la resistencia(Formato numerico)");
+        String resistencia = sn.next();
+        System.out.println("Inserta la lealtad(Formato numerico)");
+        int loyalty = sn.nextInt();
+        System.out.println("Inserta la descripcion de la carta(Formato texto)");
+        String descripcion = sn.next();
+        System.out.println("Inserte el codigo de artista(Formato numerico)");
+        int codigoArtista = sn.nextInt();
+        System.out.println("Inserta el color(Formato texto)");
+        String color = sn.next();
+        System.out.println("Inserta el mana generado(Formato texto)");
+        String generatedMana = sn.next();
+        System.out.println("Inserta el formato(Formato texto)");
+        String nombreFormato = sn.next();
+>>>>>>> 7bf2f44a6e1a77b1cf5125a2a1420bf2848fdc32
         new Carta(id, nombreCarta, tipo, simboloExpansion, rareza, costeMana, costeManaConvertido, fuerza, resistencia,
                 loyalty, descripcion, codigoArtista, color, generatedMana, nombreFormato);
 
