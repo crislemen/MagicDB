@@ -1,6 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.beans.Statement;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -28,7 +29,11 @@ public class BbDdTest {
     }
 
     @Test
-    public void testing(){
-        assertTrue(true);
+    public void insertarArtistasTest() throws IOException{
+        try {
+            bbDd.insertarArtistas();
+        } catch (PersistenciaException e) {
+            assertFalse(e.getMessage().contains("consulta"));
+        }
     }
 }
