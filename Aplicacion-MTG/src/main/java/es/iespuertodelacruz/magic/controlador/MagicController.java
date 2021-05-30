@@ -152,8 +152,10 @@ public class MagicController {
      * @param carta a buscar
      * @throws PersistenciaException error controlado
      */
-    public void buscarPorID(Carta carta) throws PersistenciaException {
-        magicModelo.buscarPorID(carta);
+    public Carta buscarPorID(int id) throws PersistenciaException {
+        Carta carta = null;
+        carta = magicModelo.buscarPorID(id);
+        return carta;
     }
 
     /**
@@ -161,8 +163,10 @@ public class MagicController {
      * @param carta a buscar
      * @throws PersistenciaException error controlado
      */
-    public void buscarPorNombre(String nombreCarta) throws PersistenciaException{
-        magicModelo.buscarPorNombre(nombreCarta);
+    public Carta buscarPorNombre(String nombreCarta) throws PersistenciaException{
+        Carta carta = null;
+        carta = magicModelo.buscarPorNombre(nombreCarta);
+        return carta;
     }
 
     /**
@@ -170,8 +174,10 @@ public class MagicController {
      * @param carta a buscar
      * @throws PersistenciaException error controlado
      */
-    public void buscarPorCosteMana(Carta carta) throws PersistenciaException{
-        magicModelo.buscarPorCosteDeMana(carta);
+    public Carta buscarPorCosteMana(String costeMana) throws PersistenciaException{
+        Carta carta = null;
+        magicModelo.buscarPorCosteDeMana(costeMana);
+        return carta;
     }
     /**
      * Metodo que modifica una carta

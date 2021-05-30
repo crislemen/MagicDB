@@ -6,27 +6,46 @@ import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import es.iespuertodelacruz.magic.exception.PersistenciaException;
 import es.iespuertodelacruz.magic.modelo.BbDd;
+import es.iespuertodelacruz.magic.modelo.Fichero;
 
 public class BbDdTest {
 
-    BbDd bbDd;
+    static BbDd bbDd;
     Connection connection;
     Statement statement; 
     ResultSet resultSet;
+    static Fichero fichero;
+    static String nombreFichero = "magic.db";
 
     @BeforeEach
     public void setUp() throws PersistenciaException, SQLException{
         if(bbDd == null){
-            bbDd = new BbDd("org.sqlite.JDBC", "jdbc:sqlite:test.db", null, null);
+            bbDd = new BbDd("org.sqlite.JDBC", "jdbc:sqlite:magic.db", null, null);
             
         }
         bbDd.getConnection();
         
+    }
+    @AfterAll
+    public static void after(){
+        try {
+            bbDd.closeConecction(null, null, null);
+        } catch (PersistenciaException e) {
+            fail("Fallo al cerrar la conexion con la base de datos");
+        }
+        /*
+        try {
+            fichero.eliminar(nombreFichero);
+        } catch (PersistenciaException e) {
+            fail("Fallo a la hora de eliminar el archivo");
+        }*/
     }
 
     @Test
@@ -36,12 +55,6 @@ public class BbDdTest {
         } catch (PersistenciaException e) {
             assertFalse(e.getMessage().contains("consulta"));
             
-        }
-
-        try {
-            bbDd.insertarArtistas();
-        } catch (Exception e) {
-            assertTrue(e.getMessage().contains("consulta"));
         }
     }
 
@@ -53,11 +66,6 @@ public class BbDdTest {
         } catch (PersistenciaException e) {
             assertFalse(e.getMessage().contains("consulta"));
             
-        }
-        try {
-            bbDd.insertarBarajas();
-        } catch (Exception e) {
-            assertTrue(e.getMessage().contains("consulta"));
         }
     }
 
@@ -71,11 +79,6 @@ public class BbDdTest {
             assertFalse(e.getMessage().contains("consulta"));
             
         }
-        try {
-            bbDd.insertarFormatos();
-        } catch (Exception e) {
-            assertTrue(e.getMessage().contains("consulta"));
-        }
     }
 
 
@@ -85,15 +88,9 @@ public class BbDdTest {
         try {
             bbDd.insertarBarajaCarta();
         } catch (PersistenciaException e) {
-            assertFalse(e.getMessage().contains("consulta"));
-            
+            assertFalse(e.getMessage().contains("consulta"));           
         }
 
-        try {
-            bbDd.insertarBarajaCarta();
-        } catch (Exception e) {
-            assertTrue(e.getMessage().contains("consulta"));
-        }
     }
 
 
@@ -103,12 +100,6 @@ public class BbDdTest {
             bbDd.insertarBarajaColores();
         } catch (PersistenciaException e) {
             assertFalse(e.getMessage().contains("consulta"));           
-        }
-
-        try {
-            bbDd.insertarBarajaColores();
-        } catch (Exception e) {
-            assertTrue(e.getMessage().contains("consulta"));
         }
     }
 
@@ -121,11 +112,6 @@ public class BbDdTest {
         } catch (PersistenciaException e) {
             assertFalse(e.getMessage().contains("consulta"));           
         }
-        try {
-            bbDd.insertarBarajaFormato();
-        } catch (Exception e) {
-            assertTrue(e.getMessage().contains("consulta"));
-        }
     }
 
 
@@ -135,15 +121,9 @@ public class BbDdTest {
         try {
             bbDd.insertarBarajaMana();
         } catch (PersistenciaException e) {
-            assertFalse(e.getMessage().contains("consulta"));
-            
+            assertFalse(e.getMessage().contains("consulta"));           
         }
 
-        try {
-            bbDd.insertarBarajaMana();
-        } catch (Exception e) {
-            assertTrue(e.getMessage().contains("consulta"));
-        }
     }
 
 
@@ -155,12 +135,8 @@ public class BbDdTest {
         } catch (PersistenciaException e) {
             assertFalse(e.getMessage().contains("consulta"));
             
-        }/*
-        try {
-            bbDd.insertarCarta();
-        } catch (Exception e) {
-            assertTrue(e.getMessage().contains("consulta"));
-        }*/
+        }
+
     }
 
 
@@ -172,11 +148,6 @@ public class BbDdTest {
         } catch (PersistenciaException e) {
             assertFalse(e.getMessage().contains("consulta"));
             
-        }
-        try {
-            bbDd.insertarExpansion();
-        } catch (Exception e) {
-            assertTrue(e.getMessage().contains("consulta"));
         }
     }
 
@@ -190,11 +161,6 @@ public class BbDdTest {
             assertFalse(e.getMessage().contains("consulta"));
             
         }
-        try {
-            bbDd.insertarManaProduce();
-        } catch (Exception e) {
-            assertTrue(e.getMessage().contains("consulta"));
-        }
     }
 
 
@@ -207,18 +173,6 @@ public class BbDdTest {
             assertFalse(e.getMessage().contains("consulta"));
             
         }
-        try {
-            bbDd.insertarMana();
-        } catch (Exception e) {
-            assertTrue(e.getMessage().contains("consulta"));
-        }
     }
-
-
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
     
 }

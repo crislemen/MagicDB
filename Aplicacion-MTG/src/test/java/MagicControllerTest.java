@@ -6,9 +6,11 @@ import es.iespuertodelacruz.magic.api.Carta;
 import es.iespuertodelacruz.magic.controlador.MagicController;
 import es.iespuertodelacruz.magic.exception.CartaException;
 import es.iespuertodelacruz.magic.exception.PersistenciaException;
+import es.iespuertodelacruz.magic.modelo.MagicModelo;
 
 public class MagicControllerTest extends UtilsTest {
 
+    MagicModelo magicModelo;
     MagicController magicController;
     Carta cartaVacia;
     Carta carta;
@@ -42,7 +44,7 @@ public class MagicControllerTest extends UtilsTest {
     @Test
     public void insertarTest() {
         try {
-            magicController.insertar(carta4);
+            magicController.insertar(carta);
         } catch (PersistenciaException | CartaException e) {
 
             assertTrue(e.getMessage().contains("consulta"));
@@ -105,9 +107,9 @@ public class MagicControllerTest extends UtilsTest {
 
     @Test
     public void buscarCartaPorId() {
-
+        int id = 2;
         try {
-            magicController.buscarPorID(carta);
+            magicController.buscarPorID(id);
         } catch (PersistenciaException e) {
             assertFalse(e.getMessage().contains("consulta"));
         }
@@ -126,61 +128,30 @@ public class MagicControllerTest extends UtilsTest {
 
     @Test
     public void buscarPorCosteManaTest() {
-
+        String costeMana = "{2}{W}";
         try {
-            magicController.buscarPorCosteMana(carta);
+            magicController.buscarPorCosteMana(costeMana);
         } catch (PersistenciaException e) {
 
             assertFalse(e.getMessage().contains("consulta"));
         }
     }
-
-    @Test
-    public void eliminarTest() {
-        try {
-            magicController.eliminar(carta);
-        } catch (PersistenciaException e) {
-
-            assertFalse(e.getMessage().contains("consulta"));
-        }
-    }
-
     @Test
     public void modificarTest() {
 
-        String nombreCartaNuevo = "test";
-        String tipoNuevo = "tset";
-        String simboloExpansionNuevo = "ORI";
-        char rarezaNuevo = 'R';
-        String costeManaNuevo = "{1}{R}";
-        int costeManaConvertidoNuevo = 2;
-        String fuerzaNuevo = "2";
-        String resistenciaNuevo = "2";
-        int loyaltyNuevo = 2;
-        String descripcionNuevo = "test";
-        int codigoArtistaNuevo = 6;
-        String colorNuevo = "W";
-        String generatedManaNuevo = "{G}";
-        String nombreFormatoNuevo = "Commander";
-
+        /*
+        try {
+            Carta cartaEncontrado = magicModelo.buscarPorID(carta.getId());
+            assertNotNull(cartaEncontrado, "No se debe de obtener un elemento nulo");
+            cartaEncontrado.setNombreCarta("Pepe 2");
+            cartaEncontrado.modificar(cartaEncontrado);
+            Carta cartaActualizada = magicModelo.buscarPorID(cartaEncontrado.getId());
+            assertEquals(cartaActualizada, cartaEncontrado, "No se ha encontrado lo esperado");
+        } catch (PersistenciaException e) {
+           fail("Se ha producido un error en la consulta del la cliente,e:"+e.getMessage());
+        }*/
         if (carta4.getId() == 11112) {
-            
-            /*
-            carta.setNombreCarta(nombreCartaNuevo);
-            carta.setTipo(tipoNuevo);
-            carta.setSimboloExpansion(simboloExpansionNuevo);
-            carta.setRareza(rarezaNuevo);
-            carta.setCosteMana(costeManaNuevo);
-            carta.setCosteManaConvertido(costeManaConvertidoNuevo);
-            carta.setFuerza(fuerzaNuevo);
-            carta.setResistencia(resistenciaNuevo);
-            carta.setLoyalty(loyaltyNuevo);
-            carta.setDescripcion(descripcionNuevo);
-            carta.setCodigoArtista(codigoArtistaNuevo);
-            carta.setColor(colorNuevo);
-            carta.setGeneratedMana(generatedManaNuevo);
-            carta.setNombreFormato(nombreFormatoNuevo);
-            */
+
             try {
                 magicController.modificar(carta4);
     
@@ -199,5 +170,16 @@ public class MagicControllerTest extends UtilsTest {
             assertFalse(e.getMessage().contains("consulta"));
         }
     }
+    @Test
+    public void eliminarTest() {
+        try {
+            magicController.eliminar(carta);
+        } catch (PersistenciaException e) {
+
+            assertFalse(e.getMessage().contains("consulta"));
+        }
+    }
+
+
 
 }

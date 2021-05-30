@@ -1,5 +1,8 @@
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import es.iespuertodelacruz.magic.exception.PersistenciaException;
@@ -8,8 +11,8 @@ import es.iespuertodelacruz.magic.modelo.Fichero;
 public class FicheroTest {
     String nombre;
 
-    Fichero fichero = null;
-    String nombreFichero = "ficheroPrueba.txt";
+    static Fichero fichero = null;
+    static String nombreFichero = "ficheroPrueba.txt";
     String mensaFichero = "Esto es una prueba de contenido de fichero";
 
     @BeforeEach
@@ -18,6 +21,14 @@ public class FicheroTest {
             fichero = new Fichero();
         }
         crearFichero();
+    }
+    @AfterAll
+    public static void after(){
+        try {
+            fichero.eliminar(nombreFichero);
+        } catch (Exception e) {
+            fail("Fallo al eliminar el fichero");
+        }
     }
 
     /*

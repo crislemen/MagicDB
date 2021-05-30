@@ -49,8 +49,8 @@ public class MagicModelo {
      * @param carta objeto a buscar
      * @throws PersistenciaException error controlado
      */
-    public void buscarPorID(Carta carta) throws PersistenciaException {
-        persistencia.obtenerCartaId(carta.getId());
+    public Carta buscarPorID(int id) throws PersistenciaException {
+        return (Carta) persistencia.obtenerCartaId(id);
     }
 
     /**
@@ -69,8 +69,8 @@ public class MagicModelo {
      * @param carta objeto a buscar
      * @throws PersistenciaException error controlado
      */
-    public void buscarPorCosteDeMana(Carta carta) throws PersistenciaException {
-        persistencia.obtenerCartaMana(carta.getCosteMana());
+    public Carta buscarPorCosteDeMana(String costeMana) throws PersistenciaException {
+        return (Carta) persistencia.obtenerCartaMana(costeMana);
     }
 
     /**
