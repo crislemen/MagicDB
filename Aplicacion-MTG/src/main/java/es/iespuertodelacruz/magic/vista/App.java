@@ -15,7 +15,7 @@ public class App {
     }
 
     private static void menu() throws CartaException, PersistenciaException {
-        Carta carta = crearCarta();
+        Carta carta;
         Scanner sn = new Scanner(System.in);
         boolean salir = false;
         MagicController magicController;
@@ -62,12 +62,11 @@ public class App {
                                     break;
                                 case 1:
                                     System.out.println("");
-                                    crearCarta();
-                                    magicController.insertar(carta);
+                                    magicController.insertar(crearCarta());
                                     break;
                                 case 2:
                                     crearCarta();
-                                    magicController.modificar(carta);
+                                    magicController.modificar(crearCarta());
                                     break;
                                 case 3:
                                     System.out.println("");
