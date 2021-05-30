@@ -15,7 +15,7 @@ public class App {
     }
 
     private static void menu() throws CartaException, PersistenciaException {
-        Carta carta = null;
+        Carta carta;
         Scanner sn = new Scanner(System.in);
         boolean salir = false;
         MagicController magicController;
@@ -62,12 +62,11 @@ public class App {
                                     break;
                                 case 1:
                                     System.out.println("");
-                                    crearCarta();
-                                    magicController.insertar(carta);
+                                    magicController.insertar(crearCarta());
                                     break;
                                 case 2:
                                     crearCarta();
-                                    // magicController.modificar();
+                                    magicController.modificar(crearCarta());
                                     break;
                                 case 3:
                                     System.out.println("");
@@ -185,13 +184,17 @@ public class App {
 
     /**
      * Metodo encargado de crear carta
+     * @return 
      * 
      * @throws CartaException        error controlado
      * @throws PersistenciaException error controlado
      */
-    public static void crearCarta() throws CartaException, PersistenciaException {
+    public static Carta crearCarta() throws CartaException, PersistenciaException {
 
         Scanner sn = new Scanner(System.in);
+
+        Scanner str = new Scanner(System.in);
+
         System.out.println("[*]Inserte los siguientes valores[*]");
         System.out.println("");
 
@@ -252,12 +255,10 @@ public class App {
         String generatedMana = sn.next();
         System.out.println("");
 
-        System.out.println("> Inserta el formato(Formato texto)");
-        String nombreFormato = sn.next();
-        System.out.println("");
-
-        new Carta(id, nombreCarta, tipo, simboloExpansion, rareza, costeMana, costeManaConvertido, fuerza, resistencia,
-                loyalty, descripcion, codigoArtista, color, generatedMana, nombreFormato);
+        System.out.println("> Inserta el formato");
+        String nombreFormato = str.nextLine();
+        return new Carta(id, nombreCarta, tipo, simboloExpansion, rareza, costeMana, costeManaConvertido, fuerza, resistencia,loyalty,descripcion,codigoArtista,
+        color,generatedMana,nombreFormato);
 
     }
 }
