@@ -2,12 +2,6 @@ package es.iespuertodelacruz.magic.modelo;
 
 import java.io.*;
 import java.util.Scanner;
-
-
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.util.ResourceUtils;
 import es.iespuertodelacruz.magic.exception.PersistenciaException;
 
 public class Fichero {

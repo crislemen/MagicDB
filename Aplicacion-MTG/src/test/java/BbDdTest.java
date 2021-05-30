@@ -1,22 +1,12 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.beans.Statement;
-import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import es.iespuertodelacruz.magic.api.Carta;
-import es.iespuertodelacruz.magic.controlador.MagicController;
-import es.iespuertodelacruz.magic.exception.CartaException;
 import es.iespuertodelacruz.magic.exception.PersistenciaException;
 import es.iespuertodelacruz.magic.modelo.BbDd;
 
@@ -37,18 +27,8 @@ public class BbDdTest {
         
     }
 
-    /*
-    
     @Test
-    public void getconnectionUrltest() throws SQLException, PersistenciaException{
-        assertEquals(connection != null, true);
+    public void testing(){
+        assertTrue(true);
     }
-    @Test
-    public void InsertarArtistasTest() throws IOException, SQLException {
-        try {
-            bbDd.insertarArtistas();
-        } catch (PersistenciaException e) {
-            assertTrue(e.getMessage().contains("insertar"));
-        }
-    }*/
 }

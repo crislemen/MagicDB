@@ -152,9 +152,9 @@ public class MagicControllerTest extends UtilsTest {
     @Test
     public void modificarTest() {
 
-        int idNuevo = 384445;
-        String nombreCartaNuevo = "Archmage Emiritus";
-        String tipoNuevo = "Human Wizard";
+        int idNuevo = 398431;
+        String nombreCartaNuevo = "t";
+        String tipoNuevo = "t";
         String simboloExpansionNuevo = "ORI";
         char rarezaNuevo = 'R';
         String costeManaNuevo = "{1}{R}";
@@ -167,12 +167,12 @@ public class MagicControllerTest extends UtilsTest {
         String colorNuevo = "W";
         String generatedManaNuevo = "{G}";
         String nombreFormatoNuevo = "Commander";
-
+/*
         try {
             magicController.insertar(carta);
         } catch (PersistenciaException | CartaException e1) {
             assertFalse(e1.getMessage().contains("consulta"));
-        }
+        }*/
 
         carta.setId(idNuevo);
         carta.setNombreCarta(nombreCartaNuevo);
@@ -194,7 +194,7 @@ public class MagicControllerTest extends UtilsTest {
             magicController.modificar(carta);
 
         } catch (PersistenciaException e) {
-            assertTrue(e.getMessage().contains("consulta"));
+            assertFalse(e.getMessage().contains("consulta"));
         }
 
     }
