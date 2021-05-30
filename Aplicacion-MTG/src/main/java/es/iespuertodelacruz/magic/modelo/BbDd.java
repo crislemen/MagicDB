@@ -166,8 +166,8 @@ public class BbDd {
     * Metodo que inserta todos los artistas que hay en el fichero
     * InsertsArtista.sql
     * 
-    * @throws PersistenciaException
-    * @throws IOException
+    * @throws PersistenciaException error controlado
+    * @throws IOException error no controlado
     */
    public void insertarArtistas() throws PersistenciaException, IOException {
       String sql;
@@ -183,8 +183,8 @@ public class BbDd {
    /**
     * Metodo que inserta todos los valores que hay en el fichero InsertsBaraja.sql
     * 
-    * @throws PersistenciaException
-    * @throws IOException
+    * @throws PersistenciaException error controlado
+    * @throws IOException error no controlado
     */
 
    public void insertarBarajas() throws PersistenciaException, IOException {
@@ -195,8 +195,8 @@ public class BbDd {
    /**
     * Metodo que inserta todos los valores que hay en el fichero InsertsFormato.sql
     * 
-    * @throws PersistenciaException
-    * @throws IOException
+    * @throws PersistenciaException error controlado
+    * @throws IOException error no controlado
     */
 
    public void insertarFormatos() throws PersistenciaException, IOException {
@@ -208,7 +208,7 @@ public class BbDd {
     * Metodo encargado de insertar una carta en la BBDD en la tabla carta
     * 
     * @param carta a insertar en la BBDD
-    * @throws PersistenciaException
+    * @throws PersistenciaException error controlado
     */
    public void insertar(Carta carta) throws PersistenciaException {
       String sql = "INSERT or REPLACE INTO carta(id,nombre_carta,tipo,simbolo_expansion,rareza,"
@@ -226,8 +226,8 @@ public class BbDd {
    /**
     * Metodo que elimina una carta por el identificador
     * 
-    * @param carta a eliminar
-    * @throws PersistenciaException
+    * @param carta a eliminar 
+    * @throws PersistenciaException error controlado
     */
    public void eliminar(Carta carta) throws PersistenciaException {
       String sql = "DELETE from carta where id = '" + carta.getId() + "'";
@@ -237,8 +237,8 @@ public class BbDd {
    /**
     * Metodo que se encarga de modificar una carta
     * 
-    * @param carta
-    * @throws PersistenciaException
+    * @param carta a tratar
+    * @throws PersistenciaException error controlado
     */
    public void modificar(Carta carta) throws PersistenciaException {
       String sql = " UPDATE carta SET nombre_carta = '" + carta.getNombreCarta() + "', " + " tipo = '" + carta.getTipo()
@@ -372,27 +372,10 @@ public class BbDd {
    }
 
    /**
-    * Metodo encargado de obtener un elemento
-    * 
-    * @param id a buscar
-    * @return elemento
-    * @throws PersistenciaException error controlado
-    */
-   public Object buscarElemento(String id) throws PersistenciaException {
-      Object elemento = null;
-      String sql = "SELECT * FROM censo WHERE id = '" + id + "';";
-      ArrayList<Carta> listaCartas = buscar(sql);
-      if (!listaCartas.isEmpty()) {
-         elemento = listaCartas.get(0);
-      }
-      return elemento;
-   }
-
-   /**
     * Metodo que obtiene todos los datos de la lista sql de carta
     * 
     * @return obtenerLista
-    * @throws PersistenciaException
+    * @throws PersistenciaException error controlado
     */
    public ArrayList<Carta> obtenerListado() throws PersistenciaException {
       String sql = "SELECT * FROM carta";

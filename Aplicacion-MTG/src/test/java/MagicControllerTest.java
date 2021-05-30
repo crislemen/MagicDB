@@ -188,8 +188,15 @@ public class MagicControllerTest extends UtilsTest {
             }
         }
 
-        
+    }
 
+    @Test
+    public void obtenerListadoTest(){
+        try {
+            magicController.obtenerListado();
+        } catch (PersistenciaException e) {
+            e.getMessage();
+        }
     }
 
 }
