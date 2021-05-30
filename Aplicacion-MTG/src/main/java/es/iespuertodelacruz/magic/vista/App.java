@@ -15,7 +15,7 @@ public class App {
     }
 
     private static void menu() throws CartaException, PersistenciaException {
-        Carta carta = null;
+        Carta carta = crearCarta();
         Scanner sn = new Scanner(System.in);
         boolean salir = false;
         MagicController magicController;
@@ -67,7 +67,7 @@ public class App {
                                     break;
                                 case 2:
                                     crearCarta();
-                                    // magicController.modificar();
+                                    magicController.modificar(carta);
                                     break;
                                 case 3:
                                     System.out.println("");
@@ -185,11 +185,12 @@ public class App {
 
     /**
      * Metodo encargado de crear carta
+     * @return 
      * 
      * @throws CartaException        error controlado
      * @throws PersistenciaException error controlado
      */
-    public static void crearCarta() throws CartaException, PersistenciaException {
+    public static Carta crearCarta() throws CartaException, PersistenciaException {
 
         Scanner sn = new Scanner(System.in);
         System.out.println("Inserte los siguientes valores");
@@ -224,7 +225,7 @@ public class App {
         String generatedMana = sn.next();
         System.out.println("Inserta el formato(Formato texto)");
         String nombreFormato = sn.next();
-        new Carta(id, nombreCarta, tipo, simboloExpansion, rareza, costeMana, costeManaConvertido, fuerza, resistencia,
+        return new Carta(id, nombreCarta, tipo, simboloExpansion, rareza, costeMana, costeManaConvertido, fuerza, resistencia,
                 loyalty, descripcion, codigoArtista, color, generatedMana, nombreFormato);
 
     }
