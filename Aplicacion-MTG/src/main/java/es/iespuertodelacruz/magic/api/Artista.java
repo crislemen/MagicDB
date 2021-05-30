@@ -100,7 +100,7 @@ public class Artista {
     }
 
     
-
+    /*
     @Override
     public String toString() {
         return "{" +
@@ -109,7 +109,7 @@ public class Artista {
             ", apellido='" + getApellido() + "'" +
             ", numeroArtes='" + getNumeroArtes() + "'" +
             "}";
-    }
+    }*/
     
     
 }

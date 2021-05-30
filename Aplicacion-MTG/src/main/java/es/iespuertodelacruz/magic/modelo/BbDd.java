@@ -1,6 +1,7 @@
 package es.iespuertodelacruz.magic.modelo;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.*;
 import java.util.ArrayList;
 import es.iespuertodelacruz.magic.api.Carta;
@@ -169,12 +170,12 @@ public class BbDd {
     * @throws PersistenciaException error controlado
     * @throws IOException error no controlado
     */
-   public void insertarArtistas() throws PersistenciaException, IOException {
+   public void insertarArtistas() throws PersistenciaException, IOException{
       String sql;
       try {
          sql = fichero.leerResource("sql/InsertsArtista.sql");
       } catch (PersistenciaException e) {
-         throw new PersistenciaException("No se ha podido insertar los artistas");
+         throw new PersistenciaException("Se ha producido un error realizando la consulta");
       }
 
       actualizar(sql);
@@ -187,8 +188,15 @@ public class BbDd {
     * @throws IOException error no controlado
     */
 
-   public void insertarBarajas() throws PersistenciaException, IOException {
-      String sql = fichero.leerResource("sql/InsertsBaraja.sql");
+   public void insertarBarajas() throws PersistenciaException, IOException{
+      String sql;
+
+      try {
+         sql = fichero.leerResource("sql/InsertsBaraja.sql");
+      } catch (PersistenciaException e) {
+         throw new PersistenciaException("Se ha producido un error realizando la consulta");
+      }
+      
       actualizar(sql);
    }
 
@@ -199,8 +207,138 @@ public class BbDd {
     * @throws IOException error no controlado
     */
 
-   public void insertarFormatos() throws PersistenciaException, IOException {
-      String sql = fichero.leerResource("sql/InsertsFormato.sql");
+   public void insertarFormatos() throws PersistenciaException, IOException{
+      String sql; 
+      try {
+         sql = fichero.leerResource("sql/InsertsFormato.sql");
+      } catch (Exception e) {
+         throw new PersistenciaException("Se ha producido un error realizando la consulta");
+      }
+      
+      actualizar(sql);
+   }
+
+   /**
+    * Metodo que inserta todos los valores que hay en el fichero InsertsBaraja_carta.sql
+    * @throws PersistenciaException error controlado
+    * @throws IOException error no controlado
+    */
+   public void insertarBarajaCarta() throws PersistenciaException, IOException{
+      String sql;
+      try {
+         sql = fichero.leerResource("sql/InsertsBaraja_carta.sql");
+      } catch (Exception e) {
+         throw new PersistenciaException("Se ha producido un error realizando la consulta");
+      }
+      actualizar(sql);
+   }
+
+   /**
+    * Metodo que inserta todos los valores que hay en el fichero InsertsBaraja_colores.sql
+    * @throws PersistenciaException error controlado
+    * @throws IOException error no controlado
+    */
+   public void insertarBarajaColores() throws PersistenciaException, IOException{
+      String sql;
+      try {
+         sql = fichero.leerResource("sql/InsertsBaraja_colores.sql");
+      } catch (Exception e) {
+         throw new PersistenciaException("Se ha producido un error realizando la consulta");
+      }
+      actualizar(sql);
+   }
+
+   /**
+    * Metodo que inserta todos los valores que hay en el fichero InsertsBaraja_formato.sql
+    * @throws PersistenciaException error controlado
+    * @throws IOException error no controlado
+    */
+   public void insertarBarajaFormato() throws PersistenciaException, IOException{
+      String sql;
+
+      try {
+         sql = fichero.leerResource("sql/InsertsBaraja_formato.sql");
+      } catch (Exception e) {
+         throw new PersistenciaException("Se ha producido un error realizando la consulta");
+      }
+      actualizar(sql);
+   }
+
+   /**
+    * Metodo que inserta todos los valores que hay en el fichero InsertsBaraja_mana.sql
+    * @throws PersistenciaException error controlado
+    * @throws IOException error no controlado
+    */
+   public void insertarBarajaMana() throws PersistenciaException, IOException{
+      String sql;
+
+      try {
+         sql = fichero.leerResource("sql/InsertsBaraja_mana.sql");
+      } catch (Exception e) {
+         throw new PersistenciaException("Se ha producido un error realizando la consulta");
+      }
+      actualizar(sql);
+   }
+
+   /**
+    * Metodo que inserta todos los valores que hay en el fichero InsertsCarta.sql
+    * @throws PersistenciaException error controlado
+    * @throws IOException error no controlado
+    */
+   public void insertarCarta() throws PersistenciaException, IOException{
+      String sql;
+
+      try {
+         sql = fichero.leerResource("sql/InsertsCarta.sql");
+      } catch (Exception e) {
+         throw new PersistenciaException("Se ha producido un error realizando la consulta");
+      }
+      actualizar(sql);
+   }
+
+   /**
+    * Metodo que inserta todos los valores que hay en el fichero InsertsExpansion.sql
+    * @throws PersistenciaException error controlado
+    * @throws IOException error no controlado
+    */
+   public void insertarExpansion() throws PersistenciaException, IOException{
+      String sql;
+      try {
+         sql = fichero.leerResource("sql/InsertsExpansion.sql");
+      } catch (Exception e) {
+         throw new PersistenciaException("Se ha producido un error realizando la consulta");
+      }
+      actualizar(sql);
+   }
+
+   /**
+    * Metodo que inserta todos los valores que hay en el fichero InsertsMana_produce.sql
+    * @throws PersistenciaException error controlado
+    * @throws IOException error no controlado
+    */
+   public void insertarManaProduce() throws PersistenciaException, IOException{
+      String sql;
+      try {
+         sql = fichero.leerResource("sql/InsertsMana_produce.sql");
+      } catch (Exception e) {
+         throw new PersistenciaException("Se ha producido un error realizando la consulta");
+      }
+      actualizar(sql);
+   }
+
+   /**
+    * Metodo que inserta todos los valores que hay en el fichero InsertsMana.sq
+    * @throws PersistenciaException error controlado
+    * @throws IOException error no controlado
+    */
+   public void insertarMana() throws PersistenciaException, IOException{
+      String sql;
+
+      try {
+         sql = fichero.leerResource("sql/InsertsMana.sql");
+      } catch (Exception e) {
+         throw new PersistenciaException("Se ha producido un error realizando la consulta");
+      }
       actualizar(sql);
    }
 

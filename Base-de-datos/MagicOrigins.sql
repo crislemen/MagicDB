@@ -5709,7 +5709,7 @@ SELECT * from vista_formato_cartas;
 -- Procedimientos almacenados --
 
 -- pa_artista_cartas --
---Este procedimiento funciona de manera que dando un nombre de artista. Devuelva los nomnbres de las cartas que tiene este artista. --
+-- Este procedimiento funciona de manera que dando un nombre de artista. Devuelva los nomnbres de las cartas que tiene este artista. --
  drop procedure if EXISTS pa_artista_carta;
  delimiter //
  create procedure pa_artista_carta(in p_artista varchar(50))

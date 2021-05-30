@@ -1,12 +1,25 @@
 package es.iespuertodelacruz.magic.modelo;
 
 import java.io.*;
+import java.net.URISyntaxException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Scanner;
+
+import org.apache.commons.io.IOUtils;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+
 import es.iespuertodelacruz.magic.exception.PersistenciaException;
 
 public class Fichero {
    private static final String RETORNO_CARRO = "\n";
    private static final String ARTISTA = "/InsertsArtista.sql";
+
    /**
     * Funcion encargada de leer un fichero
     * 
@@ -44,23 +57,20 @@ public class Fichero {
 
    /**
     * Metodo encargado de leer desde resources
+    * 
     * @param nombre del fichero
     * @return content
     * @throws IOException error no controlado
     * @throws PersistenciaException error controlado
     */
 
-   public String leerResource(String nombre) throws IOException, PersistenciaException {
-
-           ClassLoader classLoader = getClass().getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream(nombre);
-
-        if (inputStream == null) {
-            throw new IllegalArgumentException("file not found! " + nombre);
-        } else {
-            return inputStream.toString();
-        }
+   public String leerResource(String nombre) throws IOException, PersistenciaException{
+      
+      try (InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(nombre))
+      {
+         return IOUtils.toString(inputStream);
       }
+   }
 
    /**
     * Metodo encargado de crear un fichero
