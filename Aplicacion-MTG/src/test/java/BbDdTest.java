@@ -155,12 +155,12 @@ public class BbDdTest {
         } catch (PersistenciaException e) {
             assertFalse(e.getMessage().contains("consulta"));
             
-        }
+        }/*
         try {
             bbDd.insertarCarta();
         } catch (Exception e) {
             assertTrue(e.getMessage().contains("consulta"));
-        }
+        }*/
     }
 
 

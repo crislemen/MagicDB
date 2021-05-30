@@ -163,8 +163,9 @@ public class MagicControllerTest extends UtilsTest {
         String generatedManaNuevo = "{G}";
         String nombreFormatoNuevo = "Commander";
 
-        if (carta.getId() == 11111) {
+        if (carta4.getId() == 11112) {
             
+            /*
             carta.setNombreCarta(nombreCartaNuevo);
             carta.setTipo(tipoNuevo);
             carta.setSimboloExpansion(simboloExpansionNuevo);
@@ -179,9 +180,9 @@ public class MagicControllerTest extends UtilsTest {
             carta.setColor(colorNuevo);
             carta.setGeneratedMana(generatedManaNuevo);
             carta.setNombreFormato(nombreFormatoNuevo);
-
+            */
             try {
-                magicController.modificar(this.carta);
+                magicController.modificar(carta4);
     
             } catch (PersistenciaException e) {
                 assertFalse(e.getMessage().contains("consulta"));
@@ -195,7 +196,7 @@ public class MagicControllerTest extends UtilsTest {
         try {
             magicController.obtenerListado();
         } catch (PersistenciaException e) {
-            e.getMessage();
+            assertFalse(e.getMessage().contains("consulta"));
         }
     }
 
