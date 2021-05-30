@@ -1,5 +1,7 @@
 package es.iespuertodelacruz.magic.modelo;
 
+import java.util.ArrayList;
+
 import es.iespuertodelacruz.magic.api.*;
 import es.iespuertodelacruz.magic.exception.PersistenciaException;
 
@@ -69,6 +71,15 @@ public class MagicModelo {
      */
     public void buscarPorCosteDeMana(Carta carta) throws PersistenciaException {
         persistencia.obtenerCartaMana(carta.getCosteMana());
+    }
+
+    /**
+     * Metodo encargado de devolver listar todos los valores
+     * @return obtenerListado()
+     * @throws PersistenciaException error controlado
+     */
+    public ArrayList<Carta> obtenerListado() throws PersistenciaException{
+        return persistencia.obtenerListado();
     }
 
 }

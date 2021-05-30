@@ -4,6 +4,8 @@ import es.iespuertodelacruz.magic.api.Carta;
 import es.iespuertodelacruz.magic.exception.CartaException;
 import es.iespuertodelacruz.magic.exception.PersistenciaException;
 import es.iespuertodelacruz.magic.modelo.MagicModelo;
+
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -177,5 +179,14 @@ public class MagicController {
      */
     public void modificar(Carta carta) throws PersistenciaException {
         magicModelo.modificar(carta);
+    }
+
+    /**
+     * Metodo encargado de devolver listar todos los valores
+     * @return obtenerListado()
+     * @throws PersistenciaException error controlado
+     */
+    public ArrayList<Carta> obtenerListado() throws PersistenciaException{
+        return magicModelo.obtenerListado();
     }
 }

@@ -28,7 +28,20 @@ public class BbDdTest {
     }
 
     @Test
-    public void testing(){
-        assertTrue(true);
+    public void closeStatementShouldCloseStatement() {
+        try {
+            bbDd.closeConecction(null, null, null);
+        } catch (PersistenciaException e) {
+            assertFalse(e.getMessage().contains("error"));
+        }
+    }
+
+    @Test
+    public void closeStatementWithNullShouldNotThrow() {
+        try {
+            bbDd.closeConecction(connection, null, null);
+        } catch (PersistenciaException e) {
+            assertFalse(e.getMessage().contains("error"));
+        }
     }
 }
