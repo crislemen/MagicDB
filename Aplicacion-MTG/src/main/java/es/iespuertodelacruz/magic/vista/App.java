@@ -192,7 +192,6 @@ public class App {
     public static void crearCarta() throws CartaException, PersistenciaException {
 
         Scanner sn = new Scanner(System.in);
-<<<<<<< HEAD
         System.out.println("Inserte los siguientes valores");
         System.out.println("Inserte la Id de la carta(Formato Numerico)");
         int id = sn.nextInt();
@@ -225,70 +224,6 @@ public class App {
         String generatedMana = sn.next();
         System.out.println("Inserta el formato(Formato texto)");
         String nombreFormato = sn.next();
-=======
-        System.out.println("[*]Inserte los siguientes valores[*]");
-        System.out.println("");
-
-        System.out.println("> Inserte la Id de la carta");
-        int id = sn.nextInt();
-        System.out.println("");
-
-        System.out.println("> Inserte el nombre de la carta");
-        String nombreCarta = sn.nextLine();
-        System.out.println("");
-
-        System.out.println("> Inserta el tipo de la carta");
-        String tipo = sn.nextLine();
-        System.out.println("");
-
-        System.out.println("> Inserta el simbolo de expansion");
-        String simboloExpansion = sn.nextLine();
-        System.out.println("");
-
-        System.out.println("> Inserta la rareza");
-        char rareza = sn.next().charAt(0);
-        System.out.println("");
-
-        System.out.println("> Inserta el coste de mana");
-        String costeMana = sn.nextLine();
-        System.out.println("");
-
-        System.out.println("> Inserta el coste de mana convertido");
-        int costeManaConvertido = sn.nextInt();
-        System.out.println("");
-
-        System.out.println("> Inserta la fuerza");
-        String fuerza = sn.nextLine();
-        System.out.println("");
-
-        System.out.println("> Inserta la resistencia");
-        String resistencia = sn.nextLine();
-        System.out.println("");
-
-        System.out.println("> Inserta la lealtad");
-        int loyalty = sn.nextInt();
-        System.out.println("");
-
-        System.out.println("> Inserta la descripcion de la carta");
-        String descripcion = sn.nextLine();
-        System.out.println("");
-
-        System.out.println("> Inserte el codigo de artista");
-        int codigoArtista = sn.nextInt();
-        System.out.println("");
-
-        System.out.println("> Inserta el color");
-        String color = sn.nextLine();
-        System.out.println("");
-
-        System.out.println("> Inserta el mana generado");
-        String generatedMana = sn.nextLine();
-        System.out.println("");
-
-        System.out.println("> Inserta el formato");
-        String nombreFormato = sn.nextLine();
-
->>>>>>> 1cff088170ee92d83f117804d55c4ea824c320bb
         new Carta(id, nombreCarta, tipo, simboloExpansion, rareza, costeMana, costeManaConvertido, fuerza, resistencia,
                 loyalty, descripcion, codigoArtista, color, generatedMana, nombreFormato);
 
