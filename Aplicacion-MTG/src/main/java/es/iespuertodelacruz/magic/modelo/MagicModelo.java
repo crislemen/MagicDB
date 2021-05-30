@@ -33,19 +33,12 @@ public class MagicModelo {
 
     /**
      * Metodo encargado de actualizar
+     * 
      * @param carta a modificar
      * @throws PersistenciaException error controlado
      */
-    public void modificar(Carta carta) throws PersistenciaException{
-        String sql = " UPDATE carta SET id = '" + carta.getId() + "', " + " nombre_carta = '" + carta.getNombreCarta()
-            + "', " + " tipo = '" + carta.getTipo() + "', " + " simbolo_expansion = '" + carta.getSimboloExpansion()
-            + "', " + " rareza = '" + carta.getRareza() + "', " + " coste_mana = '" + carta.getCosteMana() + "', "
-            + " coste_mana_convertido = '" + carta.getCosteManaConvertido() + "', " + " fuerza = '" + carta.getFuerza()
-            + "', " + " resistencia = '" + carta.getResistencia() + "', " + " loyalty = '" + carta.getLoyalty()
-            + "', " + " descripcion = '" + carta.getDescripcion() + "', " + " codigo_artista = '"
-            + carta.getCodigoArtista() + "', " + " color = '" + carta.getColor() + "', " + " generated_mana = '"
-            + carta.getGeneratedMana() + "', " + " nombre_formato = '" + carta.getNombreFormato() + "';";
-      persistencia.actualizar(sql);
+    public void modificar(Carta carta) throws PersistenciaException {
+        persistencia.modificar(carta);
     }
 
     /**

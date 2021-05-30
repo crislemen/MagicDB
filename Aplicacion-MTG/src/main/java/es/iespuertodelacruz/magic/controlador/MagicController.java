@@ -128,8 +128,8 @@ public class MagicController {
     /**
      * Metodo que inserta una carta
      * @param carta a isnertar
-     * @throws PersistenciaException
-     * @throws CartaException
+     * @throws PersistenciaException error controlado
+     * @throws CartaException error controlado
      */
     public void insertar(Carta carta) throws PersistenciaException, CartaException {
         validar(carta);
@@ -139,7 +139,7 @@ public class MagicController {
     /**
      * Metodo que elimina una carta
      * @param carta  a eliminar
-     * @throws PersistenciaException
+     * @throws PersistenciaException error controlado
      */
     public void eliminar(Carta carta) throws PersistenciaException {
         magicModelo.eliminar(carta);
@@ -173,7 +173,7 @@ public class MagicController {
     }
     /**
      * Metodo que modifica una carta
-     * @throws PersistenciaException
+     * @throws PersistenciaException error controlado
      */
     public void modificar(Carta carta) throws PersistenciaException {
         magicModelo.modificar(carta);

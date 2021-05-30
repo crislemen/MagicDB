@@ -66,16 +66,12 @@ public class MagicControllerTest extends UtilsTest {
         assertTrue(cartaVacia.getTipo().isEmpty(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
         assertTrue(cartaVacia.getSimboloExpansion().isEmpty(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
         assertEquals(CHAR_NULL, cartaVacia.getRareza(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
-        // assertTrue(cartaVacia.getCosteMana().isEmpty(),
-        // LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
         assertEquals(-1, cartaVacia.getCosteManaConvertido(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
         assertTrue(cartaVacia.getFuerza().isEmpty(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
         assertTrue(cartaVacia.getResistencia().isEmpty(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
         assertEquals(-1, cartaVacia.getLoyalty(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
         assertTrue(cartaVacia.getDescripcion().isEmpty(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
         assertEquals(0, cartaVacia.getCodigoArtista(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
-        // assertTrue(cartaVacia.getColor().isEmpty(),
-        // LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
         assertTrue(cartaVacia.getGeneratedMana().isEmpty(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
         assertTrue(cartaVacia.getNombreFormato().isEmpty(), LOS_VALORES_DEL_OBJETO_NO_SON_LOS_ESPERAD);
 
@@ -152,9 +148,8 @@ public class MagicControllerTest extends UtilsTest {
     @Test
     public void modificarTest() {
 
-        int idNuevo = 398431;
-        String nombreCartaNuevo = "t";
-        String tipoNuevo = "t";
+        String nombreCartaNuevo = "test";
+        String tipoNuevo = "tset";
         String simboloExpansionNuevo = "ORI";
         char rarezaNuevo = 'R';
         String costeManaNuevo = "{1}{R}";
@@ -162,40 +157,38 @@ public class MagicControllerTest extends UtilsTest {
         String fuerzaNuevo = "2";
         String resistenciaNuevo = "2";
         int loyaltyNuevo = 2;
-        String descripcionNuevo = "Magecraft- Whenever you cast or copy an instant" + " or sorcery spell, draw a card";
+        String descripcionNuevo = "test";
         int codigoArtistaNuevo = 6;
         String colorNuevo = "W";
         String generatedManaNuevo = "{G}";
         String nombreFormatoNuevo = "Commander";
-/*
-        try {
-            magicController.insertar(carta);
-        } catch (PersistenciaException | CartaException e1) {
-            assertFalse(e1.getMessage().contains("consulta"));
-        }*/
 
-        carta.setId(idNuevo);
-        carta.setNombreCarta(nombreCartaNuevo);
-        carta.setTipo(tipoNuevo);
-        carta.setSimboloExpansion(simboloExpansionNuevo);
-        carta.setRareza(rarezaNuevo);
-        carta.setCosteMana(costeManaNuevo);
-        carta.setCosteManaConvertido(costeManaConvertidoNuevo);
-        carta.setFuerza(fuerzaNuevo);
-        carta.setResistencia(resistenciaNuevo);
-        carta.setLoyalty(loyaltyNuevo);
-        carta.setDescripcion(descripcionNuevo);
-        carta.setCodigoArtista(codigoArtistaNuevo);
-        carta.setColor(colorNuevo);
-        carta.setGeneratedMana(generatedManaNuevo);
-        carta.setNombreFormato(nombreFormatoNuevo);
+        if (carta.getId() == 11111) {
+            
+            carta.setNombreCarta(nombreCartaNuevo);
+            carta.setTipo(tipoNuevo);
+            carta.setSimboloExpansion(simboloExpansionNuevo);
+            carta.setRareza(rarezaNuevo);
+            carta.setCosteMana(costeManaNuevo);
+            carta.setCosteManaConvertido(costeManaConvertidoNuevo);
+            carta.setFuerza(fuerzaNuevo);
+            carta.setResistencia(resistenciaNuevo);
+            carta.setLoyalty(loyaltyNuevo);
+            carta.setDescripcion(descripcionNuevo);
+            carta.setCodigoArtista(codigoArtistaNuevo);
+            carta.setColor(colorNuevo);
+            carta.setGeneratedMana(generatedManaNuevo);
+            carta.setNombreFormato(nombreFormatoNuevo);
 
-        try {
-            magicController.modificar(carta);
-
-        } catch (PersistenciaException e) {
-            assertFalse(e.getMessage().contains("consulta"));
+            try {
+                magicController.modificar(this.carta);
+    
+            } catch (PersistenciaException e) {
+                assertFalse(e.getMessage().contains("consulta"));
+            }
         }
+
+        
 
     }
 

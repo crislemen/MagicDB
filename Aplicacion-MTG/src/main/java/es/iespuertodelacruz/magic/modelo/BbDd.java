@@ -211,7 +211,7 @@ public class BbDd {
     * @throws PersistenciaException
     */
    public void insertar(Carta carta) throws PersistenciaException {
-      String sql = "INSERT INTO carta(id,nombre_carta,tipo,simbolo_expansion,rareza,"
+      String sql = "INSERT or REPLACE INTO carta(id,nombre_carta,tipo,simbolo_expansion,rareza,"
             + "coste_mana,coste_mana_convertido,fuerza,resistencia,loyalty,"
             + "descripcion,codigo_artista,color,generated_mana,nombre_formato)" + " VALUES ('" + carta.getId() + "',"
             + "'" + carta.getNombreCarta() + "', " + "'" + carta.getTipo() + "', " + "'" + carta.getSimboloExpansion()
@@ -241,13 +241,13 @@ public class BbDd {
     * @throws PersistenciaException
     */
    public void modificar(Carta carta) throws PersistenciaException {
-      String sql = " UPDATE carta SET id = '" + carta.getId() + "', " + " nombre_carta = '" + carta.getNombreCarta()
-            + "', " + " tipo = '" + carta.getTipo() + "', " + " simbolo_expansion = '" + carta.getSimboloExpansion()
-            + "', " + " rareza = '" + carta.getRareza() + "', " + " coste_mana = '" + carta.getCosteMana() + "', "
-            + " coste_mana_convertido = '" + carta.getCosteManaConvertido() + "', " + " fuerza = '" + carta.getFuerza()
-            + "', " + " resistencia = '" + carta.getResistencia() + "', " + " loyalty = '" + carta.getLoyalty() + "', "
-            + " descripcion = '" + carta.getDescripcion() + "', " + " codigo_artista = '" + carta.getCodigoArtista()
-            + "', " + " color = '" + carta.getColor() + "', " + " generated_mana = '" + carta.getGeneratedMana() + "', "
+      String sql = " UPDATE carta SET nombre_carta = '" + carta.getNombreCarta() + "', " + " tipo = '" + carta.getTipo()
+            + "', " + " simbolo_expansion = '" + carta.getSimboloExpansion() + "', " + " rareza = '" + carta.getRareza()
+            + "', " + " coste_mana = '" + carta.getCosteMana() + "', " + " coste_mana_convertido = '"
+            + carta.getCosteManaConvertido() + "', " + " fuerza = '" + carta.getFuerza() + "', " + " resistencia = '"
+            + carta.getResistencia() + "', " + " loyalty = '" + carta.getLoyalty() + "', " + " descripcion = '"
+            + carta.getDescripcion() + "', " + " codigo_artista = '" + carta.getCodigoArtista() + "', " + " color = '"
+            + carta.getColor() + "', " + " generated_mana = '" + carta.getGeneratedMana() + "', "
             + " nombre_formato = '" + carta.getNombreFormato() + "';";
       actualizar(sql);
    }
