@@ -48,7 +48,7 @@ public class BbDdTest {
 
     @Test
     public void insertarArtistasTest() throws IOException {
-        
+
         try {
             bbDd.insertarArtistas();
         } catch (PersistenciaException e) {
@@ -157,7 +157,7 @@ public class BbDdTest {
     }
 
     @Test
-    public void tt() throws PersistenciaException{
+    public void tt() throws PersistenciaException {
         final BbDd generalEx = new BbDd("org.sqlite.JDBC", "jdbc:sqlite:magic.db", null, null);
         String sql = null;
         Exception exception = assertThrows(Exception.class, () -> {
@@ -167,7 +167,7 @@ public class BbDdTest {
     }
 
     @Test
-    public void throwGetConnectionTest() throws PersistenciaException{
+    public void throwGetConnectionTest() throws PersistenciaException {
         BbDd bbDd = new BbDd("org.sqlite.JDBC", "jdbc:sqlite:magic.db", "root", "toor");
 
         try {
@@ -175,10 +175,11 @@ public class BbDdTest {
         } catch (PersistenciaException e) {
             assertFalse(e.getMessage().contains("establecer"));
         }
-        
+
     }
+
     @Test
-    public void throwBuscarTest() throws PersistenciaException{
+    public void throwBuscarTest() throws PersistenciaException {
         final BbDd generalEx = new BbDd("org.sqlite.JDBC", "jdbc:sqlite:magic.db", null, null);
 
         String sql = null;
@@ -188,31 +189,38 @@ public class BbDdTest {
         });
         assertTrue(exception.getMessage().contains("error"));
     }
+
     /*
     @Test
-    public void throwInsertArtistaTest() throws PersistenciaException, IOException{
+    public void throwInsertArtistaTest() throws PersistenciaException, IOException {
         final BbDd generalEx = new BbDd("org.sqlite.JDBC", "jdbc:sqlite:magic.db", null, null);
 
-        String sql = "INSERT INTO inexistente";
         Exception exception = assertThrows(Exception.class, () -> {
+
+            Fichero fichero = new Fichero();
+            String sql = fichero.leerResource("sql/InsertsArtisa.sql");
             generalEx.insertarArtistas();
+            bbDd.actualizar(sql);
+            
+
         });
         assertTrue(exception.getMessage().contains("error"));
-    }*/
+    }
+    */
 
     /*
-    @Test
-    public void t() throws PersistenciaException {
-
-        final BbDd generalEx = new BbDd("org.sqlite.JDBC", "jdbc:sqlite:magic.db", null, null);
-
-        Exception exception = assertThrows(Exception.class, () -> {
-            
-            generalEx.closeConecction(null, null, null);
-
-        });
-        assertTrue(exception.getMessage().contains("error"));
-
-    }*/
+     * @Test public void t() throws PersistenciaException {
+     * 
+     * final BbDd generalEx = new BbDd("org.sqlite.JDBC", "jdbc:sqlite:magic.db",
+     * null, null);
+     * 
+     * Exception exception = assertThrows(Exception.class, () -> {
+     * 
+     * generalEx.closeConecction(null, null, null);
+     * 
+     * }); assertTrue(exception.getMessage().contains("error"));
+     * 
+     * }
+     */
 
 }

@@ -173,7 +173,7 @@ public class BbDd {
       String sql;
       try {
          sql = fichero.leerResource("sql/InsertsArtista.sql");
-      } catch (PersistenciaException e) {
+      } catch (Exception e) {
          throw new PersistenciaException("Se ha producido un error realizando la consulta");
       }
 
