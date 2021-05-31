@@ -66,7 +66,24 @@ public class BbDdTest {
 
         }
     }
-
+    @Test
+    public void buscarTest() {
+        String sql = "SELECT * FROM CARTA";
+        try {
+            bbDd.buscar(sql);
+        } catch (PersistenciaException e) {
+            assertFalse(e.getMessage().contains("consulta"));
+        }
+    }
+    @Test
+    public void obtenerListadoTest() {
+        String sql = "SELECT * FROM CARTA";
+        try {
+            bbDd.obtenerListado(sql);
+        } catch (PersistenciaException e) {
+            assertTrue(e.getMessage().contains("consulta"));
+        }
+    }
     @Test
     public void insertarFormatosTest() throws IOException {
         try {
