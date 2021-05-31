@@ -1,0 +1,1 @@
+insert into carta(1,"hola");
