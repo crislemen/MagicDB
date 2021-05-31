@@ -1,5 +1,9 @@
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -78,15 +82,27 @@ public class FicheroTest {
         }
     }
 
-    /*
+    
     @Test
-    public void leerResourceTest() throws IOException, PersistenciaException{
-        String nombre = "sql/InsertsArtista.sql";
-        
-        String path = fichero.leerResource(nombre);
-        System.out.println(path);
-        assertNotNull(path, "El path no puede ser nulo");
-    }*/
+    public void throwLeerTest() throws PersistenciaException {
+
+        final Fichero fich = new Fichero();
+
+        Exception exception = assertThrows(Exception.class, () -> {
+            fich.leer(nombre);
+        });
+        assertTrue(exception.getMessage().contains("error"));       
+    }
+
+    @Test
+    public void throwCrearTest(){
+        final Fichero fich = new Fichero();
+        String cadenaTexto = null;
+        Exception exception = assertThrows(Exception.class, () -> {
+            fich.crear(nombre, cadenaTexto);
+        });
+        assertTrue(exception.getMessage().contains("error"));
+    }
 
     private void crearFichero()  {
         try {

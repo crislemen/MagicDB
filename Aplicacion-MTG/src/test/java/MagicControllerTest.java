@@ -139,17 +139,6 @@ public class MagicControllerTest extends UtilsTest {
     @Test
     public void modificarTest() {
 
-        /*
-        try {
-            Carta cartaEncontrado = magicModelo.buscarPorID(carta.getId());
-            assertNotNull(cartaEncontrado, "No se debe de obtener un elemento nulo");
-            cartaEncontrado.setNombreCarta("Pepe 2");
-            cartaEncontrado.modificar(cartaEncontrado);
-            Carta cartaActualizada = magicModelo.buscarPorID(cartaEncontrado.getId());
-            assertEquals(cartaActualizada, cartaEncontrado, "No se ha encontrado lo esperado");
-        } catch (PersistenciaException e) {
-           fail("Se ha producido un error en la consulta del la cliente,e:"+e.getMessage());
-        }*/
         if (carta4.getId() == 11112) {
 
             try {

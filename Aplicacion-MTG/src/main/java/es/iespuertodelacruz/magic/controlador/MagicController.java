@@ -98,8 +98,7 @@ public class MagicController {
         }
         return resultado;
     }
-
-    
+  
     /**
      * Metodo encargado de comprobar si a la hora de insertar el coste de mana cumple
      * el patron dado
@@ -179,6 +178,7 @@ public class MagicController {
         magicModelo.buscarPorCosteDeMana(costeMana);
         return carta;
     }
+
     /**
      * Metodo que modifica una carta
      * @throws PersistenciaException error controlado

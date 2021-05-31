@@ -1,7 +1,6 @@
 package es.iespuertodelacruz.magic.modelo;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.sql.*;
 import java.util.ArrayList;
 import es.iespuertodelacruz.magic.api.Carta;
