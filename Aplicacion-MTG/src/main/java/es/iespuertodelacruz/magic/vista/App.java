@@ -86,20 +86,20 @@ public class App {
                                         case 1:
                                             System.out.println("");
                                             System.out.println("> Inserta el nombre de la carta a buscar");
-                                            String nombre = sn.next();
-                                            // magicController.buscarPorNombre(carta);
+                                            String nombreCarta = sn.next();
+                                            magicController.buscarPorNombre(nombreCarta);
                                             break;
                                         case 2:
                                             System.out.println("");
                                             System.out.println("> Inserta el id de la carta a buscar");
                                             int id = sn.nextInt();
-                                            // magicController.buscarPorID(carta);
+                                            magicController.buscarPorID(id);
                                             break;
                                         case 3:
                                             System.out.println("");
                                             System.out.println("> Inserta el coste de mana");
                                             String costeMana = sn.next();
-                                            // magicController.buscarPorCosteMana(carta);
+                                            magicController.buscarPorCosteMana(costeMana);
                                             break;
                                     }
                                     break;
@@ -144,20 +144,20 @@ public class App {
                                         case 1:
                                             System.out.println("");
                                             System.out.println("> Inserta el nombre de la carta a buscar");
-                                            String nombre = sn.next();
-                                            // magicController.buscarPorNombre(carta);;
+                                            String nombreCarta = sn.next();
+                                            magicController.buscarPorNombre(nombreCarta);;
                                             break;
                                         case 2:
                                             System.out.println("");
                                             System.out.println("> Inserta el id de la carta a buscar");
                                             int id = sn.nextInt();
-                                            // magicController.buscarPorID(carta);
+                                            magicController.buscarPorID(id);
                                             break;
                                         case 3:
                                             System.out.println("");
                                             System.out.println("> Inserta el coste de mana");
                                             String costeMana = sn.next();
-                                            // magicController.buscarPorCosteMana(carta);
+                                            magicController.buscarPorCosteMana(costeMana);
                                             break;
                                     }
                                     break;
