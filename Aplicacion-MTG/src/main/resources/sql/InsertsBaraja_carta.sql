@@ -1,0 +1,5 @@
+INSERT INTO baraja_carta VALUES(1, 398574);
+INSERT INTO baraja_carta VALUES(2, 398578);
+INSERT INTO baraja_carta VALUES(3, 401452);
+INSERT INTO baraja_carta VALUES(4, 398565);
+INSERT INTO baraja_carta VALUES(5, 398656);
