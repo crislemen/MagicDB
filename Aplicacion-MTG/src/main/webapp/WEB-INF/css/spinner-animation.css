@@ -1,0 +1,32 @@
+body {
+  background-image: url("img/Gray_Patterned_BG.jpg");
+  display: flex;
+  height: 98vh;
+  place-items: center;
+  justify-content: center;
+}
+#container-animation {
+  width: 250px;
+  height: 150px;
+  margin: 0 auto;
+  /*border: 1px solid #000;*/
+  position: fixed;
+  z-index: 100;
+  border-radius: 50%;
+  animation: spin 10s linear infinite;
+}
+.item {
+  width: 40px;
+  height: 40px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+  position: absolute;
+  /*background: #f00;*/
+  animation: spin 10s linear infinite reverse;
+}
+@keyframes spin {
+  100% {
+    transform: rotate(6turn);
+  }
+}

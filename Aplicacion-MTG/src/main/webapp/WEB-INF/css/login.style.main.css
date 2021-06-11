@@ -1,0 +1,92 @@
+body {
+  background-image: url("img/Gray_Patterned_BG.jpg");
+}
+.container-login {
+  width: 580px;
+  height: 600px;
+  margin: auto;
+  background-image: url("../../img/login-wp.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: none;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+}
+.container-login--username,
+.container-login--password {
+  position: relative;
+  top: 15%;
+  right: 0;
+  left: 10px;
+  margin: 40px auto;
+  width: 50%;
+  height: 30px;
+  background: #5f4122;
+  overflow: hidden;
+  font-size: 20px;
+  padding: 8px 0;
+  border-bottom: 1px solid #2f2013;
+}
+.container-login--header {
+  position: relative;
+  top: 10%;
+  right: 0;
+  left: 25%;
+  text-align: center;
+  width: 50%;
+}
+.container-login--header h1 {
+  text-transform: uppercase;
+  font-size: 28px;
+}
+.container-login--username i,
+.container-login--password i {
+  position: relative;
+  top: 10%;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  width: 26px;
+  float: left;
+  text-align: center;
+}
+.container-login--username input,
+.container-login--password input {
+  border: none;
+  outline: none;
+  background: none;
+  color: white;
+  font-size: 18px;
+  width: 80%;
+  float: left;
+  margin: 0 10px;
+}
+.container-login--submit {
+  position: relative;
+  top: 20%;
+  right: 0;
+  left: 26%;
+  width: 200px;
+}
+.container-login--submit button {
+  background: #2f2013;
+  text-decoration: none;
+  border: none;
+  border-radius: 20px;
+  padding: 20px;
+  font-size: 18px;
+  color: #fff;
+}
+.container-login--submit button:hover {
+  background: #5e4123;
+  cursor: pointer;
+}
+.bottom-text {
+  position: relative;
+  top: 25%;
+  right: 0;
+  left: 26%;
+  width: 50%;
+  font-size: 19px;
+}
