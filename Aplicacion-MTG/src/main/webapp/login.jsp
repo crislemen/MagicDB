@@ -41,17 +41,18 @@
     
     
     <!-- CONTENEDOR DE LOGIN -->
-    <div class="container-login">
+    
+    <form action="LoginCheck.jsp" method="post" class="container-login">
       <div class="container-login--header">
         <h1>login</h1>
       </div>
       <div class="container-login--username">
         <i class="fa fa-user" aria-hidden="true"></i>
-        <input type="text" placeholder="Usuario" />
+        <input type="text" name="correo" placeholder="Correo" />
       </div>
       <div class="container-login--password">
         <i class="fa fa-lock" aria-hidden="true"></i>
-        <input type="password" placeholder="Contraseña" />
+        <input type="password" name="password" placeholder="Contraseña" />
       </div>
       <div class="container-login--submit">
         <button type="submit">Iniciar sesión</button>
@@ -59,7 +60,8 @@
       <div class="bottom-text">
         No tienes una cuenta? <a href="register.jsp">Registrate</a>
       </div>
-    </div>
+    </form>
+    
 
     <!-- ANIMACIÓN DE CARGA HASTA QUE LA PAGINA ESTE LISTA -->
     <div id="container-animation">
