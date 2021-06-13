@@ -32,11 +32,6 @@ Por favor lea la LICENCIA para mas información respecto a MagicDB
 |Octava Edición|350|2003|[<img src="imagenes/simbol/octava-edicion.png" width="60px" height="36px"/>](imagenes/simbol/octava-edicion.png)|NO|
 |Novena Edición|350|2005|[<img src="imagenes/simbol/novena-edicion.png" width="60px" height="36px"/>](imagenes/simbol/novena-edicion.png)|NO|
 
-# Tested on
-
-- 
-- 
-- 
 
 # Requisitos
 
