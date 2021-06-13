@@ -1,0 +1,241 @@
+body {
+  text-align: center;
+  background-image: url("img/Gray_Patterned_BG.jpg");
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.backgroundTop {
+  width: 100%;
+  height: 100%;
+  background-color: #191919;
+  position: absolute;
+  overflow: hidden;
+}
+.head {
+  height: 131px;
+  position: relative;
+  margin-bottom: 38px;
+}
+
+.head > a > br {
+  display: none; /* CMS has a br in it that we want to hide */
+}
+
+.head > a {
+  position: absolute;
+  top: -26px;
+  left: 20px;
+  right: 475px;
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 275px;
+}
+.HeaderImage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.form {
+  font-size: 0.8em;
+  height: 100%;
+  color: #ffffff;
+  position: relative;
+}
+.box-container-elements {
+  /*background: red;*/
+  width: 1000px;
+  height: auto;
+  margin: auto;
+  margin-top: 30px;
+  left: 25%;
+  position: absolute;
+}
+.container-title-menu {
+  width: 500px;
+  height: 80px;
+  margin-top: 10px;
+  margin-left: 10px;
+  /*background: blue;*/
+  position: relative;
+}
+.container-title-menu header {
+  font-size: 28px;
+  margin: auto;
+  font-weight: 900;
+  text-transform: uppercase;
+  position: relative;
+  top: 25%;
+  text-align: left;
+}
+.container-info-text {
+  position: relative;
+  width: 98%;
+  /*background: yellow;*/
+  margin-left: 10px;
+  margin-right: 0px;
+  height: auto;
+}
+.container-filter {
+  position: relative;
+  width: 400px;
+  /*background-color: aqua;*/
+  height: auto;
+  top: -90%;
+  text-align: left;
+  margin-right: 10px;
+  float: right;
+  margin-top: 30px;
+}
+.container-filter-colors {
+  position: relative;
+  width: 500px;
+  /*background-color: brown;*/
+  height: 300px;
+  top: -90%;
+  text-align: left;
+  float: left;
+  margin-left: 10px;
+  margin-top: 30px;
+}
+.container-filter-colors b {
+  margin-bottom: 100px;
+  font-size: 20px;
+  text-decoration: none;
+  text-shadow: none;
+  margin-bottom: 10px;
+}
+.container-filter p {
+  margin-top: 40px;
+  font-size: 14.5px;
+  text-align: left;
+  text-decoration: none;
+  text-shadow: none;
+  margin-bottom: 6px;
+}
+.container-filter b {
+  margin-bottom: 100px;
+  font-size: 20px;
+  text-decoration: none;
+  text-shadow: none;
+  margin-bottom: 10px;
+}
+.container-filter select {
+  width: 250px;
+  height: 30px;
+  float: left;
+  border: 1px solid #292929;
+  background: #232323;
+}
+.container-info-text p {
+  font-size: 18px;
+  text-align: left;
+}
+.container-search {
+  width: 98%;
+  position: relative;
+  margin-left: 10px;
+  /*background: green;*/
+  height: 100%;
+}
+.search-box {
+  position: relative;
+  width: 835px;
+  height: auto;
+  float: left;
+  margin-top: 20px;
+  margin-right: 5px;
+}
+.searchButton-box {
+  margin-top: 20px;
+  float: left;
+  position: relative;
+  width: 140px;
+  height: auto;
+}
+.textboxinput {
+  width: 100%;
+  height: 30px;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #4c4b4b;
+  border: none;
+  background-color: #c2c2c2;
+}
+.searchButton {
+  font-size: 12.5pt;
+  width: 100%;
+  height: 32px;
+  border: #191919 solid 1px;
+  font-weight: bold;
+  background-color: #434343;
+  color: #ffffff;
+  overflow: hidden;
+}
+.container-filter-by--element {
+  margin-bottom: 20px;
+  height: 30px;
+  width: 250px;
+  background: #000;
+}
+.container-colors {
+  width: 375px;
+  margin-top: 20px;
+}
+.container-colors img {
+  width: 27px;
+  height: 28px;
+  vertical-align: middle;
+}
+input {
+  font-family: open_sanssemibold;
+  border: 0px none;
+  color: #ffffff;
+  height: 22px;
+  font-weight: bold;
+  font-size: 11pt;
+  background-color: #4a4a4a;
+  top: 2px;
+  position: relative;
+}
+select,
+option {
+  color: #ffffff;
+}
+.regular-checkbox {
+  display: none;
+}
+
+.regular-checkbox + label {
+  background-color: #232323;
+  border: 0;
+  padding: 9px;
+  display: inline-block;
+  position: relative;
+}
+
+.regular-checkbox:checked + label {
+  background-color: #232323;
+  border: 0;
+  color: #99a1a7;
+}
+
+.regular-checkbox:checked + label:after {
+  content: "\2714";
+  font-size: 14px;
+  position: absolute;
+  top: 0px;
+  left: 3px;
+  color: #ffffff;
+}
+
+.big-checkbox + label {
+  padding: 12px;
+  vertical-align: middle;
+}
+
+.big-checkbox:checked + label:after {
+  font-size: 16px;
+  left: 6px;
+}

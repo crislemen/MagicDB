@@ -12,10 +12,10 @@
         if((username.equals("shakar@gmail.com") && password.equals("123")))
             {
             session.setAttribute("correo",username);
-            response.sendRedirect("Menu.jsp");
+            response.sendRedirect("menu.jsp");
             }
         else
-            response.sendRedirect("Error.jsp");
+            response.sendRedirect("error.jsp");
         %>
     </body>
 </html>

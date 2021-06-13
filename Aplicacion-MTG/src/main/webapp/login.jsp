@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ICONOS -->
+    <link rel="icon" href="https://magic.wizards.com/sites/all/themes/wiz_mtg/icons/touch-icon-16.png" sizes="16x16" />
+    <link rel="icon" href="https://magic.wizards.com/sites/all/themes/wiz_mtg/icons/touch-icon-32.png" sizes="32x32" />
+    <link rel="icon" href="https://magic.wizards.com/sites/all/themes/wiz_mtg/icons/touch-icon-96.png" sizes="96x96" />
+    
     <title>Inicio de sesión</title>
 
     <script>
@@ -42,7 +48,7 @@
     
     <!-- CONTENEDOR DE LOGIN -->
     
-    <form action="LoginCheck.jsp" method="post" class="container-login">
+    <form action="loginCheck.jsp" method="post" class="container-login">
       <div class="container-login--header">
         <h1>login</h1>
       </div>
