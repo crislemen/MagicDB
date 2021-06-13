@@ -14,7 +14,7 @@
         </style>
     </head>
     <body>       
-        <form method="post" action="" class="form" onclick="">
+        <form method="post" action="Default.aspx" class="form" onclick="">
             <div class="bannerHeader">
                 <div class="head">
                 <div class="backgroundTop">

@@ -71,3 +71,6 @@
 .menu-items--content li a:hover:before{
     right: 0;
 }
+.socials{
+    margin-bottom: 50px !important;
+}
