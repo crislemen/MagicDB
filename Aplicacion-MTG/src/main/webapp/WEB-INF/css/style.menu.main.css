@@ -4,6 +4,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  display: none;
 }
 .backgroundTop {
   width: 100%;
@@ -42,6 +43,7 @@ body {
   height: 100%;
   color: #ffffff;
   position: relative;
+  display: none;
 }
 .box-container-elements {
   /*background: red;*/

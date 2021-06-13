@@ -11,10 +11,34 @@
         
         <style>
             <%@ include file="WEB-INF/css/style.menu.main.css" %>
+            <%@ include file="WEB-INF/css/spinner-animation.css" %>
         </style>
+        <script>
+            function onReady(callback) {
+                var intervalId = window.setInterval(function () {
+                if (document.getElementsByTagName("body")[0] !== undefined) {
+                    window.clearInterval(intervalId);
+                    callback.call(this);
+                }
+                }, 1000);
+            }
+
+            function setVisible(selector, visible) {
+                document.querySelector(selector).style.display = visible
+                ? "block"
+                : "none";
+            }
+
+            onReady(function () {
+                setVisible("body", true);
+                setVisible("form", true)
+                setVisible("#container-animation", false);
+            });
+        </script>
     </head>
     <body>       
-        <form method="post" action="Default.aspx" class="form" onclick="">
+        
+        <form method="post" action="" class="form" onclick="">
             <div class="bannerHeader">
                 <div class="head">
                 <div class="backgroundTop">
@@ -33,9 +57,8 @@
 
                 <div class="container-info-text">
                 <p>
-                    Gatherer es la base de datos de cartas de Magic the Gathering. Busca
-                    el complemento perfecto para tu mazo. Explora las cartas de la
-                    expansión Origins de Magic.
+                    Bienvenido a Gatherer, el buscador de cartas, aquí podrás realizar busquedas
+                    de las cartas de la expansión de Magic Origins
                 </p>
                 </div>
 
@@ -140,5 +163,52 @@
                 </div>
             </div>
         </form>
+
+            
+        
+        <!-- ANIMACIÓN DE CARGA HASTA QUE LA PAGINA ESTE LISTA -->
+        <div id="container-animation">
+            <div class="item">
+                <img src="img/black-mana.png" width="40px" height="40px" />
+            </div>
+            <div class="item">
+                <img src="img/blue-mana.png" width="40px" height="40px" />
+            </div>
+            <div class="item">
+                <img src="img/green-mana.png" width="40px" height="40px" />
+            </div>
+            <div class="item">
+                <img src="img/red-mana.png" width="40px" height="40px" />
+            </div>
+            <div class="item">
+                <img src="img/white-mana.png" width="40px" height="40px" />
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+        var radius = 100; // adjust to move out items in and out
+        var fields = $(".item"),
+            container = $("#container-animation"),
+            width = container.width(),
+            height = container.height();
+        var angle = 0,
+            step = (2 * Math.PI) / fields.length;
+        fields.each(function () {
+            var x = Math.round(
+            width / 2 + radius * Math.cos(angle) - $(this).width() / 2
+            );
+            var y = Math.round(
+            height / 2 + radius * Math.sin(angle) - $(this).height() / 2
+            );
+            if (window.console) {
+            console.log($(this).text(), x, y);
+            }
+            $(this).css({
+            left: x + "px",
+            top: y + "px",
+            });
+            angle += step;
+        });
+        </script>
     </body>
 </html>
