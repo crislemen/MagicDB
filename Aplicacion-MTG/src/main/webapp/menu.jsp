@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" errorPage="Error.jsp"%>
+<%@page import="es.iespuertodelacruz.magic.controlador.MagicController"%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -64,7 +65,7 @@
 
                 <div class="container-search">
                 <div class="search-box">
-                    <input type="text" class="textboxinput" />
+                    <input type="text" class="textboxinput" name="textbuscar"/>
                 </div>
                 <div class="searchButton-box">
                     <input
@@ -76,6 +77,7 @@
                     />
                 </div>
                 </div>
+                
 
                 <div class="container-filter">
                 <b>Filtrar por:</b>
@@ -164,7 +166,17 @@
             </div>
         </form>
 
+        <%
+            MagicController magicController = new MagicController();
+            String nombreBuscar = request.getParameter("textbuscar");
             
+            if(nombreBuscar != null){
+                
+                magicController.buscarPorNombre(nombreBuscar);
+            }else{
+                System.out.println("error");
+            }
+        %>    
         
         <!-- ANIMACIÓN DE CARGA HASTA QUE LA PAGINA ESTE LISTA -->
         <div id="container-animation">
